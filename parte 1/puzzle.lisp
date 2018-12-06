@@ -70,7 +70,7 @@
 )
 
 
-;;; Board builder functions
+;;; Board handler functions
 (defun valid-cell (index) 
   "Função auxiliar que valida se o index da célula está válido (entre 0 e 5).
    Retorna T se sim, nil caso contrário"
@@ -102,22 +102,7 @@
 
 (defun board-emptyp (board) 
   "Verifica se todos os átomos da lista são 0. Retorna T se sim, nil caso contrário"
-  (eval 
-   (cons 'and 
-         (mapcar 
-             #'(lambda (tabuleiro &aux (row
-                                          (eval 
-                                           (cons 'and 
-                                                 (mapcar #'(lambda (linha &aux (emptyCell (= linha 0))) emptyCell) tabuleiro)
-                                           )
-                                          )
-                                       )
-                       ) 
-                       row
-               )
-             board
-         )
-    ))
+  (cond ((= (+ (apply '+ (first board)) (apply '+ (second board))) 0)))
 )
 
 (defun replace-position (cellIndex row &optional (value 0))

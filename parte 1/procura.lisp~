@@ -1,0 +1,22 @@
+;;;; board-handler.lisp
+;;;; Implementacao dos algoritmos de procura em espaço de estados
+;;;; Disciplina de IA - 2018 / 2019
+;;;; Autor: Tiago Alves & Tiago Ribeiro
+
+(defun sucessores (no operadores algoritmo heuristica &optional (profundidade nil))
+  "Funcao que devolve a lista de todos os sucessores de um determinado no passado como argumento"
+  (cond
+    ((equal algoritmo 'dfs)
+      (cond
+        ((>= (get-profundidade-no no) profundidade) nil)  ;So se aplica os sucessores caso a profundidade do no seja inferior a profundidade maxima
+        (t (apply #'append (mapcar #'(lambda(operador)
+                                    (aplicar-operador-no no operador heuristica)
+                                  ) operadores)))
+      )
+    )
+
+   (t (apply #'append (mapcar #'(lambda(operador)
+                                  (aplicar-operador-no no operador heuristica)
+                                ) operadores)))
+  )
+)
