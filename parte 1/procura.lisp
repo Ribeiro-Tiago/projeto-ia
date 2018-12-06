@@ -3,13 +3,13 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
-;;; Construtor
+;;;;; Construtor ;;;;;
 (defun create-node (board &optional (depth 0) (heuristica 0) (parent nil))
   (list board depth heuristica parent)
 )
 
 
-;;; getters 
+;;;;; getters ;;;;;
 
 ;; Test: (node-state (create-node (empty-board)))
 ;; Result: ((0 0 0 0 0 0) (0 0 0 0 0 0))
@@ -54,5 +54,47 @@
 )
 
 
-;;; Funções auxiliares aos algos
+;;;;; Funções auxiliares aos algos ;;;;;
+(defun operadores ()
+  "Funcao que lista todos os operadores existentes no dominio do problema"
+  '(allocate-pieces)
+)
 
+
+
+;;;;; Algos ;;;;;
+(defun a* (
+           node-inicial
+           get-sucessores
+           &optional (abertos (list node-inicial)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
+  "Algoritmo de procura em espaço de estados A*"
+  (cond
+   ((null abertos) nil)
+   (t '(
+         (let* (
+                (currNode (first abertos)) 
+                (newAbertos (rest fechados))
+                (newFechados (cons currNode fechados))
+               )
+           
+           (sucessores) 
+      )
+   ))
+  )
+)
+
+
+
+
+
+;;;;; Avaliação de eficiência ;;;;;
+
+
+;; penetrancia
+(defun penetrancia (depth generated-nodes)
+  "Funcao que permite calcular a penetrancia de um algoritmo"
+  (cond
+     ((not (zerop depth)) (float (/ depth generated-nodes)))
+     (t 0)
+  )
+)
