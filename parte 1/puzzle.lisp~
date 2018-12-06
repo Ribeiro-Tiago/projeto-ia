@@ -14,13 +14,53 @@
   (let ((linha1 (first lista))
         (linha2 (second lista)))
 
-    (cond ((or (null linha1) (null linha2)) nil)
-          ((or (not (= (list-length linha1) 6)) (not (= (list-length linha2) 6))) nil)
+    (cond ((or (null lista1) (null lista2)) nil)
+          ((or (not (= (lenght-list lista1) 2)) (not (= (length-list lista2) 2))) nil)
           (t lista)))
 )
 
 (defun start-board ()
   "Retorna o tabuleiro inicial default"
+  (board-g)
+)
+
+(defun board-a ()
+  "Retorna o tabuleiro do problema a do enunciado"
+  '((0 0 0 0 0 2)
+    (0 0 0 0 4 0))
+)
+
+(defun board-b ()
+  "Retorna o tabuleiro do problema b do enunciado"
+  (make-list 2 :initial-element (make-list 6 :initial-element '2))
+)
+
+(defun board-c ()
+  "Retorna o tabuleiro do problema c do enunciado"
+  '((0 3 0 3 0 3)
+    (3 0 3 0 3 0))
+)
+
+(defun board-d ()
+  "Retorna o tabuleiro do problema d do enunciado"
+  '((1 2 3 4 5 6)
+    (6 5 4 3 2 1))
+)
+
+(defun board-e ()
+  "Retorna o tabuleiro do problema e do enunciado"
+  '((2 4 6 8 10 12)
+    (12 10 8 6 4 2))
+)
+
+(defun board-f ()
+  "Retorna o tabuleiro do problema f do enunciado"
+  '((48 0 0 0 0 0)
+    (0 0 0 0 0 48))
+)
+
+(defun board-g ()
+  "Retorna o tabuleiro do problema g do enunciado"
   (make-list 2 :initial-element (make-list 6 :initial-element '8))
 )
 
