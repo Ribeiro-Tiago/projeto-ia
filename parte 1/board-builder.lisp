@@ -1,10 +1,10 @@
 ;;;; board-builder.lisp
-;;;; Funções de construção dos vários tabuleiros
+;;;; Funï¿½ï¿½es de construï¿½ï¿½o dos vï¿½rios tabuleiros
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
 (defun empty-board (&optional (linhas 2) (colunas 6))
-  "Retorna um tabuleiro vazio: 0 em todas as células"
+  "Retorna um tabuleiro vazio: 0 em todas as cï¿½lulas"
   (make-list linhas :initial-element (make-list colunas :initial-element '0))
 )
 
