@@ -19,12 +19,12 @@
     (progn
       (compile-file (concatenate 'string path "/puzzle.lisp"))
       ;(compile-file (concatenate 'string path "/procura.lisp"))
-      (start-menu (problemas)
+      (start-menu (problemas))
     )
   )
 )
 
-(defun start-menu ()
+(defun start-menu (problemas)
   "Função que mostra o menu inicial do jogo"
   (format t "~% ~% ~%Bem vindo ao melhor jogo de sempre meu caro! ~%
              1 - Jogar
@@ -34,7 +34,7 @@
           ((= answer 2) (format t "Oh :("))
           (t 
             (format t "Respota inválida, vamos tentar outra vez")
-            (start-menu)
+            (start-menu problemas)
           )))
 )
 
@@ -51,9 +51,9 @@
   (let ((answer (read))
         (maxAnswer (list-length problemas)))
 
-    (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) (
-                                                                          (format t "Respota inválida, vamos tentar outra vez")
-                                                                          (selectProblema)))
+    (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
+             (format t "Respota inválida, vamos tentar outra vez")
+             (selectProblema problemas))
           (t (comecarAlgo (nth answer problemas)))))
 )
 
@@ -63,10 +63,18 @@
 
 
 ;;;;;;;;;; USER INPUT ;;;;;;;;;; 
-(defun read-file ()
-  "Função que permite ler um ficheiro"
-  (with-open-file (ficheiro (concatenate 'string (get-curr-dir) "/problemas.dat")
-                   :direction :input
-                   :if-does-not-exist :error)
-    (read-line ficheiro))
+(defun read-recursive(stream-in &optional (stream-out))
+  (let ((line (read-line stream-in nil)))
+    (cond ((not (null line))
+              (rr stream-in (append stream-out (list line))))
+          (t stream-out)))) 
+
+(defun read-file () 
+  (with-open-file (file-stream (concatenate 'string (get-curr-dir) "/problemas.dat"))
+      (buildBoard (first (read-recursive file-stream))))
+)
+
+(defun buildBoard (stringBoard)
+  (let ((board (split-sequence "," stringBoard)))
+    (list (read-from-string (first board)) (read-from-string (second board))))
 )

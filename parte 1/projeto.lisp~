@@ -3,48 +3,77 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
-(defun get-curr-dir (filename) 
+;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
+(defun start() 
+  (load-depedencies)
+)
+
+(defun get-curr-dir () 
   "Devolve o caminho absoluto até a diretoria atual"
-  'C:/Users/Tiago/Documents/ips/IA/
+  (string "C:/Users/Tiago/Documents/ips/IA/projeto/parte 1")
 )
 
-(defun read-file (filename)
+(defun load-depedencies ()
+  "Funcao que as dependências do projeto" 
+  (let ((path (get-curr-dir)))
+    (progn
+      (compile-file (concatenate 'string path "/puzzle.lisp"))
+      ;(compile-file (concatenate 'string path "/procura.lisp"))
+      (start-menu (problemas))
+    )
+  )
+)
+
+(defun start-menu (problemas)
+  "Função que mostra o menu inicial do jogo"
+  (format t "~% ~% ~%Bem vindo ao melhor jogo de sempre meu caro! ~%
+             1 - Jogar
+             2 - Sair ~%")
+  (let ((answer (read)))
+    (cond ((= answer 1) (board-pick))
+          ((= answer 2) (format t "Oh :("))
+          (t 
+            (format t "Respota inválida, vamos tentar outra vez")
+            (start-menu problemas)
+          )))
+)
+
+(defun buildProblemaMenu(problemas) 
+  
+)
+
+(defun selectProblema (problemas)
+  "Função que mostra o menu inicial do jogo"
+  (format t "~% ~% ~%Escolha um tabuleiro! ~%
+             ~A 
+             ~D - Sair ~%" (buildProblemasMenu problemas) (list-length problemas))  
+
+  (let ((answer (read))
+        (maxAnswer (list-length problemas)))
+
+    (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
+             (format t "Respota inválida, vamos tentar outra vez")
+             (selectProblema problemas))
+          (t (comecarAlgo (nth answer problemas)))))
+)
+
+(defun comecarAlgo(board)
+  (forma t "board escolhido ~A" board)
+)
+
+
+;;;;;;;;;; USER INPUT ;;;;;;;;;; 
+(defun read-file()
+  (with-open-file (ficheiro (concatenate 'string (get-curr-dir) "/problemas.dat"))
+    (let ((data (make-string (file-length ficheiro))))
+      (read-sequence data ficheiro)
+      data))
+)
+
+(defun readaaa ()
   "Função que permite ler um ficheiro"
-  (with-open-file (ficheiro ((get-curr-dir) filename)
-                            :direction :input
-                            :if-does-not-exist :error)
-	(read ficheiro)
-   )
+  (with-open-file (ficheiro (concatenate 'string (get-curr-dir) "/problemas.dat")
+                   :direction :input
+                   :if-does-not-exist :error)
+    (read-line ficheiro))
 )
-
-(defun write-file (filename content)
-  "Função que escreve o {content} recebido num ficheiro com o {filename}"
-  (cond ((or (null filename) (null content) NIL))
-        ())
-)
-
-(defun get-input-type ()
-  "Função que pede ao utilizador qual o algoritmo a usar para testar e arranca com o processo todo"
-  (format t "Escolha o algoritmo a usar: ~%
-             1) BFS
-             2) DFS
-             3) A*
-             4) SMA*
-             5) IDA*
-             6) RBFS
-             7) Sair da aplicação")
-  (let ((answer (read)))               
-      (cond ((= answer 1) (bfs))
-            ((= answer 2) (dfs))
-            ((= answer 3) (astar))
-            ((= answer 4) (sma))
-            ((= answer 5) (ida))
-            ((= answer 6) (rbfs))
-            ((= answer 7) (format t "Adeus".))
-            (t 
-               (format t "Resposta inválida, escolha um número entre 1 e 7.~%")
-               (get-input-type)
-            )
-      ))
-)
-
