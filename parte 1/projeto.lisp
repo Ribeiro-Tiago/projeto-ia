@@ -45,7 +45,7 @@
   (cond ((null problemas) (format t "~% ~%"))
         ((= index 0) 
            (progn
-             (format t "      Escohla um problema")
+             (format t " > Escohla um problema")
              (build-problemas-menu-options problemas (1+ index))
            ))
         (t (progn 
@@ -73,20 +73,26 @@
 (defun select-algo (board)
   "Função que permite o utilizador escolher um algoritmo de procura para aplicar
    no problema escolhido anteriormente"
-  (format t "Escolha um algoritmo para aplicar na resolução do problema: ~A" board)
-  (let ((answer (read))
-        (maxAnswer (list-length problemas)))
+  (progn 
+    (build-algo-options board)
 
-    (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
-           (format t "Respota inválida, vamos tentar outra vez")
-           (select-problema problemas))
-          (t (select-algo (nth answer problemas)))))
+    (let ((answer (read)))
+
+      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 3)) 
+               (format t "Respota inválida, vamos tentar outra vez")
+               (select-aglo board))
+            (t (init-algo board answer))))
+  )
 )
 
-(defun comecar-algo(board algo)
-  (format t "board escolhido ~A" board)
+(defun build-algo-options(board)
+  "Função que constrói o menu de escolha do algoritmo de procura"
+  (format t " > Escolha um algoritmo para aplicar na resolução do problema: ~%   ~A ~% 1 - BFS ~% 2 - DFS ~% 3 - A* ~% ~%" board)
 )
 
+(defun init-algo (board algo)
+  (format t "board: ~A ~%algo: ~s" board algo)
+)
 
 ;;;;;;;;;; USER INPUT ;;;;;;;;;; 
 (defun read-problemas ()
