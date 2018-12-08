@@ -4,7 +4,7 @@
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
-(defun start() 
+(defun start-game() 
   (load-depedencies)
 )
 
@@ -19,24 +19,42 @@
     (progn
       (compile-file (concatenate 'string path "/puzzle.lisp"))
       ;(compile-file (concatenate 'string path "/procura.lisp"))
-      (start-menu (read-problmas))
+      (start-menu (read-problemas))
     )
   )
 )
 
+
+;;;;;;;;;; USER INTERACTION ;;;;;;;;;; 
 (defun start-menu (problemas)
   "Função que mostra o menu inicial do jogo"
   (format t "~% ~% ~%Bem vindo ao melhor jogo de sempre meu caro! ~%
              1 - Jogar
              2 - Sair ~%")
   (let ((answer (read)))
-    (cond ((= answer 1) (board-pick))
+    (cond ((= answer 1) (select-problema problemas))
           ((= answer 2) (format t "Oh :("))
-          (t 
-            (format t "Respota inválida, vamos tentar outra vez")
-            (start-menu problemas)
-          )
+          (t (progn 
+                (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+                (start-menu problemas)
+          ))
     )
+  )
+)
+
+(defun select-problema (problemas)
+  "Função que constrói o menu de problemas (com base na função build-problemas-menu-options) 
+   e permite o utilizador escohler um dos problemas"  
+  (progn
+    (build-problemas-menu-options problemas)
+
+    (let ((answer (read))
+        (maxAnswer (list-length problemas)))
+
+      (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
+               (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+               (select-problema problemas))
+            (t (select-algo (nth answer problemas)))))
   )
 )
 
@@ -53,23 +71,6 @@
              (build-problemas-menu-options (rest problemas) (1+ index)))))
 )
 
-(defun select-problema (problemas)
-  "Função que constrói o menu de problemas (com base na função build-problemas-menu-options) 
-   e permite o utilizador escohler um dos problemas"  
-  (progn
-    (build-problemas-menu-options problemas)
-
-    (let ((answer (read))
-        (maxAnswer (list-length problemas)))
-
-      (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
-               (format t "Respota inválida, vamos tentar outra vez")
-               (select-problema problemas))
-            (t (select-algo (nth answer problemas)))))
-  )
-)
-
-
 (defun select-algo (board)
   "Função que permite o utilizador escolher um algoritmo de procura para aplicar
    no problema escolhido anteriormente"
@@ -79,9 +80,9 @@
     (let ((answer (read)))
 
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 3)) 
-               (format t "Respota inválida, vamos tentar outra vez")
+               (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
                (select-aglo board))
-            (t (init-algo board answer))))
+            (t (eval-algo board (get-algo-name answer)))))
   )
 )
 
@@ -90,11 +91,41 @@
   (format t " > Escolha um algoritmo para aplicar na resolução do problema: ~%   ~A ~% 1 - BFS ~% 2 - DFS ~% 3 - A* ~% ~%" board)
 )
 
-(defun init-algo (board algo)
-  (format t "board: ~A ~%algo: ~s" board algo)
+(defun get-algo-name (index)
+  "Função que retorna o nome do algoritmo com base no index"
+  (cond ((= index 1) 'bfs)
+        ((= index 2) 'dfs)
+        (t 'a*))
 )
 
-;;;;;;;;;; USER INPUT ;;;;;;;;;; 
+(defun eval-algo (board algo)
+  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, então pedimos ao utilizador
+   a profundidade máximo do algoritmo e depois iniciamos o algoritmo, senão inicia-se logo"
+  (cond ((equal algo 'dfs) (init-algo board 'dfs (get-dfs-depth)))
+        (t (init-algo board algo)))
+)
+
+(defun get-dfs-depth() 
+  "Função pede a profundidade máxima do dfs"
+  (progn 
+    (format t " > Introduza a profundidade máximo do algortmo ~%")
+
+    (let ((answer (read)))
+
+      (cond ((OR (not (numberp answer)) (< answer 1)) 
+               (format t "~% >> Tem que ser número positivo, vamos tentar outra vez << ~%")
+               (get-dfs-depth))
+            (t answer)))
+  )
+)
+
+
+(defun init-algo (board algo &optional (depth 0))
+  "Função que inicia o algoritmo no problema escolhido"
+  (format t "board: ~A ~%algo: ~s~%depth: ~D " board algo depth)
+)
+
+;;;;;;;;;; PROBLEMAS INPUT ;;;;;;;;;; 
 (defun read-problemas ()
   "Abre o ficheiro problemas.dat existente na (get-curr-dir) e chama as funções 
    read-problemas-aux e build-boards para ler of ficheiro e construir os respetivos ficheiros.
