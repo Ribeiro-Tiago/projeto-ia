@@ -35,30 +35,56 @@
           (t 
             (format t "Respota inválida, vamos tentar outra vez")
             (start-menu problemas)
-          )))
+          )
+    )
+  )
 )
 
-(defun buildProblemaMenu(problemas) 
-  
+(defun build-problemas-menu-options(problemas &optional (index 0))
+  "Função que constrói as opções do menu de problemas"
+  (cond ((null problemas) (format t "~% ~%"))
+        ((= index 0) 
+           (progn
+             (format t "      Escohla um problema")
+             (build-problemas-menu-options problemas (1+ index))
+           ))
+        (t (progn 
+             (format t "~% ~D - ~A" index (first problemas))
+             (build-problemas-menu-options (rest problemas) (1+ index)))))
 )
 
-(defun selectProblema (problemas)
-  "Função que mostra o menu inicial do jogo"
-  (format t "~% ~% ~%Escolha um tabuleiro! ~%
-             ~A 
-             ~D - Sair ~%" (buildProblemasMenu problemas) (list-length problemas))  
+(defun select-problema (problemas)
+  "Função que constrói o menu de problemas (com base na função build-problemas-menu-options) 
+   e permite o utilizador escohler um dos problemas"  
+  (progn
+    (build-problemas-menu-options problemas)
 
+    (let ((answer (read))
+        (maxAnswer (list-length problemas)))
+
+      (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
+               (format t "Respota inválida, vamos tentar outra vez")
+               (select-problema problemas))
+            (t (select-algo (nth answer problemas)))))
+  )
+)
+
+
+(defun select-algo (board)
+  "Função que permite o utilizador escolher um algoritmo de procura para aplicar
+   no problema escolhido anteriormente"
+  (format t "Escolha um algoritmo para aplicar na resolução do problema: ~A" board)
   (let ((answer (read))
         (maxAnswer (list-length problemas)))
 
     (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
-             (format t "Respota inválida, vamos tentar outra vez")
-             (selectProblema problemas))
-          (t (comecarAlgo (nth answer problemas)))))
+           (format t "Respota inválida, vamos tentar outra vez")
+           (select-problema problemas))
+          (t (select-algo (nth answer problemas)))))
 )
 
-(defun comecarAlgo(board)
-  (forma t "board escolhido ~A" board)
+(defun comecar-algo(board algo)
+  (format t "board escolhido ~A" board)
 )
 
 
