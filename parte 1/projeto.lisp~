@@ -63,17 +63,18 @@
 
 
 ;;;;;;;;;; USER INPUT ;;;;;;;;;; 
-(defun read-file()
-  (with-open-file (ficheiro (concatenate 'string (get-curr-dir) "/problemas.dat"))
-    (let ((data (make-string (file-length ficheiro))))
-      (read-sequence data ficheiro)
-      data))
+(defun read-recursive(stream-in &optional (stream-out))
+  (let ((line (read-line stream-in nil)))
+    (cond ((not (null line))
+              (rr stream-in (append stream-out (list line))))
+          (t stream-out)))) 
+
+(defun read-file () 
+  (with-open-file (file-stream (concatenate 'string (get-curr-dir) "/problemas.dat"))
+      (buildBoard (first (read-recursive file-stream))))
 )
 
-(defun readaaa ()
-  "Função que permite ler um ficheiro"
-  (with-open-file (ficheiro (concatenate 'string (get-curr-dir) "/problemas.dat")
-                   :direction :input
-                   :if-does-not-exist :error)
-    (read-line ficheiro))
+(defun buildBoard (stringBoard)
+  (let ((board (split-sequence "," stringBoard)))
+    (list (read-from-string (first board)) (read-from-string (second board))))
 )
