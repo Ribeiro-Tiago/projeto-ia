@@ -1,4 +1,4 @@
- ;;;; board-handler.lisp
+;;;; board-handler.lisp
 ;;;; Implementacao dos algoritmos de procura em espaï¿½o de estados
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
@@ -64,9 +64,8 @@
 
 
 ;;;;; Funções auxiliares aos algos ;;;;;
-(defun shortest-cost-sort-compare (a b)
-  "Função de comparação de custo mais baixo para o sort"
-  (< (nth 2 a) (nth 2 b))
+(defun a*-sort-compare (a b)
+  (< a b))
 
 (defun in-fechadosp (board fechados)
   "Verifica se {node} encontra-se na lista dos {fechados}"
@@ -76,15 +75,15 @@
 )
 
 (defun sucessores (node fechados)
-  "Gera os nós sucessores de {node}"
-  (loop for rowIndex from 0 to 1
-     append (loop for cellIndex from 0 to 5
-                  collect (sucessores-aux rowIndex cellIndex node fechados)))
+    (loop 
+          for rowIndex in 0
+        append (loop 
+                     for cellIndex from 0
+            collect (sucessores-aux rowIndex cellIndex node fechados)))
 )
 
 
 (defun sucessores-aux (rowIndex cellIndex node fechados)
-  (cond ((
   (let* ((board (get-node-state node))
         (newBoard (allocate-pieces rowIndex cellIndex board)))
     (cond ((not (in-fechadosp newBoard fechados))

@@ -3,6 +3,19 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
+(defun calc(board)
+  (+ (apply '+ (first board)) (apply '+ (second board))) 
+)
+
+(defun teste (&aux (board '((8 8 8 8 8 8) (8 8 8 8 8 8))))
+  (create-node board (calc board) (calc board))
+)
+
+(defun teste2 (&aux (board '((1 1 8 8 8 8) (8 8 8 8 8 8))))
+  (create-node board (calc board) (calc board))
+)
+
+
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
 (defun start-game() 
   (load-depedencies)
@@ -18,7 +31,7 @@
   (let ((path (get-curr-dir)))
     (progn
       (compile-file (concatenate 'string path "/puzzle.lisp"))
-      ;(compile-file (concatenate 'string path "/procura.lisp"))
+      (compile-file (concatenate 'string path "/procura.lisp"))
       (start-menu (read-problemas))
     )
   )
