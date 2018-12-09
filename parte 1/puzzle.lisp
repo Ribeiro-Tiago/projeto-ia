@@ -125,27 +125,7 @@
   )
 )
 
-(defun validate-final-position (initRowIndex finalBoard)
-  "Valida a posição final, se for a posição 1 3 ou 5 da linha contrária à inicial
-   retira essas \"captura\" essas peças"
-  (let* (
-         (endRowIndex (first finalBoard))
-         (isSameRow (= endRowIndex initRowIndex))
-         (endCellIndex (second finalBoard))
-         (board (third finalBoard))
-         (piecesLastPos (get-cell endRowIndex endCellIndex board)))
-    
-    (cond ((AND (null isSameRow) (OR (= piecesLastPos 1) (= piecesLastPos 3) (= piecesLastPos 5)))
-             (update-board 
-                 endRowIndex 
-                 endCellIndex
-                 board
-                 0
-             ))
-          (t board)))
-)
-
-(defun allocate-pieces (rowIndex cellIndex &optional (board (start-board)))
+(defun allocate-pieces (rowIndex cellIndex board)
   "Valida {rowIndex}, {cellIndex} e {board}. Se não forem válidos, retorna nil
    Se forem, allocate-pieces-aux para percorrer o {board} com, enviando o número de peças 
    existentes na [rowIndex[cellIndex]]
@@ -157,10 +137,10 @@
       ((null board) nil)
       ((not (and (valid-cell cellIndex) (valid-row rowIndex))) nil)
       ((= numPieces 0) board)
-      (t (validate-final-position
-            rowIndex 
-            (allocate-pieces-aux numPieces rowIndex cellIndex board (list rowIndex cellIndex) T)))
-    )
+      (t (validate-final-position 
+                   rowIndex 
+                   (allocate-pieces-aux numPieces rowIndex cellIndex board (list rowIndex cellIndex) T))
+      ))
   )
 )
 
@@ -175,7 +155,7 @@
         )
 
     (cond
-      ((>= numPieces 0)
+      ((> numPieces 0)
          (allocate-pieces-aux
              (- numPieces 1)
              nextRow
@@ -189,9 +169,30 @@
              initPos
          )
       ) 
-      (t (list rowIndex cellIndex board))
+      (t  (list rowIndex cellIndex board))
    )
  )
+)
+
+
+(defun validate-final-position (initRowIndex finalBoard)
+  "Valida a posição final, se for a posição 1 3 ou 5 da linha contrária à inicial
+   retira essas \"captura\" essas peças"
+  (let* (
+             (endRowIndex (first finalBoard))
+             (isSameRow (= endRowIndex initRowIndex))
+             (endCellIndex (second finalBoard))
+             (board (third finalBoard))
+             (piecesLastPos (get-cell endRowIndex endCellIndex board)))
+    
+    (cond ((AND (null isSameRow) (OR (= piecesLastPos 1) (= piecesLastPos 3) (= piecesLastPos 5)))
+             (update-board 
+                 endRowIndex 
+                 endCellIndex
+                 board
+                 0
+             ))
+          (t board)))
 )
 
 (defun is-move-validp (rowIndex cellIndex board)

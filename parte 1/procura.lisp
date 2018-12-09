@@ -6,6 +6,7 @@
 ;;;;; Construtor ;;;;;
 ;; custo = f | heuristica = g
 (defun create-node (board heuristica custo &optional (depth 0) (parent nil))
+  "Construtor do nó das árvores para os algoritmos"
   (list board heuristica custo depth parent)
 )
 
@@ -69,37 +70,38 @@
   (< (nth 2 a) (nth 2 b))
 )
 
-(defun in-fechadosp (board fechados)
+(defun in-abertosp (board abertos)
   "Verifica se {node} encontra-se na lista dos {fechados}"
-  (cond ((null fechados) nil)
-         ((equal board (get-node-state (first fechados))) t)
-         (t (in-fechadosp board (rest fechados))))
+  (cond ((null abertos) nil)
+         ((equal board (get-node-state (first abertos))) t)
+         (t (in-abertosp board (rest abertos))))
 )
 
 ; (sucs (sucessores-aux rowIndex cellIndex node fechados))
-(defun sucessores (node fechados)
+(defun sucessores (node abertos)
   "Percorre as posições todas do estado do {node} e gera os seus nós sucessores"
-  (remove nil 
-          (loop for rowIndex from 0 to 1
-                append (loop for cellIndex from 0 to 5
-                             collect (sucessores-aux rowIndex cellIndex node fechados))))
+  (sort (remove nil
+          (loop :for rowIndex :from 0 :to 1
+                :append (loop :for cellIndex :from 0 :to 5
+                               collect (sucessores-aux rowIndex cellIndex node abertos))))
+        'shortest-cost-sort-compare)
 )
 
-; TODO: ver porquê que está a gerar um nul
-(defun sucessores-aux (rowIndex cellIndex node fechados)
+(defun sucessores-aux (rowIndex cellIndex node abertos)
   "Verifica se a posição [rowIndex[cellIndex]] é valida, se for expande esse nó,
    gerando o novo tabuleiro deopis dessa jogada e criando um novo nó. Senão passa à frente"
   (let ((board (get-node-state node)))
 
     (cond ((is-move-validp rowIndex cellIndex board)
 
-        (let ((newBoard (allocate-pieces rowIndex cellIndex board)))
-          
-           (cond ((not (in-fechadosp newBoard fechados))
+        (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
+               (value (+ (calc-heuristica newBoard node) (get-node-cost node))))
+
+           (cond ((not (in-abertosp newBoard abertos))
                     (create-node 
                         newBoard
                         'calc-heuristica
-                        (+ (calc-heuristica newBoard node) (get-node-cost node))
+                        value
                         (1+ (get-node-depth node))
                         node)
                  )
@@ -131,7 +133,7 @@
 
                   (newFechados (append fechados (list currNode)))
 
-                  (sucsGerados (sucessores currNode fechados))
+                  (sucsGerados (sucessores currNode abertos))
 
                   (newAbertos (append (rest abertos) sucsGerados)))
 

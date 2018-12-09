@@ -79,7 +79,6 @@
 ; (sucs (sucessores-aux rowIndex cellIndex node fechados))
 (defun sucessores (node fechados)
   "Percorre as posições todas do estado do {node} e gera os seus nós sucessores"
-  (format t "a")
   (remove nil 
           (loop for rowIndex from 0 to 1
                 append (loop for cellIndex from 0 to 5
@@ -95,7 +94,7 @@
     (cond ((is-move-validp rowIndex cellIndex board)
 
         (let ((newBoard (allocate-pieces rowIndex cellIndex board)))
-          
+          (format t "~a ~%" (print-board newBoard))
            (cond ((not (in-fechadosp newBoard fechados))
                     (create-node 
                         newBoard
