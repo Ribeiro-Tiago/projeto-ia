@@ -76,7 +76,7 @@
 )
 
 (defun sucessores (node fechados)
-  "Gera os nós sucessores de {node}"
+  "Percorre as posições todas do estado do {node} e gera os seus nós sucessores"
   (loop for rowIndex from 0 to 1
      append (loop for cellIndex from 0 to 5
                   collect (sucessores-aux rowIndex cellIndex node fechados)))
@@ -84,18 +84,23 @@
 
 
 (defun sucessores-aux (rowIndex cellIndex node fechados)
-  (cond ((
-  (let* ((board (get-node-state node))
-        (newBoard (allocate-pieces rowIndex cellIndex board)))
-    (cond ((not (in-fechadosp newBoard fechados))
-              (create-node 
-                  newBoard
-                  'calc-heuristica
-                  (+ (calc-heuristica newBoard node) (get-node-cost node))
-                  (1+ (get-node-depth node))
-                  node)
-          )
-    )
+  (let ((board (get-node-state node)))
+
+    (cond ((is-move-validp rowIndex cellIndex board)
+
+        (let ((newBoard (allocate-pieces rowIndex cellIndex board)))
+
+           (cond ((not (in-fechadosp newBoard fechados))
+                    (create-node 
+                        newBoard
+                        'calc-heuristica
+                        (+ (calc-heuristica newBoard node) (get-node-cost node))
+                        (1+ (get-node-depth node))
+                        node)
+                 )
+           )
+        )
+    ))
   )
 )
 

@@ -193,12 +193,3 @@
    )
  )
 )
-
-(defun is-move-validp (rowIndex cellIndex board)
-  "Verifica se o valor da [rowIndex[cellIndex]] é 0. Se for 0 não há jogada 
-   a fazer então é considerada inválida"
-  (cond ((null board) nil)
-        ((not (and (valid-cell cellIndex) (valid-row rowIndex))) t)
-        ((= (get-cell rowIndex cellIndex board) 0) nil)
-        (t t))
-)

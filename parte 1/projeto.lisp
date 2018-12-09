@@ -15,6 +15,10 @@
   (create-node board (calc board) (calc board))
 )
 
+(defun teste3 (&aux (board '((8 0 0 0 0 2) (0 0 0 0 4 0))))
+  (create-node board (calc board) (calc board))
+)
+
 
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
 (defun start-game() 
