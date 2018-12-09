@@ -58,8 +58,8 @@
 ;; Test: (node-solutionop (create-node (empty-board)))
 ;; Result: T
 (defun node-solutionop (node) 
-  "Verifica se o {node} ï¿½ um nï¿½ soluï¿½ï¿½o"     
-  (cond ((board-emptyp (node-state node))))
+  "Verifica se o {node} e um no solucao"
+  (cond ((board-emptyp (get-node-state node))))
 )
 
 
@@ -67,11 +67,12 @@
 (defun shortest-cost-sort-compare (a b)
   "Função de comparação de custo mais baixo para o sort"
   (< (nth 2 a) (nth 2 b))
+)
 
 (defun in-fechadosp (board fechados)
   "Verifica se {node} encontra-se na lista dos {fechados}"
   (cond ((null fechados) nil)
-         ((equal board (get-node-state (first fechados))) T)
+         ((equal board (get-node-state (first fechados))) t)
          (t (in-fechadosp board (rest fechados))))
 )
 
@@ -82,14 +83,16 @@
                   collect (sucessores-aux rowIndex cellIndex node fechados)))
 )
 
-
+; TODO: ver porquê que está a gerar um nul
 (defun sucessores-aux (rowIndex cellIndex node fechados)
+  "Verifica se a posição [rowIndex[cellIndex]] é valida, se for expande esse nó,
+   gerando o novo tabuleiro deopis dessa jogada e criando um novo nó. Senão passa à frente"
   (let ((board (get-node-state node)))
 
     (cond ((is-move-validp rowIndex cellIndex board)
 
         (let ((newBoard (allocate-pieces rowIndex cellIndex board)))
-
+          
            (cond ((not (in-fechadosp newBoard fechados))
                     (create-node 
                         newBoard
@@ -117,19 +120,22 @@
 
 
 ;;;;; Algos ;;;;;
-(defun a* (node-inicial heuristica &optional (abertos (list node-inicial)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
-  "Algoritmo de procura em espaï¿½o de estados A*"
-  (cond
-   ((null abertos) nil)
-   (t '(
-         (let* ((currNode (first abertos)) 
-                (newFechados (cons currNode fechados)))
+(defun a* (starter-node &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
+  "Algoritmo de procura em espaco de estados A*"
 
-            (sucessores 
-                currNode
-                (funcall heuristica currNode)
-      )
-   ))
+  (cond ((null (first abertos)) nil)
+        (t 
+           (let* ((currNode (first abertos))
+
+                  (newFechados (append fechados (list currNode)))
+
+                  (sucsGerados (sucessores currNode fechados))
+
+                  (newAbertos (append (rest abertos) sucsGerados)))
+
+             (cond ((node-solutionop currNode) currNode)
+                    (t (a* (first newAbertos) newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (list-length sucsGerados))))))
+       )
   )
 )
 
@@ -137,7 +143,7 @@
 
 
 
-;;;;; Avaliaï¿½ï¿½o de eficiï¿½ncia ;;;;;
+;;;;; Avaliacao de eficiecia ;;;;;
 
 
 ;; penetrancia
