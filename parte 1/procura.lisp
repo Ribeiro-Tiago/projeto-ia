@@ -76,11 +76,13 @@
          (t (in-fechadosp board (rest fechados))))
 )
 
+; (sucs (sucessores-aux rowIndex cellIndex node fechados))
 (defun sucessores (node fechados)
   "Percorre as posições todas do estado do {node} e gera os seus nós sucessores"
-  (loop for rowIndex from 0 to 1
-     append (loop for cellIndex from 0 to 5
-                  collect (sucessores-aux rowIndex cellIndex node fechados)))
+  (remove nil 
+          (loop for rowIndex from 0 to 1
+                append (loop for cellIndex from 0 to 5
+                             collect (sucessores-aux rowIndex cellIndex node fechados))))
 )
 
 ; TODO: ver porquê que está a gerar um nul
@@ -123,7 +125,7 @@
 (defun a* (starter-node &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
   "Algoritmo de procura em espaco de estados A*"
 
-  (cond ((null (first abertos)) nil)
+  (cond ((null abertos) nil)
         (t 
            (let* ((currNode (first abertos))
 
