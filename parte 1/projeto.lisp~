@@ -11,7 +11,7 @@
   (create-node board (calc board) (calc board))
 )
 
-(defun teste2 (&aux (board '((1 1 8 8 8 8) (8 8 8 8 8 8))))
+(defun teste2 (&aux (board '((5 0 0 0 0 0) (0 0 0 0 0 5))))
   (create-node board (calc board) (calc board))
 )
 

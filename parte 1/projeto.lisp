@@ -19,6 +19,17 @@
   (create-node board (calc board) (calc board))
 )
 
+(defun teste4 (&aux (board '((2 2 2 2 2 2) (2 2 2 2 2 2))))
+  (create-node board (calc board) (calc board))
+)
+
+(defun teste5 (&aux (board '((0 3 0 3 0 3) (3 0 3 0 3 0))))
+  (create-node board (calc board) (calc board))
+)
+
+(defun teste6 (&aux (board '((48 0 0 0 0 0) (0 0 0 0 0 48))))
+  (create-node board (calc board) (calc board))
+)
 
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
 (defun start-game() 
@@ -71,7 +82,7 @@
       (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
                (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
                (select-problema problemas))
-            (t (select-algo (nth answer problemas)))))
+            (t (select-algo (nth (- answer 1) problemas)))))
   )
 )
 
@@ -84,7 +95,7 @@
              (build-problemas-menu-options problemas (1+ index))
            ))
         (t (progn 
-             (format t "~% ~D - ~A" index (first problemas))
+             (print-board index (first problemas))
              (build-problemas-menu-options (rest problemas) (1+ index)))))
 )
 
@@ -139,13 +150,13 @@
 
 (defun init-algo (board algo &optional (depth 0))
   "Função que inicia o algoritmo no problema escolhido"
-  (format t "board: ~A ~%algo: ~s~%depth: ~D " board algo depth)
+  (format t "board: ~A ~%algo: ~s~%depth: ~d~%result: ~a" board algo depth (a* (create-node board 'calc-heuristica 0)))
 )
 
 ;;;;;;;;;; PROBLEMAS INPUT ;;;;;;;;;; 
 (defun read-problemas ()
   "Abre o ficheiro problemas.dat existente na (get-curr-dir) e chama as funções 
-   read-problemas-aux e build-boards para ler of ficheiro e construir os respetivos ficheiros.
+   read-problemas-aux e build-boards  para ler of ficheiro e construir os respetivos ficheiros.
    Lança error se não encontrar o ficheiro"
   (with-open-file (file (concatenate 'string (get-curr-dir) "/problemas.dat")
                    :direction :input

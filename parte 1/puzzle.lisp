@@ -24,9 +24,9 @@
   (make-list 2 :initial-element (make-list 6 :initial-element '8))
 )
 
-(defun print-board (board) 
+(defun print-board (index board) 
   "Prints a pretty version of the board"
-  (format t "(~A ~% ~A)" (first board) (second board))
+  (format t "~% ~% ~d - ~A ~%     ~A" index (first board) (second board))
 )
 
 
@@ -107,20 +107,20 @@
 )
 
 
-(defun get-next-cell (rowIndex cellIndex &optional (isFirstCall nil))
+(defun get-next-cell (rowIndex cellIndex)
   "Calcula e retorna o index da próxima coluna com base no index da coluna e linha atual"
   (cond 
-    ((AND (> cellIndex 0) (= rowIndex 0) (NOT isFirstCall)) (- cellIndex 1))
-    ((AND (< cellIndex 5) (= rowIndex 1) (NOT isFirstCall)) (1+ cellIndex))
+    ((AND (> cellIndex 0) (= rowIndex 0)) (- cellIndex 1))
+    ((AND (< cellIndex 5) (= rowIndex 1)) (1+ cellIndex))
     (t cellIndex)
   )
 )
 
-(defun get-next-row (rowIndex cellIndex &optional (isFirstCall nil))
+(defun get-next-row (rowIndex cellIndex)
   "Calcula e retorna o index da próxima linha com base no index da coluna e linha atual"
   (cond 
-    ((AND (= cellIndex 0) (= rowIndex 0) (NOT isFirstCall)) (1+ rowIndex))
-    ((AND (= cellIndex 5) (= rowIndex 1) (NOT isFirstCall)) (- rowIndex 1))
+    ((AND (= cellIndex 0) (= rowIndex 0)) (1+ rowIndex))
+    ((AND (= cellIndex 5) (= rowIndex 1)) (- rowIndex 1))
     (t rowIndex)
   )
 )
@@ -148,8 +148,10 @@
   "Enquanto houver {numPieces} para distribuir, percorre o {board} incrementando uma peça a cada
    posição. Se passar pela posição inicial, passa à próxima"
   (let* (
-          (nextCell (get-next-cell rowIndex cellIndex isFirstCall)) 
-          (nextRow (get-next-row rowIndex cellIndex isFirstCall))
+          (nextCell (cond (isFirstCall cellIndex) ; só avança o cellIndex se não for a primeira chamada
+                          (t (get-next-cell rowIndex cellIndex))))
+          (nextRow (cond (isFirstCall rowIndex)
+                         (t (get-next-row rowIndex cellIndex)))) ; o mesmo para o rowIndex
           (value (cond (isFirstCall 0)
                        (t (add-position nextRow nextCell board))))
         )

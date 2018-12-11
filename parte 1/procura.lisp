@@ -77,7 +77,8 @@
 ;; returns: (novaListaAbertos numNodesGerados)
 (defun sucessores (node abertos &optional (sucs '()) (rowIndex 0) (cellIndex 0))
   "Percorre as posições todas do estado do {node} e gera os seus nós sucessores"
-  (cond ((AND (= rowIndex 0) (= cellIndex 1)) (list (append sucs abertos) (list-length sucs))) ; deu a volta toda
+  ;(format t "sucs ~a ~% ~% abertos ~a ~% ~%" sucs abertos)
+  (cond ((AND (= rowIndex 0) (= cellIndex 1)) (build-end-sucs-list sucs abertos)) ; deu a volta toda
         (t (let* ((result-sucs (sucessores-aux rowIndex cellIndex node abertos)) ; Devolve (listaAbertos sucessor)
 
                  (nextRow (get-next-row rowIndex cellIndex))
@@ -88,6 +89,12 @@
                                 (t (append sucs (list (first result-sucs)))))))
 
              (sucessores node (list (first result-sucs)) newSucs nextRow nextCell))))
+)
+
+(defun build-end-sucs-list (sucs abertos)
+  "Constrói a lista retornada no final da função sucessores"
+  (cond ((OR (null abertos) (null (first abertos))) (list sucs (list-length sucs)))
+        (t (list (append sucs abertos) (list-length sucs)))) 
 )
 
 ;; teste: (sucessores-aux 0 0 (teste3) '())
@@ -152,8 +159,9 @@
                   
                   (sucsGerados (sucessores currNode (rest abertos)))
 
-                  (newAbertos (first sucsGerados)))
+                  (newAbertos (sort (first sucsGerados) 'shortest-cost-sort-compare)))
              
+             ;(format t "a ~a ~a ~% ~%" sucsGerados currNode)
              (cond ((node-solutionop currNode) (list nodes-expandidos nodes-gerados currNode))
                     (t (a* (first newAbertos) newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (second sucsGerados))))))
        )
@@ -161,8 +169,6 @@
 )
 
 ;;;;; Avaliacao de eficiecia ;;;;;
-
-
 ;; penetrancia
 (defun penetrancia (depth generated-nodes)
   "Funcao que permite calcular a penetrancia de um algoritmo"
