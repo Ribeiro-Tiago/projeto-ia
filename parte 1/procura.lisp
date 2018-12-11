@@ -16,23 +16,23 @@
 ;; Test: (node-state (create-node (empty-board)))
 ;; Result: ((0 0 0 0 0 0) (0 0 0 0 0 0))
 (defun get-node-state (node)
-  "Devolve o estado do problema neste nï¿½"
+  "Devolve o estado (o tabuleiro) do problema neste no"
   (first node)
 )
 
 ;; Teste: (node-heuristic (create-node (empty-board)))
 ;; Result: 0
 ; num_peï¿½as_por_capturar - num_peï¿½as_capturadas
-(defun get-node-heuristic (no)
-  "Retorna a heurï¿½stica associado ao nï¿½"
-  (second no)
+(defun get-node-heuristic (node)
+  "Retorna a heuristica que é usada para calcular o custo do no"
+  (second node)
 )
 
 ;; Teste: (node-heuristic (create-node (empty-board)))
 ;; Result: 0
-(defun get-node-cost (no)
-  "Retorna a heurï¿½stica associado ao nï¿½"
-  (third no)
+(defun get-node-cost (node)
+  "Retorna o custo do no"
+  (third node)
 )
 
 ;; Teste: (node-depth (create-node (empty-board)))
@@ -49,13 +49,6 @@
   (fifth node)
 )
 
-;; Teste: (node-cost (create-node (empty-board)))
-;; Result: 0
-(defun calc-node-cost (node)
-  "Retorna o custo deste nï¿½ com base na heuristica"
-  (+ (node-depth node) (node-heuristica node))
-)
-
 ;; Test: (node-solutionop (create-node (empty-board)))
 ;; Result: T
 (defun node-solutionop (node) 
@@ -70,46 +63,70 @@
   (< (nth 2 a) (nth 2 b))
 )
 
-(defun in-abertosp (board abertos)
+(defun get-node-in-abertos (board abertos &optional (index 0))
   "Verifica se {node} encontra-se na lista dos {fechados}"
-  (cond ((null abertos) nil)
-         ((equal board (get-node-state (first abertos))) t)
-         (t (in-abertosp board (rest abertos))))
+  (let ((curr-item (first abertos)))
+
+    (cond ((null abertos) nil)
+          ((equal board (get-node-state curr-item)) (list curr-item index))
+          (t (get-node-in-abertos board (rest abertos)))))
 )
 
-; (sucs (sucessores-aux rowIndex cellIndex node fechados))
-(defun sucessores (node abertos)
+;; teste: (sucessores (teste3) (list (teste3)))
+;; result: (((((0 0 0 0 0 3) (1 1 1 1 5 1)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 0 3) (0 0 0 0 0 1)) CALC-HEURISTICA 11 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 1 0) (0 0 0 0 4 0)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL))) 3)
+;; returns: (novaListaAbertos numNodesGerados)
+(defun sucessores (node abertos &optional (sucs '()) (rowIndex 0) (cellIndex 0))
   "Percorre as posições todas do estado do {node} e gera os seus nós sucessores"
-  (sort (remove nil
-          (loop :for rowIndex :from 0 :to 1
-                :append (loop :for cellIndex :from 0 :to 5
-                               collect (sucessores-aux rowIndex cellIndex node abertos))))
-        'shortest-cost-sort-compare)
+  (cond ((AND (= rowIndex 0) (= cellIndex 1)) (list (append sucs abertos) (list-length sucs))) ; deu a volta toda
+        (t (let* ((result-sucs (sucessores-aux rowIndex cellIndex node abertos)) ; Devolve (listaAbertos sucessor)
+
+                 (nextRow (get-next-row rowIndex cellIndex))
+
+                 (nextCell (get-next-cell rowIndex cellIndex))
+                 
+                 (newSucs (cond ((null (first result-sucs)) sucs)
+                                (t (append sucs (list (first result-sucs)))))))
+
+             (sucessores node (list (first result-sucs)) newSucs nextRow nextCell))))
 )
 
-(defun sucessores-aux (rowIndex cellIndex node abertos)
+;; teste: (sucessores-aux 0 0 (teste3) '())
+;; result: ((((0 0 0 0 0 3) (1 1 1 1 5 1)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) 0)
+;; returns: (listaAbertos numNodesGerados) 
+(defun sucessores-aux (rowIndex cellIndex parentNode abertos)
   "Verifica se a posição [rowIndex[cellIndex]] é valida, se for expande esse nó,
    gerando o novo tabuleiro deopis dessa jogada e criando um novo nó. Senão passa à frente"
-  (let ((board (get-node-state node)))
+  (let ((board (get-node-state parentNode)))
 
-    (cond ((is-move-validp rowIndex cellIndex board)
+    (cond ((is-move-validp rowIndex cellIndex board) ; só geramos sucessores só for uma casa com valor > 0
 
         (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
-               (value (+ (calc-heuristica newBoard node) (get-node-cost node))))
 
-           (cond ((not (in-abertosp newBoard abertos))
-                    (create-node 
-                        newBoard
-                        'calc-heuristica
-                        value
-                        (1+ (get-node-depth node))
-                        node)
-                 )
+               (depth (1+ (get-node-depth parentNode)))
+
+               (value (+ (calc-heuristica newBoard parentNode) depth))
+
+               (oldNode (get-node-in-abertos newBoard abertos))
+
+               (newNode (create-node newBoard 'calc-heuristica value depth parentNode)))
+
+           (cond ((not (first oldNode)) (cons newNode '(0))) ; não está em abertos
+                 (t (cond ((> value (get-node-cost (first oldNode))); tá em abertos, vamos comparar valores e substituir se no gerado for superior
+                          (cons newNode (replace-nth-in-list abertos (second oldNode) (first oldNode))))))
            )
         )
     ))
   )
 )
+
+(defun replace-nth-in-list (list n elem)
+  "Substitui o elemento na posição {n} da {list} pelo {eleme} recebido"
+  (cond
+    ((null list) list)
+    ((= n 0) (cons elem (rest list)))
+    (t (cons (first list) (replace-nth-in-list (rest list) (- n 1) elem))))
+)
+
 
 (defun board-value (board) 
   "Calcula o valor total (soma do valor de cada posição) do tabuleiro recebido"
@@ -130,22 +147,18 @@
   (cond ((null abertos) nil)
         (t 
            (let* ((currNode (first abertos))
-
+                  
                   (newFechados (append fechados (list currNode)))
+                  
+                  (sucsGerados (sucessores currNode (rest abertos)))
 
-                  (sucsGerados (sucessores currNode abertos))
-
-                  (newAbertos (append (rest abertos) sucsGerados)))
-
-             (cond ((node-solutionop currNode) currNode)
-                    (t (a* (first newAbertos) newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (list-length sucsGerados))))))
+                  (newAbertos (first sucsGerados)))
+             
+             (cond ((node-solutionop currNode) (list nodes-expandidos nodes-gerados currNode))
+                    (t (a* (first newAbertos) newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (second sucsGerados))))))
        )
   )
 )
-
-
-
-
 
 ;;;;; Avaliacao de eficiecia ;;;;;
 

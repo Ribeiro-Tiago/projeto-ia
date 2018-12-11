@@ -107,7 +107,7 @@
 )
 
 
-(defun get-next-cell (rowIndex cellIndex isFirstCall)
+(defun get-next-cell (rowIndex cellIndex &optional (isFirstCall nil))
   "Calcula e retorna o index da próxima coluna com base no index da coluna e linha atual"
   (cond 
     ((AND (> cellIndex 0) (= rowIndex 0) (NOT isFirstCall)) (- cellIndex 1))
@@ -116,7 +116,7 @@
   )
 )
 
-(defun get-next-row (rowIndex cellIndex isFirstCall)
+(defun get-next-row (rowIndex cellIndex &optional (isFirstCall nil))
   "Calcula e retorna o index da próxima linha com base no index da coluna e linha atual"
   (cond 
     ((AND (= cellIndex 0) (= rowIndex 0) (NOT isFirstCall)) (1+ rowIndex))
