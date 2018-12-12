@@ -21,7 +21,7 @@
 )
 
 ;; Teste: (get-node-heuristic (teste))
-;; Result: CALC-HEURISTICA
+;; Result: heuristica-default
 (defun get-node-heuristic (node)
   "Retorna a heuristica que é usada para calcular o custo do no"
   (second node)
@@ -63,7 +63,7 @@
 )
 
 ;; teste: (get-node-in-abertos (get-node-state (teste3)) (list (teste3)))
-;; result: ((((8 0 0 0 0 2) (0 0 0 0 4 0)) CALC-HEURISTICA 0 0 NIL) 0)
+;; result: ((((8 0 0 0 0 2) (0 0 0 0 4 0)) heuristica-default 0 0 NIL) 0)
 ;; returns: (node indexInAbertos)
 (defun get-node-in-abertos (board abertos &optional (index 0))
   "Verifica se {node} encontra-se na lista dos {fechados}"
@@ -75,7 +75,7 @@
 )
 
 ;; teste: (sucessores (teste3) (list (teste3)))
-;; result: (((((0 0 0 0 0 3) (1 1 1 1 5 1)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 0 3) (0 0 0 0 0 1)) CALC-HEURISTICA 11 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 1 0) (0 0 0 0 4 0)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL))) 3)
+;; result: (((((0 0 0 0 0 3) (1 1 1 1 5 1)) heuristica-default 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 0 3) (0 0 0 0 0 1)) heuristica-default 11 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 1 0) (0 0 0 0 4 0)) heuristica-default 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL))) 3)
 ;; returns: (novaListaAbertos numNodesGerados)
 (defun sucessores (node abertos isFirstCall &optional (sucs '()) (rowIndex 0) (cellIndex 0))
   "Percorre as posicoes todas do estado do {node} e gera os seus nos sucessores"
@@ -99,7 +99,7 @@
 )
 
 ;; teste: (sucessores-aux 0 0 (teste3) '())
-;; result: ((((0 0 0 0 0 3) (1 1 1 1 5 1)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) 0)
+;; result: ((((0 0 0 0 0 3) (1 1 1 1 5 1)) heuristica-default 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) 0)
 ;; returns: (listaAbertos numNodesGerados) 
 (defun sucessores-aux (rowIndex cellIndex parentNode abertos)
   "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no,
@@ -118,7 +118,7 @@
 
                (oldNode (get-node-in-abertos newBoard abertos))
 
-               (newNode (create-node newBoard 'calc-heuristica value depth parentNode)))
+               (newNode (create-node newBoard 'heuristica-default value depth parentNode)))
 
            (cond ((not (first oldNode)) (cons newNode '(0))) ; nao esta em abertos
 
@@ -148,7 +148,7 @@
   (+ (apply '+ (first board)) (apply '+ (second board)))
 )
 
-(defun calc-heuristica (board node)
+(defun heuristica-default (board node)
   "Calcula a heuristica predefinida"
   (let ((newBoardValue (board-value board)))
     (- newBoardValue (- (board-value (get-node-state node)) newBoardValue)))
@@ -194,6 +194,15 @@
 )
 
 ;; fator de ramificacao
-(defun fator-ramificao ()
+(defun fator-ramificacao ()
   
+)
+
+
+(defun polinomial (grau polinomio)
+  "Funcao que implementa o calculo de uma funcao polinomial"
+    (cond
+     ((= grau 1) polinomio)
+     (t (+ (expt polinomio grau) (polinomial (1- grau) polinomio)))
+    )
 )

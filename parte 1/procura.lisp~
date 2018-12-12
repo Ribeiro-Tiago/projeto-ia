@@ -13,43 +13,43 @@
 
 ;;;;; getters ;;;;;
 
-;; Test: (node-state (create-node (empty-board)))
-;; Result: ((0 0 0 0 0 0) (0 0 0 0 0 0))
+;; Test: (get-node-state (teste))
+;; Result: ((8 8 8 8 8 8) (8 8 8 8 8 8))
 (defun get-node-state (node)
   "Devolve o estado (o tabuleiro) do problema neste no"
   (first node)
 )
 
-;; Teste: (node-heuristic (teste))
-;; Result: 0
+;; Teste: (get-node-heuristic (teste))
+;; Result: CALC-HEURISTICA
 (defun get-node-heuristic (node)
   "Retorna a heuristica que é usada para calcular o custo do no"
   (second node)
 )
 
-;; Teste: (node-cost (teste))
+;; Teste: (get-node-cost (teste))
 ;; Result: 0
 (defun get-node-cost (node)
   "Retorna o custo do no"
   (third node)
 )
 
-;; Teste: (node-depth (create-node (empty-board)))
+;; Teste: (get-node-depth (teste))
 ;; Result: 0
 (defun get-node-depth (node)
   "Retorna a profundidade do {node} recebido"
   (fourth node)
 )
 
-;; Teste: (node-parent (create-node (empty-board)))
+;; Teste: (get-node-parent (teste))
 ;; Result: NIL
 (defun get-node-parent (node)
   "Retorna o no pai de {node}"
   (fifth node)
 )
 
-;; Test: (node-solutionop (create-node (empty-board)))
-;; Result: T
+;; Test: (node-solutionop (teste))
+;; Result: nil
 (defun node-solutionop (node) 
   "Verifica se o {node} e um no solucao"
   (cond ((board-emptyp (get-node-state node))))
@@ -58,7 +58,7 @@
 
 ;;;;; Funções auxiliares aos algos ;;;;;
 (defun shortest-cost-sort-compare (a b)
-  "Função de comparação de custo mais baixo para o sort"
+  "Funcao de comparacao de custo mais baixo para o sort"
   (< (get-node-cost a) (get-node-cost b))
 )
 

@@ -5,38 +5,47 @@
 
 ;;;; funcoes que criam starter nodes para testar os algos ;;;;
 (defun teste ()
+  "Funcao que cria no inicial reference ao problema g para testar"
   (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 'calc-heuristica 0)
 )
 
 (defun teste2 ()
+  "Funcao que cria no inicial dum tabuleiro aleatorio para testar"
   (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 'calc-heuristica 0)
 )
 
 (defun teste3 ()
-  (create-node '((8 0 0 0 0 2) (0 0 0 0 4 0)) 'calc-heuristica 0)
+  "Funcao que cria no inicial reference ao problema a para testar"
+  (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)) 'calc-heuristica 0)
 )
 
 (defun teste4 ()
+  "Funcao que cria no inicial reference ao problema b para testar"
   (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
 )
 
 (defun teste5 ()
+  "Funcao que cria no inicial reference ao problema c para testar"
   (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)) 'calc-heuristica 0)
 )
 
 (defun teste6 ()
+  "Funcao que cria no inicial reference ao problema f para testar"
   (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)) 'calc-heuristica 0)
 )
 
 (defun teste7 ()
+  "Funcao que cria no inicial reference ao problema d para testar"
   (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)) 'calc-heuristica 0)
 )
 
 (defun teste8 ()
+  "Funcao que cria no inicial reference ao problema e para testar"
   (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)) 'calc-heuristica 0)
 )
 
 (defun teste9 ()
+  "Funcao que cria no inicial reference ao problema a para testar"
   (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
 )
 
@@ -204,33 +213,32 @@
     ;; resultados
     (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d ~%"
             (first results) (second results) (third results) (fourth results) runtime)
-    (get-caminho-solucao (fifth results) output)
+    (get-solucao (fifth results) output)
   )
 )
 
-(defun get-caminho-solucao (node output)
-  ""
+(defun get-solucao (node output)
+  "Funcao que faz o output da solucao. Usa \"get-caminho-solucao\" para mostrar o caminho solucao"
   (progn 
     (format output " - Solução: ")
-    (get-caminho-solucao-aux node output)
+    (get-caminho-solucao node output)
     (format output "~% ~% --------------------------------------------- ~% ~%")
   )
 )
 
-(defun get-caminho-solucao-aux (node output)
+(defun get-caminho-solucao (node output)
+  "Percorre o caminho solucao desde o no solucao ate ao no pai, fazendo output de cada no"
   (let ((parent (get-node-parent node)))
     (progn 
       (format output "~%    > ~a" (get-node-state node))
-      (cond ((not (null parent)) (get-caminho-solucao-aux parent output)))
+      (cond ((not (null parent)) (get-caminho-solucao parent output)))
     )
   )
 )
 
 ;;;;;;;;;; PROBLEMAS INPUT ;;;;;;;;;; 
 (defun read-problemas ()
-  "Abre o ficheiro problemas.dat existente na (get-curr-dir) e chama as funções 
-   read-problemas-aux e build-boards  para ler of ficheiro e construir os respetivos ficheiros.
-   Lança error se não encontrar o ficheiro"
+  "Abre o ficheiro problemas.dat existente na (get-curr-dir) e chama as funções read-problemas-aux e build-boards  para ler of ficheiro e construir os respetivos ficheiros. Lança error se não encontrar o ficheiro"
   (with-open-file (file 
                    (concatenate 'string (get-curr-dir) "/problemas.dat")
                    :direction :input
@@ -239,8 +247,7 @@
 )
 
 (defun read-problemas-aux(input &optional (output))
-  "Percorre o ficheiro recebido (input) linha a linha recusrivamente e adiciona-as ao output.
-   No final, retorna o output, que é uma lista cujos elementos são as várias linhas do ficheiro"   
+  "Percorre o ficheiro recebido (input) linha a linha recusrivamente e adiciona-as ao output. No final, retorna o output, que é uma lista cujos elementos são as várias linhas do ficheiro"
   (let ((line (read-line input nil)))
     (cond ((not (null line))
               (read-problemas-aux input (append output (list line))))
@@ -248,18 +255,13 @@
 )
 
 (defun build-boards(stringBoards &optional (boards))
-  "Recebe a lista retornada em read-problemas-aux e percorre-a recursivamente, 
-   criando listas a partir de cada elemento de {stringBoards}, que são strings,
-   utilizando a função build-board-aux. No final retorna uma lista de lsitas com os vários
-   boards lidos do ficheiro."
+  "Recebe a lista retornada em read-problemas-aux e percorre-a recursivamente, criando listas a partir de cada elemento de {stringBoards}, que são strings, utilizando a função build-board-aux. No final retorna uma lista de lsitas com os vários boards lidos do ficheiro."
   (cond ((null stringBoards) boards)
         (t (build-boards (rest stringBoards) (append boards (list (build-board-aux (first stringBoards)))))))
 )
 
 (defun build-board-aux (stringBoard)
-  "Separar a string, que representa o tabuleiro recebida (stringBoard), em duas,
-   sendo cada string uma linha do tabuleiro, e constrói uma nova lista com essas duas 
-   strings e retorna-a."
+  "Separar a string, que representa o tabuleiro recebida (stringBoard), em duas, sendo cada string uma linha do tabuleiro, e constrói uma nova lista com essas duas strings e retorna-a."
   (let ((board (split-sequence "," stringBoard)))
     (list (read-from-string (first board)) (read-from-string (second board))))
 )
