@@ -9,23 +9,8 @@
   (make-list linhas :initial-element (make-list colunas :initial-element '0))
 )
 
-(defun build-board (lista)
-  "Constrói um tabuleiro com base na lista recebida. Há de ser construído com base em ficheiro"
-  (let ((linha1 (first lista))
-        (linha2 (second lista)))
-
-    (cond ((or (null linha1) (null linha2)) nil)
-          ((or (not (= (list-length linha1) 6)) (not (= (list-length linha2) 6))) nil)
-          (t lista)))
-)
-
-(defun start-board ()
-  "Retorna o tabuleiro inicial default"
-  (make-list 2 :initial-element (make-list 6 :initial-element '8))
-)
-
 (defun print-board (index board) 
-  "Prints a pretty version of the board"
+  "Retorna uma versão bonificada do tabuleiro com index atrás"
   (format t "~% ~% ~d - ~A ~%     ~A" index (first board) (second board))
 )
 
@@ -95,7 +80,7 @@
         )))
 )
 
-(defun add-position (rowIndex cellIndex board) 
+(defun add-position (rowIndex cellIndex board)
   "Valida se {rowIndex}, {cellIndex} e {board} são válidos.
   Se sim, incrementa o valor na posição [rowIndex[cellIndex]] do {board} por 1
   Caso contrário, retorna nil"

@@ -3,51 +3,63 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
-(defun calc(board)
-  (+ (apply '+ (first board)) (apply '+ (second board))) 
+;;;; funcoes que criam starter nodes para testar os algos ;;;;
+(defun teste ()
+  (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 'calc-heuristica 0)
 )
 
-(defun teste (&aux (board '((8 8 8 8 8 8) (8 8 8 8 8 8))))
-  (create-node board (calc board) (calc board))
+(defun teste2 ()
+  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 'calc-heuristica 0)
 )
 
-(defun teste2 (&aux (board '((5 0 0 0 0 0) (0 0 0 0 0 5))))
-  (create-node board (calc board) (calc board))
+(defun teste3 ()
+  (create-node '((8 0 0 0 0 2) (0 0 0 0 4 0)) 'calc-heuristica 0)
 )
 
-(defun teste3 (&aux (board '((8 0 0 0 0 2) (0 0 0 0 4 0))))
-  (create-node board (calc board) (calc board))
+(defun teste4 ()
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
 )
 
-(defun teste4 (&aux (board '((2 2 2 2 2 2) (2 2 2 2 2 2))))
-  (create-node board (calc board) (calc board))
+(defun teste5 ()
+  (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)) 'calc-heuristica 0)
 )
 
-(defun teste5 (&aux (board '((0 3 0 3 0 3) (3 0 3 0 3 0))))
-  (create-node board (calc board) (calc board))
+(defun teste6 ()
+  (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)) 'calc-heuristica 0)
 )
 
-(defun teste6 (&aux (board '((48 0 0 0 0 0) (0 0 0 0 0 48))))
-  (create-node board (calc board) (calc board))
+(defun teste7 ()
+  (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)) 'calc-heuristica 0)
+)
+
+(defun teste8 ()
+  (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)) 'calc-heuristica 0)
+)
+
+(defun teste9 ()
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
 )
 
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
 (defun start-game() 
-  (load-depedencies)
+  "Funcao de nome bonito para começar o jogo. Carrega os ficheiros e chama o menu pricipal"
+  (progn 
+    (load-depedencies)
+    (start-menu (read-problemas))
+  )
 )
 
-(defun get-curr-dir () 
-  "Devolve o caminho absoluto até a diretoria atual"
+(defun get-curr-dir ()
+  "Funcao que obter um caminho que é usado para carregar os .lisp e .dat"
   (string "C:/Users/Tiago/Documents/ips/IA/projeto/parte 1")
 )
 
 (defun load-depedencies ()
-  "Funcao que as dependências do projeto" 
+  "Funcao que carrega as dependencias do projeto" 
   (let ((path (get-curr-dir)))
     (progn
       (compile-file (concatenate 'string path "/puzzle.lisp"))
       (compile-file (concatenate 'string path "/procura.lisp"))
-      (start-menu (read-problemas))
     )
   )
 )
@@ -55,24 +67,25 @@
 
 ;;;;;;;;;; USER INTERACTION ;;;;;;;;;; 
 (defun start-menu (problemas)
-  "Função que mostra o menu inicial do jogo"
-  (format t "~% ~% ~%Bem vindo ao melhor jogo de sempre meu caro! ~%
+  "Funcao que mostra o menu inicial do jogo e obtem respota do utilizador (para começar o sair)"
+  (progn
+    (format t "~% ~% ~%Bem vindo ao melhor jogo de sempre meu caro! ~%
              1 - Jogar
              2 - Sair ~%")
-  (let ((answer (read)))
-    (cond ((= answer 1) (select-problema problemas))
-          ((= answer 2) (format t "Oh :("))
-          (t (progn 
-                (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
-                (start-menu problemas)
-          ))
+    (let ((answer (read)))
+      (cond ((= answer 1) (select-problema problemas))
+            ((= answer 2) (format t "Oh :( ~% ~%"))
+            (t (progn 
+                 (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+                 (start-menu problemas)
+            ))
+      )
     )
   )
 )
 
 (defun select-problema (problemas)
-  "Função que constrói o menu de problemas (com base na função build-problemas-menu-options) 
-   e permite o utilizador escohler um dos problemas"  
+  "Funcao que constroi o menu de problemas (com base na funcao build-problemas-menu-options) e permite o utilizador escohler um dos problemas"
   (progn
     (build-problemas-menu-options problemas)
 
@@ -87,11 +100,11 @@
 )
 
 (defun build-problemas-menu-options(problemas &optional (index 0))
-  "Função que constrói as opções do menu de problemas"
+  "Funcao que constroi as opcoes do menu de problemas"
   (cond ((null problemas) (format t "~% ~%"))
         ((= index 0) 
            (progn
-             (format t " > Escohla um problema")
+             (format t " > Escolha um problema")
              (build-problemas-menu-options problemas (1+ index))
            ))
         (t (progn 
@@ -100,16 +113,17 @@
 )
 
 (defun select-algo (board)
-  "Função que permite o utilizador escolher um algoritmo de procura para aplicar
-   no problema escolhido anteriormente"
+  "Funcao que permite o utilizador escolher um algoritmo de procura para aplicar no problema escolhido anteriormente"
   (progn 
     (build-algo-options board)
 
     (let ((answer (read)))
 
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 3)) 
-               (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
-               (select-aglo board))
+               (progn
+                 (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+                 (select-algo board)
+               ))
             (t (eval-algo board (get-algo-name answer)))))
   )
 )
@@ -119,38 +133,97 @@
   (format t " > Escolha um algoritmo para aplicar na resolução do problema: ~%   ~A ~% 1 - BFS ~% 2 - DFS ~% 3 - A* ~% ~%" board)
 )
 
+(defun get-dfs-depth() 
+  "Funcao pede a profundidade maxima do dfs ao utilizador"
+  (progn 
+    (format t " > Introduza a profundidade máximo do algortmo ~%")
+
+    (let ((answer (read)))
+
+      (cond ((OR (not (numberp answer)) (< answer 1))
+               (progn 
+                 (format t "~% >> Tem que ser número positivo, vamos tentar outra vez << ~%")
+                 (get-dfs-depth)
+               ))
+            (t answer)))
+  )
+)
+
+;;;;;;;;;; ALGORYTHM ;;;;;;;;;; 
+
+(defun init-algo (board algo &optional (heuristica 'calc-heuristica) (depth 0))
+  "Funcao que aplica o algoritmo escolhido no problema escolhido e depois cria um ficheiro com os resultados (com recurso a funcao \"write-results-to-file\") e mostra na consola (com recurso a funcao \"format-results\")"
+  (let* ((start-time (get-universal-time))
+         (results (funcall algo (create-node board heuristica 0)))
+         (runtime (- (get-universal-time) start-time))
+         (path (concatenate 'string (get-curr-dir) "/estatisticas.dat")))
+
+    (progn 
+      (format t "             >>> Algoritmo finalizado <<< ~%~%")
+      (format t "Os seguntes registos foram guardados em: ~s ~% ~%" path) 
+
+      (format-results results 't algo depth board heuristica runtime)
+
+      (write-results-to-file results algo depth board heuristica runtime path)
+    )
+  )
+)
+
 (defun get-algo-name (index)
-  "Função que retorna o nome do algoritmo com base no index"
+  "Funcao que retorna o nome do algoritmo com base no index inserido pelo user"
   (cond ((= index 1) 'bfs)
         ((= index 2) 'dfs)
         (t 'a*))
 )
 
 (defun eval-algo (board algo)
-  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, então pedimos ao utilizador
-   a profundidade máximo do algoritmo e depois iniciamos o algoritmo, senão inicia-se logo"
+  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, então pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo, senão inicia-se logo"
   (cond ((equal algo 'dfs) (init-algo board 'dfs (get-dfs-depth)))
         (t (init-algo board algo)))
 )
 
-(defun get-dfs-depth() 
-  "Função pede a profundidade máxima do dfs"
+;;;;;;;;;; FINAL OUTPUT ;;;;;;;;;; 
+
+(defun write-results-to-file (results algo depth board heuristica runtime path)
+  "Funcao que escreve os resultados num ficheiro \"estatisticas.dat\""
+  (with-open-file (output-file 
+                   path
+                   :direction :output
+                   :if-exists :append
+                   :if-does-not-exist :create)
+    (format-results results output-file algo depth board heuristica runtime))
+)
+
+(defun format-results (results output algo depth board heuristica runtime)
+  "Funcao que formata os resultados (results) do algoritmo para o {output} especificado (t > consola, filestream > ficheiro)"
   (progn 
-    (format t " > Introduza a profundidade máximo do algortmo ~%")
-
-    (let ((answer (read)))
-
-      (cond ((OR (not (numberp answer)) (< answer 1)) 
-               (format t "~% >> Tem que ser número positivo, vamos tentar outra vez << ~%")
-               (get-dfs-depth))
-            (t answer)))
+    ;; por questões de legibilidade humana, as linhas tão em formats diferentes
+    ;; caracteristicas
+    (format output "> Características: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
+             algo heuristica depth board)
+    ;; resultados
+    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d ~%"
+            (first results) (second results) (third results) (fourth results) runtime)
+    (get-caminho-solucao (fifth results) output)
   )
 )
 
+(defun get-caminho-solucao (node output)
+  ""
+  (progn 
+    (format output " - Solução: ")
+    (get-caminho-solucao-aux node output)
+    (format output "~% ~% --------------------------------------------- ~% ~%")
+  )
+)
 
-(defun init-algo (board algo &optional (depth 0))
-  "Função que inicia o algoritmo no problema escolhido"
-  (format t "board: ~A ~%algo: ~s~%depth: ~d~%result: ~a" board algo depth (a* (create-node board 'calc-heuristica 0)))
+(defun get-caminho-solucao-aux (node output)
+  (let ((parent (get-node-parent node)))
+    (progn 
+      (format output "~%    > ~a" (get-node-state node))
+      (cond ((not (null parent)) (get-caminho-solucao-aux parent output)))
+    )
+  )
 )
 
 ;;;;;;;;;; PROBLEMAS INPUT ;;;;;;;;;; 
@@ -158,7 +231,8 @@
   "Abre o ficheiro problemas.dat existente na (get-curr-dir) e chama as funções 
    read-problemas-aux e build-boards  para ler of ficheiro e construir os respetivos ficheiros.
    Lança error se não encontrar o ficheiro"
-  (with-open-file (file (concatenate 'string (get-curr-dir) "/problemas.dat")
+  (with-open-file (file 
+                   (concatenate 'string (get-curr-dir) "/problemas.dat")
                    :direction :input
                    :if-does-not-exist :error)
       (build-boards (read-problemas-aux file)))

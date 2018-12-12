@@ -13,44 +13,43 @@
 
 ;;;;; getters ;;;;;
 
-;; Test: (node-state (create-node (empty-board)))
-;; Result: ((0 0 0 0 0 0) (0 0 0 0 0 0))
+;; Test: (get-node-state (teste))
+;; Result: ((8 8 8 8 8 8) (8 8 8 8 8 8))
 (defun get-node-state (node)
   "Devolve o estado (o tabuleiro) do problema neste no"
   (first node)
 )
 
-;; Teste: (node-heuristic (create-node (empty-board)))
-;; Result: 0
-; num_peï¿½as_por_capturar - num_peï¿½as_capturadas
+;; Teste: (get-node-heuristic (teste))
+;; Result: CALC-HEURISTICA
 (defun get-node-heuristic (node)
   "Retorna a heuristica que é usada para calcular o custo do no"
   (second node)
 )
 
-;; Teste: (node-heuristic (create-node (empty-board)))
+;; Teste: (get-node-cost (teste))
 ;; Result: 0
 (defun get-node-cost (node)
   "Retorna o custo do no"
   (third node)
 )
 
-;; Teste: (node-depth (create-node (empty-board)))
+;; Teste: (get-node-depth (teste))
 ;; Result: 0
 (defun get-node-depth (node)
   "Retorna a profundidade do {node} recebido"
   (fourth node)
 )
 
-;; Teste: (node-parent (create-node (empty-board)))
+;; Teste: (get-node-parent (teste))
 ;; Result: NIL
 (defun get-node-parent (node)
-  "Retorna o nï¿½ pai de {node}"
+  "Retorna o no pai de {node}"
   (fifth node)
 )
 
-;; Test: (node-solutionop (create-node (empty-board)))
-;; Result: T
+;; Test: (node-solutionop (teste))
+;; Result: nil
 (defun node-solutionop (node) 
   "Verifica se o {node} e um no solucao"
   (cond ((board-emptyp (get-node-state node))))
@@ -59,10 +58,13 @@
 
 ;;;;; Funções auxiliares aos algos ;;;;;
 (defun shortest-cost-sort-compare (a b)
-  "Função de comparação de custo mais baixo para o sort"
-  (< (nth 2 a) (nth 2 b))
+  "Funcao de comparacao de custo mais baixo para o sort"
+  (< (get-node-cost a) (get-node-cost b))
 )
 
+;; teste: (get-node-in-abertos (get-node-state (teste3)) (list (teste3)))
+;; result: ((((8 0 0 0 0 2) (0 0 0 0 4 0)) CALC-HEURISTICA 0 0 NIL) 0)
+;; returns: (node indexInAbertos)
 (defun get-node-in-abertos (board abertos &optional (index 0))
   "Verifica se {node} encontra-se na lista dos {fechados}"
   (let ((curr-item (first abertos)))
@@ -75,10 +77,9 @@
 ;; teste: (sucessores (teste3) (list (teste3)))
 ;; result: (((((0 0 0 0 0 3) (1 1 1 1 5 1)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 0 3) (0 0 0 0 0 1)) CALC-HEURISTICA 11 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 1 0) (0 0 0 0 4 0)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL))) 3)
 ;; returns: (novaListaAbertos numNodesGerados)
-(defun sucessores (node abertos &optional (sucs '()) (rowIndex 0) (cellIndex 0))
-  "Percorre as posições todas do estado do {node} e gera os seus nós sucessores"
-  ;(format t "sucs ~a ~% ~% abertos ~a ~% ~%" sucs abertos)
-  (cond ((AND (= rowIndex 0) (= cellIndex 1)) (build-end-sucs-list sucs abertos)) ; deu a volta toda
+(defun sucessores (node abertos isFirstCall &optional (sucs '()) (rowIndex 0) (cellIndex 0))
+  "Percorre as posicoes todas do estado do {node} e gera os seus nos sucessores"
+  (cond ((AND (= rowIndex 0) (= cellIndex 0) (not isFirstCall)) (build-end-sucs-list sucs abertos)) ; deu a volta toda
         (t (let* ((result-sucs (sucessores-aux rowIndex cellIndex node abertos)) ; Devolve (listaAbertos sucessor)
 
                  (nextRow (get-next-row rowIndex cellIndex))
@@ -88,7 +89,7 @@
                  (newSucs (cond ((null (first result-sucs)) sucs)
                                 (t (append sucs (list (first result-sucs)))))))
 
-             (sucessores node (list (first result-sucs)) newSucs nextRow nextCell))))
+             (sucessores node (list (first result-sucs)) nil newSucs nextRow nextCell))))
 )
 
 (defun build-end-sucs-list (sucs abertos)
@@ -101,24 +102,27 @@
 ;; result: ((((0 0 0 0 0 3) (1 1 1 1 5 1)) CALC-HEURISTICA 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) 0)
 ;; returns: (listaAbertos numNodesGerados) 
 (defun sucessores-aux (rowIndex cellIndex parentNode abertos)
-  "Verifica se a posição [rowIndex[cellIndex]] é valida, se for expande esse nó,
-   gerando o novo tabuleiro deopis dessa jogada e criando um novo nó. Senão passa à frente"
+  "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no,
+   gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
   (let ((board (get-node-state parentNode)))
 
-    (cond ((is-move-validp rowIndex cellIndex board) ; só geramos sucessores só for uma casa com valor > 0
+    (cond ((is-move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
 
         (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
 
                (depth (1+ (get-node-depth parentNode)))
+               
+               (heuristic (get-node-heuristic parentNode))
 
-               (value (+ (calc-heuristica newBoard parentNode) depth))
+               (value (+ (funcall heuristic newBoard parentNode) depth))
 
                (oldNode (get-node-in-abertos newBoard abertos))
 
                (newNode (create-node newBoard 'calc-heuristica value depth parentNode)))
 
-           (cond ((not (first oldNode)) (cons newNode '(0))) ; não está em abertos
-                 (t (cond ((> value (get-node-cost (first oldNode))); tá em abertos, vamos comparar valores e substituir se no gerado for superior
+           (cond ((not (first oldNode)) (cons newNode '(0))) ; nao esta em abertos
+
+                 (t (cond ((> value (get-node-cost (first oldNode))); esta em abertos, vamos comparar valores e substituir se no gerado for superior
                           (cons newNode (replace-nth-in-list abertos (second oldNode) (first oldNode))))))
            )
         )
@@ -126,8 +130,10 @@
   )
 )
 
+;; teste: (replace-nth-in-list '(3 3 3) 1 5)
+;; result: (3 5 3)
 (defun replace-nth-in-list (list n elem)
-  "Substitui o elemento na posição {n} da {list} pelo {eleme} recebido"
+  "Substitui o elemento na posicao {n} da {list} pelo {elem} recebido"
   (cond
     ((null list) list)
     ((= n 0) (cons elem (rest list)))
@@ -135,8 +141,10 @@
 )
 
 
+;; teste: (board-value (get-node-state (teste)))
+;; result: 96
 (defun board-value (board) 
-  "Calcula o valor total (soma do valor de cada posição) do tabuleiro recebido"
+  "Calcula o valor total (soma do valor de cada posicao) do tabuleiro recebido"
   (+ (apply '+ (first board)) (apply '+ (second board)))
 )
 
@@ -148,22 +156,29 @@
 
 
 ;;;;; Algos ;;;;;
+;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
 (defun a* (starter-node &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
   "Algoritmo de procura em espaco de estados A*"
-
   (cond ((null abertos) nil)
         (t 
-           (let* ((currNode (first abertos))
-                  
-                  (newFechados (append fechados (list currNode)))
-                  
-                  (sucsGerados (sucessores currNode (rest abertos)))
-
-                  (newAbertos (sort (first sucsGerados) 'shortest-cost-sort-compare)))
+           (let ((currNode (first abertos)))
              
-             ;(format t "a ~a ~a ~% ~%" sucsGerados currNode)
-             (cond ((node-solutionop currNode) (list nodes-expandidos nodes-gerados currNode))
-                    (t (a* (first newAbertos) newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (second sucsGerados))))))
+             ; nao vale a pena gerar os sucessores se este for no solução
+             (cond ((node-solutionop currNode) (list nodes-expandidos 
+                                                     nodes-gerados 
+                                                     (penetrancia (get-node-depth currNode) nodes-gerados)
+                                                     1
+                                                     currNode)) 
+
+                   ; nao e solucao, vamos continuar
+                   (t (let* ((newFechados (append fechados (list currNode)))
+                  
+                             (sucsGerados (sucessores currNode (rest abertos) t))
+
+                             (newAbertos (sort (first sucsGerados) 'shortest-cost-sort-compare)))
+
+                    (a* (first newAbertos) newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (second sucsGerados))))))
+           )
        )
   )
 )
@@ -176,4 +191,9 @@
      ((not (zerop depth)) (float (/ depth generated-nodes)))
      (t 0)
   )
+)
+
+;; fator de ramificacao
+(defun fator-ramificao ()
+  
 )
