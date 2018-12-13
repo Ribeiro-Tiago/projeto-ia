@@ -165,7 +165,7 @@
   (let* ((start-time (get-universal-time))
          (results (funcall algo (create-node board heuristica 0)))
          (runtime (- (get-universal-time) start-time))
-         (path (concatenate 'string (get-curr-dir) "/estatisticas.dat")))
+         (path (concatenate 'string (get-curr-dir) "/resultados.dat")))
 
     (progn 
       (format t "             >>> Algoritmo finalizado <<< ~%~%")
@@ -194,7 +194,7 @@
 ;;;;;;;;;; FINAL OUTPUT ;;;;;;;;;; 
 
 (defun write-results-to-file (results algo depth board heuristica runtime path)
-  "Funcao que escreve os resultados num ficheiro \"estatisticas.dat\""
+  "Funcao que escreve os resultados num ficheiro \"resultados.dat\""
   (with-open-file (output-file 
                    path
                    :direction :output
