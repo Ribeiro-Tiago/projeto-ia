@@ -214,8 +214,8 @@
     (format output "> Características: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
              algo heuristica depth board)
     ;; resultados
-    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d ~%"
-            (first results) (second results) (third results) (fourth results) runtime)
+    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d segundo(s) ~% - Profundidade da solução: ~d ~%"
+            (first results) (second results) (third results) (fourth results) runtime (get-node-depth (fifth results)))
     (get-solucao (fifth results) output)
   )
 )

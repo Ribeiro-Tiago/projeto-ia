@@ -69,6 +69,9 @@
     (progn
       (compile-file (concatenate 'string path "/puzzle.lisp"))
       (compile-file (concatenate 'string path "/procura.lisp"))
+
+      (load (concatenate 'string path "/puzzle.lisp"))
+      (load (concatenate 'string path "/procura.lisp"))
     )
   )
 )
@@ -160,7 +163,7 @@
 
 ;;;;;;;;;; ALGORYTHM ;;;;;;;;;; 
 
-(defun init-algo (board algo &optional (heuristica 'calc-heuristica) (depth 0))
+(defun init-algo (board algo &optional (heuristica 'heuristica-default) (depth 0))
   "Funcao que aplica o algoritmo escolhido no problema escolhido e depois cria um ficheiro com os resultados (com recurso a funcao \"write-results-to-file\") e mostra na consola (com recurso a funcao \"format-results\")"
   (let* ((start-time (get-universal-time))
          (results (funcall algo (create-node board heuristica 0)))

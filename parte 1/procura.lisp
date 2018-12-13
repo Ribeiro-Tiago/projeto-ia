@@ -164,8 +164,8 @@
            (let ((currNode (first abertos)))
              
              ; nao vale a pena gerar os sucessores se este for no solução
-             (cond ((node-solutionop currNode) (list nodes-expandidos 
-                                                     nodes-gerados 
+             (cond ((node-solutionop currNode) (list nodes-gerados
+                                                     nodes-expandidos
                                                      (penetrancia (get-node-depth currNode) nodes-gerados)
                                                      (fator-ramificacao (get-node-depth currNode) nodes-gerados)
                                                      currNode)) 
