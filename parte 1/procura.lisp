@@ -167,7 +167,7 @@
              (cond ((node-solutionop currNode) (list nodes-expandidos 
                                                      nodes-gerados 
                                                      (penetrancia (get-node-depth currNode) nodes-gerados)
-                                                     1
+                                                     (fator-ramificacao (get-node-depth currNode) nodes-gerados)
                                                      currNode)) 
 
                    ; nao e solucao, vamos continuar
@@ -194,11 +194,19 @@
 )
 
 ;; fator de ramificacao
-(defun fator-ramificacao ()
-  
+(defun fator-ramificacao(depth nos-gerados &optional (limite-inferior 1) (limite-superior most-positive-fixnum) (margem-erro 0.00001) (limite-medio (/ (+ limite-inferior limite-superior) 2)))
+  "Funcao que permite calcular o fator de ramificacao para um no. Aplica o metodo da bissecao para o calculo desta funcao com uma margem de erro de 0.00001"
+  (cond
+   ((< (- limite-superior limite-inferior) margem-erro) (float limite-medio)) ;Se a diferenca entre os limites for inferior a margem de erro entao podemos assumir com precisao que o fator de ramificacao encontra-se entre estes dois limites
+
+   ((> (- (polinomial depth limite-medio) nos-gerados) margem-erro) (fator-ramificacao depth nos-gerados limite-inferior limite-medio margem-erro))  ;Caso o valor esteja mais perto do limite-inferior, diminui-se o limite superior
+
+   (T (float (fator-ramificacao depth nos-gerados limite-medio limite-superior margem-erro))) ;Caso o valor esteja mais perto do limite-superior, aumenta-se o limite inferior
+
+  )
 )
 
-
+;; polinomial
 (defun polinomial (grau polinomio)
   "Funcao que implementa o calculo de uma funcao polinomial"
     (cond
