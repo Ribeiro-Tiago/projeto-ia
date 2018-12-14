@@ -88,7 +88,7 @@
       (cond ((= answer 1) (select-problema problemas))
             ((= answer 2) (format t "Oh :( ~% ~%"))
             (t (progn 
-                 (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+                 (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
                  (start-menu problemas)
             ))
       )
@@ -105,7 +105,7 @@
         (maxAnswer (list-length problemas)))
 
       (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
-               (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+               (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
                (select-problema problemas))
             (t (select-algo (nth (- answer 1) problemas)))))
   )
@@ -133,7 +133,7 @@
 
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 3)) 
                (progn
-                 (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+                 (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
                  (select-algo board)
                ))
             (t (eval-algo board (get-algo-name answer)))))
@@ -154,7 +154,7 @@
 
       (cond ((OR (not (numberp answer)) (< answer 1))
                (progn 
-                 (format t "~% >> Tem que ser número positivo, vamos tentar outra vez << ~%")
+                 (format t "~% ~% >> Tem que ser número positivo, vamos tentar outra vez << ~% ~%")
                  (get-dfs-depth)
                ))
             (t answer)))
@@ -163,7 +163,7 @@
 
 ;;;;;;;;;; ALGORYTHM ;;;;;;;;;; 
 
-(defun init-algo (board algo &optional (heuristica 'heuristica-default) (depth 0))
+(defun init-algo (board algo &optional (heuristica nil) (depth 0))
   "Funcao que aplica o algoritmo escolhido no problema escolhido e depois cria um ficheiro com os resultados (com recurso a funcao \"write-results-to-file\") e mostra na consola (com recurso a funcao \"format-results\")"
   (let* ((start-time (get-internal-real-time))
          (results (funcall algo (create-node board heuristica 0)))
@@ -188,10 +188,30 @@
         (t 'a*))
 )
 
-(defun eval-algo (board algo)
+(defun eval-algo (board algo)  
   "Avalia o algortimo escolhido. Se o escolhido foi o DFS, então pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo, senão inicia-se logo"
-  (cond ((equal algo 'dfs) (init-algo board 'dfs (get-dfs-depth)))
+  (cond ((string-equal algo 'dfs) (init-algo board 'dfs nil (get-dfs-depth)))
+        ((string-equal algo 'a*) (init-algo board 'a* (get-heuristica)))
         (t (init-algo board algo)))
+)
+
+(defun get-heuristica ()
+  "Funcao pede ao utilizador para escolher a heuristica a usar"
+  (progn 
+    (format t " > Escolha uma heuristica a usar: ~%")
+    (format t "1 - Heuristica default (fornecida no enunciado) ~%")
+    (format t "2 - Heuristica extra (criado pelo grupo) ~%")
+
+    (let ((answer (read)))
+
+      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2))
+               (progn 
+                 (format t "~% ~% >> Resposta inválida, vamos tentar outra vez << ~% ~%")
+                 (get-heuristica)
+               ))
+            (t (cond ((= answer 1) 'heuristica-default)
+                     (t 'heuristica-extra)))))
+  )
 )
 
 ;;;;;;;;;; FINAL OUTPUT ;;;;;;;;;; 
