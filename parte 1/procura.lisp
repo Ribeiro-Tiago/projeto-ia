@@ -130,12 +130,6 @@
   )
 )
 
-;; verifica qual a heuristica a usar e chama-a com os respetivos argumentos
-(defun call-heuristic (heuristica board parentNode)
-  "Como as heuristicas têm argumentos diferentes, esta função vê qual é a heuristica que o node está a usar e chama a respetiva função com os argumentso corretos"
-  (cond ((string-equal heuristica 'heuristica-default) (heuristica-default board parentNode))
-        (t (heuristica-extra board 0 0 0 t)))
-)
 
 ;; teste: (replace-nth-in-list '(3 3 3) 1 5)
 ;; result: (3 5 3)
@@ -147,12 +141,13 @@
     (t (cons (first list) (replace-nth-in-list (rest list) (- n 1) elem))))
 )
 
+;;;;; HEURISTICAS ;;;;;
 
-;; teste: (board-value (get-node-state (teste)))
-;; result: 96
-(defun board-value (board) 
-  "Calcula o valor total (soma do valor de cada posicao) do tabuleiro recebido"
-  (+ (apply '+ (first board)) (apply '+ (second board)))
+;; verifica qual a heuristica a usar e chama-a com os respetivos argumentos
+(defun call-heuristic (heuristica board parentNode)
+  "Como as heuristicas têm argumentos diferentes, esta função vê qual é a heuristica que o node está a usar e chama a respetiva função com os argumentso corretos"
+  (cond ((string-equal heuristica 'heuristica-default) (heuristica-default board parentNode))
+        (t (heuristica-extra board 0 0 0 t)))
 )
 
 (defun heuristica-default (board node)
@@ -161,18 +156,23 @@
     (- newBoardValue (- (board-value (get-node-state node)) newBoardValue)))
 )
 
+;; teste: (board-value (get-node-state (teste)))
+;; result: 96
+(defun board-value (board) 
+  "Função auxiliar à heuristica default. Calcula o valor total (soma do valor de cada posicao) do tabuleiro recebido"
+  (+ (apply '+ (first board)) (apply '+ (second board)))
+)
 
-(defun heuristica-extra (board numCasas rowIndex cellIndex &optional (isFirstCall nil))
-  "Calcula o número de posições perto do limite para retirar (1, 3, 5)"
-  (cond ((AND (not isFirstCall) (= rowIndex 0) (= cellIndex 0)) numCasas)
+
+(defun heuristica-extra (board numJogadasPossiveis rowIndex cellIndex &optional (isFirstCall nil))
+  "Calcula o número de jogadas validas no tabuleiro"
+  (cond ((AND (not isFirstCall) (= rowIndex 0) (= cellIndex 0)) numJogadasPossiveis)
         (t (let* ((nextRow (get-next-row rowIndex cellIndex))
 
-                 (nextCell (get-next-cell rowIndex cellIndex))
+                 (nextCell (get-next-cell rowIndex cellIndex)))
 
-                 (cellValue (get-cell nextRow nextCell board)))
-
-             (cond ((OR (= cellValue 2) (= cellValue 4) (= cellValue 6)) (heuristica-extra board (1+ numCasas) nextRow nextCell))
-                   (t (heuristica-extra board numCasas nextRow nextCell))))))
+             (cond ((is-move-validp nextRow nextCell board) (heuristica-extra board (1+ numJogadasPossiveis) nextRow nextCell))
+                   (t (heuristica-extra board numJogadasPossiveis nextRow nextCell))))))
 )
 
 ;;;;; Algos ;;;;;
