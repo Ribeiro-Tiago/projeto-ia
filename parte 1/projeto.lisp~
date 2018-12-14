@@ -1,5 +1,5 @@
-;;;; io.lisp
-;;;; Funções para entrada e saíde de dados - ecrã / ficheiro
+;;;; projeto.lisp
+;;;; Funções de interção com o utilizador, entrada e saíde de dados e misc
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
@@ -17,7 +17,7 @@
 (defun teste3 ()
   "Funcao que cria no inicial reference ao problema a para testar"
   (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)) 'calc-heuristica 0)
-)
+) 
 
 (defun teste4 ()
   "Funcao que cria no inicial reference ao problema b para testar"
@@ -69,6 +69,9 @@
     (progn
       (compile-file (concatenate 'string path "/puzzle.lisp"))
       (compile-file (concatenate 'string path "/procura.lisp"))
+
+      (load (concatenate 'string path "/puzzle.lisp"))
+      (load (concatenate 'string path "/procura.lisp"))
     )
   )
 )
@@ -160,7 +163,7 @@
 
 ;;;;;;;;;; ALGORYTHM ;;;;;;;;;; 
 
-(defun init-algo (board algo &optional (heuristica 'calc-heuristica) (depth 0))
+(defun init-algo (board algo &optional (heuristica 'heuristica-default) (depth 0))
   "Funcao que aplica o algoritmo escolhido no problema escolhido e depois cria um ficheiro com os resultados (com recurso a funcao \"write-results-to-file\") e mostra na consola (com recurso a funcao \"format-results\")"
   (let* ((start-time (get-universal-time))
          (results (funcall algo (create-node board heuristica 0)))
@@ -211,8 +214,8 @@
     (format output "> Características: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
              algo heuristica depth board)
     ;; resultados
-    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d ~%"
-            (first results) (second results) (third results) (fourth results) runtime)
+    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d segundo(s) ~% - Profundidade da solução: ~d ~%"
+            (first results) (second results) (third results) (fourth results) runtime (get-node-depth (fifth results)))
     (get-solucao (fifth results) output)
   )
 )

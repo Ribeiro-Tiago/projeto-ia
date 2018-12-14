@@ -1,5 +1,5 @@
- ;;;; board-handler.lisp
-;;;; Implementacao dos algoritmos de procura em espaï¿½o de estados
+;;;; procura.lisp
+;;;; Implementacao dos algoritmos de procura em espaco de estados
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
@@ -105,7 +105,7 @@
   "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no,
    gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
   (let ((board (get-node-state parentNode)))
-
+    
     (cond ((is-move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
 
         (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
@@ -114,11 +114,11 @@
                
                (heuristic (get-node-heuristic parentNode))
 
-               (value (+ (funcall heuristic newBoard parentNode) depth))
+               (value (+ (call-heuristic heuristic newBoard parentNode) depth))
 
                (oldNode (get-node-in-abertos newBoard abertos))
 
-               (newNode (create-node newBoard 'heuristica-default value depth parentNode)))
+               (newNode (create-node newBoard heuristic value depth parentNode)))
 
            (cond ((not (first oldNode)) (cons newNode '(0))) ; nao esta em abertos
 
@@ -130,6 +130,7 @@
   )
 )
 
+
 ;; teste: (replace-nth-in-list '(3 3 3) 1 5)
 ;; result: (3 5 3)
 (defun replace-nth-in-list (list n elem)
@@ -140,20 +141,39 @@
     (t (cons (first list) (replace-nth-in-list (rest list) (- n 1) elem))))
 )
 
+;;;;; HEURISTICAS ;;;;;
 
-;; teste: (board-value (get-node-state (teste)))
-;; result: 96
-(defun board-value (board) 
-  "Calcula o valor total (soma do valor de cada posicao) do tabuleiro recebido"
-  (+ (apply '+ (first board)) (apply '+ (second board)))
+;; verifica qual a heuristica a usar e chama-a com os respetivos argumentos
+(defun call-heuristic (heuristica board parentNode)
+  "Como as heuristicas têm argumentos diferentes, esta função vê qual é a heuristica que o node está a usar e chama a respetiva função com os argumentso corretos"
+  (cond ((string-equal heuristica 'heuristica-default) (heuristica-default board parentNode))
+        (t (heuristica-extra board 0 0 0 t)))
 )
 
 (defun heuristica-default (board node)
-  "Calcula a heuristica predefinida"
+  "Calcula a heuristica predefinida (fornecida pelo enunciado)"
   (let ((newBoardValue (board-value board)))
     (- newBoardValue (- (board-value (get-node-state node)) newBoardValue)))
 )
 
+;; teste: (board-value (get-node-state (teste)))
+;; result: 96
+(defun board-value (board) 
+  "Função auxiliar à heuristica default. Calcula o valor total (soma do valor de cada posicao) do tabuleiro recebido"
+  (+ (apply '+ (first board)) (apply '+ (second board)))
+)
+
+
+(defun heuristica-extra (board numJogadasPossiveis rowIndex cellIndex &optional (isFirstCall nil))
+  "Calcula o número de jogadas validas no tabuleiro"
+  (cond ((AND (not isFirstCall) (= rowIndex 0) (= cellIndex 0)) numJogadasPossiveis)
+        (t (let* ((nextRow (get-next-row rowIndex cellIndex))
+
+                 (nextCell (get-next-cell rowIndex cellIndex)))
+
+             (cond ((is-move-validp nextRow nextCell board) (heuristica-extra board (1+ numJogadasPossiveis) nextRow nextCell))
+                   (t (heuristica-extra board numJogadasPossiveis nextRow nextCell))))))
+)
 
 ;;;;; Algos ;;;;;
 ;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
@@ -164,8 +184,8 @@
            (let ((currNode (first abertos)))
              
              ; nao vale a pena gerar os sucessores se este for no solução
-             (cond ((node-solutionop currNode) (list nodes-expandidos 
-                                                     nodes-gerados 
+             (cond ((node-solutionop currNode) (list nodes-gerados
+                                                     nodes-expandidos
                                                      (penetrancia (get-node-depth currNode) nodes-gerados)
                                                      (fator-ramificacao (get-node-depth currNode) nodes-gerados)
                                                      currNode)) 

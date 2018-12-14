@@ -1,52 +1,52 @@
-;;;; io.lisp
-;;;; Funções para entrada e saíde de dados - ecrã / ficheiro
+;;;; projeto.lisp
+;;;; Funções de interção com o utilizador, entrada e saíde de dados e misc
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
 ;;;; funcoes que criam starter nodes para testar os algos ;;;;
 (defun teste ()
   "Funcao que cria no inicial reference ao problema g para testar"
-  (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 'calc-heuristica 0)
+  (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 'heuristica-default 0)
 )
 
 (defun teste2 ()
   "Funcao que cria no inicial dum tabuleiro aleatorio para testar"
-  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 'calc-heuristica 0)
+  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 'heuristica-default 0)
 )
 
 (defun teste3 ()
   "Funcao que cria no inicial reference ao problema a para testar"
-  (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)) 'calc-heuristica 0)
-)
+  (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)) 'heuristica-extra 0)
+) 
 
 (defun teste4 ()
   "Funcao que cria no inicial reference ao problema b para testar"
-  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'heuristica-default 0)
 )
 
 (defun teste5 ()
   "Funcao que cria no inicial reference ao problema c para testar"
-  (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)) 'calc-heuristica 0)
+  (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)) 'heuristica-default 0)
 )
 
 (defun teste6 ()
   "Funcao que cria no inicial reference ao problema f para testar"
-  (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)) 'calc-heuristica 0)
+  (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)) 'heuristica-default 0)
 )
 
 (defun teste7 ()
   "Funcao que cria no inicial reference ao problema d para testar"
-  (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)) 'calc-heuristica 0)
+  (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)) 'heuristica-default 0)
 )
 
 (defun teste8 ()
   "Funcao que cria no inicial reference ao problema e para testar"
-  (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)) 'calc-heuristica 0)
+  (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)) 'heuristica-default 0)
 )
 
 (defun teste9 ()
   "Funcao que cria no inicial reference ao problema a para testar"
-  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'heuristica-default 0)
 )
 
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
@@ -88,7 +88,7 @@
       (cond ((= answer 1) (select-problema problemas))
             ((= answer 2) (format t "Oh :( ~% ~%"))
             (t (progn 
-                 (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+                 (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
                  (start-menu problemas)
             ))
       )
@@ -105,7 +105,7 @@
         (maxAnswer (list-length problemas)))
 
       (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
-               (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+               (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
                (select-problema problemas))
             (t (select-algo (nth (- answer 1) problemas)))))
   )
@@ -133,7 +133,7 @@
 
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 3)) 
                (progn
-                 (format t "~% >> Respota inválida, vamos tentar outra vez  << ~%")
+                 (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
                  (select-algo board)
                ))
             (t (eval-algo board (get-algo-name answer)))))
@@ -154,7 +154,7 @@
 
       (cond ((OR (not (numberp answer)) (< answer 1))
                (progn 
-                 (format t "~% >> Tem que ser número positivo, vamos tentar outra vez << ~%")
+                 (format t "~% ~% >> Tem que ser número positivo, vamos tentar outra vez << ~% ~%")
                  (get-dfs-depth)
                ))
             (t answer)))
@@ -163,11 +163,11 @@
 
 ;;;;;;;;;; ALGORYTHM ;;;;;;;;;; 
 
-(defun init-algo (board algo &optional (heuristica 'heuristica-default) (depth 0))
+(defun init-algo (board algo &optional (heuristica nil) (depth 0))
   "Funcao que aplica o algoritmo escolhido no problema escolhido e depois cria um ficheiro com os resultados (com recurso a funcao \"write-results-to-file\") e mostra na consola (com recurso a funcao \"format-results\")"
-  (let* ((start-time (get-universal-time))
+  (let* ((start-time (get-internal-real-time))
          (results (funcall algo (create-node board heuristica 0)))
-         (runtime (- (get-universal-time) start-time))
+         (runtime (float (/ (- (get-internal-real-time) start-time) internal-time-units-per-second)))
          (path (concatenate 'string (get-curr-dir) "/resultados.dat")))
 
     (progn 
@@ -188,10 +188,30 @@
         (t 'a*))
 )
 
-(defun eval-algo (board algo)
+(defun eval-algo (board algo)  
   "Avalia o algortimo escolhido. Se o escolhido foi o DFS, então pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo, senão inicia-se logo"
-  (cond ((equal algo 'dfs) (init-algo board 'dfs (get-dfs-depth)))
+  (cond ((string-equal algo 'dfs) (init-algo board 'dfs nil (get-dfs-depth)))
+        ((string-equal algo 'a*) (init-algo board 'a* (get-heuristica)))
         (t (init-algo board algo)))
+)
+
+(defun get-heuristica ()
+  "Funcao pede ao utilizador para escolher a heuristica a usar"
+  (progn 
+    (format t " > Escolha uma heuristica a usar: ~%")
+    (format t "1 - Heuristica default (fornecida no enunciado) ~%")
+    (format t "2 - Heuristica extra (criado pelo grupo) ~%")
+
+    (let ((answer (read)))
+
+      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2))
+               (progn 
+                 (format t "~% ~% >> Resposta inválida, vamos tentar outra vez << ~% ~%")
+                 (get-heuristica)
+               ))
+            (t (cond ((= answer 1) 'heuristica-default)
+                     (t 'heuristica-extra)))))
+  )
 )
 
 ;;;;;;;;;; FINAL OUTPUT ;;;;;;;;;; 
@@ -214,8 +234,8 @@
     (format output "> Características: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
              algo heuristica depth board)
     ;; resultados
-    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d ~%"
-            (first results) (second results) (third results) (fourth results) runtime)
+    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d segundo(s) ~% - Profundidade da solução: ~d ~%"
+            (first results) (second results) (third results) (fourth results) runtime (get-node-depth (fifth results)))
     (get-solucao (fifth results) output)
   )
 )
