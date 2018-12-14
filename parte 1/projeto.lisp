@@ -1,52 +1,52 @@
-;;;; io.lisp
-;;;; Funções para entrada e saíde de dados - ecrã / ficheiro
+;;;; projeto.lisp
+;;;; Funções de interção com o utilizador, entrada e saíde de dados e misc
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
 ;;;; funcoes que criam starter nodes para testar os algos ;;;;
 (defun teste ()
   "Funcao que cria no inicial reference ao problema g para testar"
-  (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 'calc-heuristica 0)
+  (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 'heuristica-default 0)
 )
 
 (defun teste2 ()
   "Funcao que cria no inicial dum tabuleiro aleatorio para testar"
-  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 'calc-heuristica 0)
+  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 'heuristica-default 0)
 )
 
 (defun teste3 ()
   "Funcao que cria no inicial reference ao problema a para testar"
-  (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)) 'calc-heuristica 0)
-)
+  (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)) 'heuristica-extra 0)
+) 
 
 (defun teste4 ()
   "Funcao que cria no inicial reference ao problema b para testar"
-  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'heuristica-default 0)
 )
 
 (defun teste5 ()
   "Funcao que cria no inicial reference ao problema c para testar"
-  (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)) 'calc-heuristica 0)
+  (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)) 'heuristica-default 0)
 )
 
 (defun teste6 ()
   "Funcao que cria no inicial reference ao problema f para testar"
-  (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)) 'calc-heuristica 0)
+  (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)) 'heuristica-default 0)
 )
 
 (defun teste7 ()
   "Funcao que cria no inicial reference ao problema d para testar"
-  (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)) 'calc-heuristica 0)
+  (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)) 'heuristica-default 0)
 )
 
 (defun teste8 ()
   "Funcao que cria no inicial reference ao problema e para testar"
-  (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)) 'calc-heuristica 0)
+  (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)) 'heuristica-default 0)
 )
 
 (defun teste9 ()
   "Funcao que cria no inicial reference ao problema a para testar"
-  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'calc-heuristica 0)
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'heuristica-default 0)
 )
 
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
@@ -165,9 +165,9 @@
 
 (defun init-algo (board algo &optional (heuristica 'heuristica-default) (depth 0))
   "Funcao que aplica o algoritmo escolhido no problema escolhido e depois cria um ficheiro com os resultados (com recurso a funcao \"write-results-to-file\") e mostra na consola (com recurso a funcao \"format-results\")"
-  (let* ((start-time (get-universal-time))
+  (let* ((start-time (get-internal-real-time))
          (results (funcall algo (create-node board heuristica 0)))
-         (runtime (- (get-universal-time) start-time))
+         (runtime (float (/ (- (get-internal-real-time) start-time) internal-time-units-per-second)))
          (path (concatenate 'string (get-curr-dir) "/resultados.dat")))
 
     (progn 

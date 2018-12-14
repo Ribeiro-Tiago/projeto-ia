@@ -1,5 +1,5 @@
- ;;;; board-handler.lisp
-;;;; Implementacao dos algoritmos de procura em espaï¿½o de estados
+;;;; procura.lisp
+;;;; Implementacao dos algoritmos de procura em espaco de estados
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
@@ -105,7 +105,7 @@
   "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no,
    gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
   (let ((board (get-node-state parentNode)))
-
+    
     (cond ((is-move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
 
         (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
@@ -114,11 +114,11 @@
                
                (heuristic (get-node-heuristic parentNode))
 
-               (value (+ (funcall heuristic newBoard parentNode) depth))
+               (value (+ (call-heuristic heuristic newBoard parentNode) depth))
 
                (oldNode (get-node-in-abertos newBoard abertos))
 
-               (newNode (create-node newBoard 'heuristica-default value depth parentNode)))
+               (newNode (create-node newBoard heuristic value depth parentNode)))
 
            (cond ((not (first oldNode)) (cons newNode '(0))) ; nao esta em abertos
 
@@ -128,6 +128,13 @@
         )
     ))
   )
+)
+
+;; verifica qual a heuristica a usar e chama-a com os respetivos argumentos
+(defun call-heuristic (heuristica board parentNode)
+  "Como as heuristicas têm argumentos diferentes, esta função vê qual é a heuristica que o node está a usar e chama a respetiva função com os argumentso corretos"
+  (cond ((string-equal heuristica 'heuristica-default) (heuristica-default board parentNode))
+        (t (heuristica-extra board 0 0 0 t)))
 )
 
 ;; teste: (replace-nth-in-list '(3 3 3) 1 5)
@@ -149,11 +156,24 @@
 )
 
 (defun heuristica-default (board node)
-  "Calcula a heuristica predefinida"
+  "Calcula a heuristica predefinida (fornecida pelo enunciado)"
   (let ((newBoardValue (board-value board)))
     (- newBoardValue (- (board-value (get-node-state node)) newBoardValue)))
 )
 
+
+(defun heuristica-extra (board numCasas rowIndex cellIndex &optional (isFirstCall nil))
+  "Calcula o número de posições perto do limite para retirar (1, 3, 5)"
+  (cond ((AND (not isFirstCall) (= rowIndex 0) (= cellIndex 0)) numCasas)
+        (t (let* ((nextRow (get-next-row rowIndex cellIndex))
+
+                 (nextCell (get-next-cell rowIndex cellIndex))
+
+                 (cellValue (get-cell nextRow nextCell board)))
+
+             (cond ((OR (= cellValue 2) (= cellValue 4) (= cellValue 6)) (heuristica-extra board (1+ numCasas) nextRow nextCell))
+                   (t (heuristica-extra board numCasas nextRow nextCell))))))
+)
 
 ;;;;; Algos ;;;;;
 ;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
