@@ -3,6 +3,34 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
+;;; Board builder functions 
+(defun empty-board (&optional (linhas 2) (colunas 6))
+  "Retorna um tabuleiro vazio: 0 em todas as células"
+  (make-list linhas :initial-element (make-list colunas :initial-element '0))
+)
+
+(defun build-board (lista)
+  "Constrói um tabuleiro com base na lista recebida. Há de ser construído com base em ficheiro"
+  (let ((linha1 (first lista))
+        (linha2 (second lista)))
+
+    (cond ((or (null linha1) (null linha2)) nil)
+          ((or (not (= (list-length linha1) 6)) (not (= (list-length linha2) 6))) nil)
+          (t lista)))
+)
+
+(defun start-board ()
+  "Retorna o tabuleiro inicial default"
+  (make-list 2 :initial-element (make-list 6 :initial-element '8))
+)
+
+(defun print-board (board) 
+  "Prints a pretty version of the board"
+  (format t "(~A ~% ~A)" (first board) (second board))
+)
+
+
+;;; Board handler functions
 (defun valid-cell (index) 
   "Função auxiliar que valida se o index da célula está válido (entre 0 e 5).
    Retorna T se sim, nil caso contrário"
@@ -34,22 +62,7 @@
 
 (defun board-emptyp (board) 
   "Verifica se todos os átomos da lista são 0. Retorna T se sim, nil caso contrário"
-  (eval 
-   (cons 'and 
-         (mapcar 
-             #'(lambda (tabuleiro &aux (row
-                                          (eval 
-                                           (cons 'and 
-                                                 (mapcar #'(lambda (linha &aux (emptyCell (= linha 0))) emptyCell) tabuleiro)
-                                           )
-                                          )
-                                       )
-                       ) 
-                       row
-               )
-             board
-         )
-    ))
+  (cond ((= (+ (apply '+ (first board)) (apply '+ (second board))) 0)))
 )
 
 (defun replace-position (cellIndex row &optional (value 0))
@@ -59,20 +72,18 @@
   (cond
     ((null row) ())
     ((not (valid-cell cellIndex)) nil)
-    ((eq cellIndex 0) (cons value (rest row)))
+    ((= cellIndex 0) (cons value (rest row)))
     (t (cons(first row) (replace-position (- cellIndex 1) (rest row) value))))
 )
 
 (defun update-board (rowIndex cellIndex board &optional (value 0))
   "Valida se {rowIndex}, {cellIndex} e {board} são válidos.
-  Se sim, atualiza a posição [rowIndex][colIndex] do {board} com o {value} recebido e retorna o novo tabuleiro
+  Se sim, atualiza a posição [rowIndex][cellIndex] do {board} com o {value} recebido e retorna o novo tabuleiro
   Caso cotnrário retorna nil"
   (cond 
      ((null board) nil)
-
      ((not (and (valid-cell cellIndex) (valid-row rowIndex))) nil)
-
-     ((= rowIndex 0)  
+     ((= rowIndex 0) 
         (cons 
            (replace-position cellIndex (get-row rowIndex board) value) 
            (list (second board))
@@ -114,23 +125,38 @@
   )
 )
 
-(defun allocate-pieces (numPieces rowIndex colIndex &optional (board (start-board)) (isFirstCall nil))
-  "Valida {rowIndex}, {colIndex} e {board}. Se não forem válidos, retorna nil
-   Se forem, chama percorre o {board} recursivamente com base no {numPieces} e 
-   em cada posição incrementa um valor. Na posição inicial, deixa um valor de 0.
-   No final, retorna o {board} com os novos valores"
+(defun allocate-pieces (rowIndex cellIndex board)
+  "Valida {rowIndex}, {cellIndex} e {board}. Se não forem válidos, retorna nil
+   Se forem, allocate-pieces-aux para percorrer o {board} com, enviando o número de peças 
+   existentes na [rowIndex[cellIndex]]
+   Quando acaba de percorrer, chama a validate-final-position to check if the final position
+   has 1, 3 or 5 pieces and to remove them if that's the case"
+  (let ((numPieces (get-cell rowIndex cellIndex board)))
+    
+    (cond
+      ((null board) nil)
+      ((not (and (valid-cell cellIndex) (valid-row rowIndex))) nil)
+      ((= numPieces 0) board)
+      (t (validate-final-position 
+                   rowIndex 
+                   (allocate-pieces-aux numPieces rowIndex cellIndex board (list rowIndex cellIndex) T))
+      ))
+  )
+)
+
+(defun allocate-pieces-aux (numPieces rowIndex cellIndex board initPos &optional (isFirstCall nil))
+  "Enquanto houver {numPieces} para distribuir, percorre o {board} incrementando uma peça a cada
+   posição. Se passar pela posição inicial, passa à próxima"
   (let* (
-          (nextCell (get-next-cell rowIndex colIndex isFirstCall)) 
-          (nextRow (get-next-row rowIndex colIndex isFirstCall))
+          (nextCell (get-next-cell rowIndex cellIndex isFirstCall)) 
+          (nextRow (get-next-row rowIndex cellIndex isFirstCall))
           (value (cond (isFirstCall 0)
                        (t (add-position nextRow nextCell board))))
         )
 
     (cond
-      ((null board) nil)
-      ((not (and (valid-cell colIndex) (valid-row rowIndex))) nil)
-      ((>= numPieces 0)
-         (allocate-pieces 
+      ((> numPieces 0)
+         (allocate-pieces-aux
              (- numPieces 1)
              nextRow
              nextCell
@@ -140,9 +166,40 @@
                  board
                  value
              )
+             initPos
          )
       ) 
-      (t board)
+      (t  (list rowIndex cellIndex board))
    )
-  ) 
+ )
+)
+
+
+(defun validate-final-position (initRowIndex finalBoard)
+  "Valida a posição final, se for a posição 1 3 ou 5 da linha contrária à inicial
+   retira essas \"captura\" essas peças"
+  (let* (
+             (endRowIndex (first finalBoard))
+             (isSameRow (= endRowIndex initRowIndex))
+             (endCellIndex (second finalBoard))
+             (board (third finalBoard))
+             (piecesLastPos (get-cell endRowIndex endCellIndex board)))
+    
+    (cond ((AND (null isSameRow) (OR (= piecesLastPos 1) (= piecesLastPos 3) (= piecesLastPos 5)))
+             (update-board 
+                 endRowIndex 
+                 endCellIndex
+                 board
+                 0
+             ))
+          (t board)))
+)
+
+(defun is-move-validp (rowIndex cellIndex board)
+  "Verifica se o valor da [rowIndex[cellIndex]] é 0. Se for 0 não há jogada 
+   a fazer então é considerada inválida"
+  (cond ((null board) nil)
+        ((not (and (valid-cell cellIndex) (valid-row rowIndex))) t)
+        ((= (get-cell rowIndex cellIndex board) 0) nil)
+        (t t))
 )

@@ -9,7 +9,15 @@
 )
 
 (defun start-board ()
-  (board-g)
+  (board-a)
+)
+
+
+(defun board-one-easy (&aux (board '((5 0 0 0 0 0) (0 0 0 0 0 5))))
+    board
+)
+(defun board-two-easy (&aux (board '((0 0 0 0 0 0) (0 0 0 0 0 1))))
+    board
 )
 
 (defun board-a ()
@@ -17,6 +25,7 @@
   '((0 0 0 0 0 2)
     (0 0 0 0 4 0))
 )
+
 
 (defun board-b ()
   "Retorna o tabuleiro do problema b do enunciado"
@@ -91,7 +100,7 @@
 )
 
 
-(defun board-emptyp (board) 
+(defun board-empty (board) 
   "Verifica se todos os �tomos da lista s�o 0. Retorna T se sim, nil caso contr�rio"
   (eval 
    (cons 'and 
@@ -207,14 +216,14 @@
 )
 
 
-(defun rowsMissing(r c)
+(defun rowsChange(r c)
     (cond 
         ((and (= r 0) (= c 0) 1))
         ((and (= r 1) (= c 5) 0))
         (t r)
     )
 )
-(defun columnsM(r c)
+(defun columnsChange(r c)
     (cond 
         ((and (= r 0) (> c 0) (- c 1) ))
         ((and (= r 1) (< c 5) (+ c 1) ))
@@ -222,36 +231,58 @@
     )
 )
 ;; prolem need to return (list r c) but as list on end 
-(defun distribuir-pecas (n r c &optional (board (start-board)))
+(defun distribuir-pecas (pieces row column &optional (board (start-board)))
     (
      cond 
-        ((= 0 n) nil)
+        ((= 0 pieces) nil)
         (
         (cons  
-            (list r c) 
-            (distribuir-pecas (- n 1) (rowsMissing r c) (columnsM r c) board ) 
+            (list row column) 
+            (distribuir-pecas (- pieces 1) (rowsChange row column) (columnsChange row column) board ) 
         ))   
     )
 )
-;;(print (fuck_its 15 1 1))
 
-;;(print (list (list 1 1 ) (list 2 1 ) ))
-
-
-(defun operador(rowIndex cellIndex board)
-    (sub-operador
-         (distribuir-pecas 
-            (get-cell rowIndex cellIndex board )
-            rowIndex 
-            cellIndex
-         )
-         board
-    )
+(defun get-next-cellV1 (rowIndex cellIndex)
+  "Calcula e retorna o index da pr�xima coluna com base no index da coluna e linha atual"
+  (cond 
+     ( (eq nil cellIndex) nil)
+    ((AND (> cellIndex 0) (= rowIndex 0) ) (- cellIndex 1))
+    ((AND (< cellIndex 5) (= rowIndex 1) ) (1+ cellIndex))
+    (t nil)
+  )
 )
 
+(defun operador(rowIndex column board)
+   (update-board rowIndex column  (sub-operador
+         (distribuir-pecas 
+            (get-cell rowIndex column board )
+            (rowsChange rowIndex column) 
+            (columnsChange rowIndex column)
+         )
+         board
+        )
+    )
+)
+(defun win-value(value)
+    (cond 
+        ((= 1 value) t)
+        ((= 3 value) t)
+        ((= 5 value) t)
+        (t nil)
+    )
+)
 (defun sub-operador(data board)
     (cond 
         ((eq nil data)  board)
+        ((and 
+            (eq nil (cdr data))
+            (win-value (+ 1 (get-cell (first (car data)) (second  (car data)) board )))
+         )
+            (update-board (first (car data)) (second  (car data)) board 
+                    0
+            ) 
+        )
         (
             t
             (
@@ -267,23 +298,36 @@
     )
 )
 
+(defun columnsValid(row column)
+    (cond 
+        ((and (= row 0) (> column 0) (<= column 5) t ))
+        ((and (= row 1) (< column 5) (>= column 0) t ))
+        (t nil)
+    )
+)
+
+(defun global-play(row cell board &aux (nextCell (get-next-cellV1 row cell)))
+    (cond 
+        ( (eq nil cell) nil)
+        ( (eq nil nextCell) (list (operador row cell board) ))
+        (
+            (equal (get-cell row cell board) 0) 
+            (global-play row  nextCell board )
+        )
+        (  (columnsValid row cell) 
+            (append (global-play row  nextCell board )
+           (list (operador row cell board) ))
+        )
+    )
+)
 
 
-;;; Ideia - 
-;;; 
-;;;
-;;; Problema das vasilhas
-;;; variaveis de teste e operadores
 (defun no-teste ()
 "Define um no teste do problema da vasilhas em que A=2, B=2, profundidade=0 e pai=NIL"
- (list (board-d) 0 nil))
-
-(defun operadores ()
- "Cria uma lista com todos os operadores do problema das vasilhas."
- (list '(1 1)  '(1 1) '(1 1) '(1 1) '(1 1))
+ (list (board-one-easy) 0 nil))
 
 ;;; Construtor
-(defun create-no (board &optional (g 0) (pai nil))
+(defun cria-no (board &optional (g 0) (pai nil))
   (list board g pai)
 )
 
@@ -291,51 +335,53 @@
 ;; no-estado
 ;; teste: (no-estado (no-teste))
 ;; resultado: (2 2)
-(defun no-state(no)
+(defun no-estado(a)
+
     (cond 
-    ((eq nil no) nil)
-    (t (car no))
+    ((eq nil a) nil)
+    (t (car a))
     )
+   
 )
-
-
-;; no-profundidade
-;; teste: (no-profundidade (no-teste))
-;; resultado: 0
-(defun no-profundidade(no)
-    (second no)
+(defun no-profundidade(a)
+    (second a)
 )
-
+;;(print (no-profundidade(no-teste)))
 ;; no-pai
 ;; teste: (no-pai (no-teste))
 ;; resultado: NIL
-(defun no-pai(no)
-    (third no)
+(defun no-pai(a)
+    (third a)
 )
 
+;;; Funcoes auxiliares da procura
+;;; predicado no-solucaop que verifica se um estado e final
+;; teste: (no-solucaop (no-teste))
+;; resultado: NIL
 (defun no-solucaop(a)
     (cond 
-        ((= 1 (first (no-estado a))) t)
-        ((= 1 (second (no-estado a))) t)
+        ((board-empty (no-estado a)) t)
         (t nil)
     )
 )
-(print (no-solucaop (no-teste)))
-;;; sucessores
-(defun sucessores-aux(no function)
-    (cria-no (funcall function (no-estado no)) (+ 1 (no-profundidade no)) no)
+
+
+(defun sucessores-aux(no son)
+    (cria-no son (+ 1 (no-profundidade no)) no)
 )   
+
 
 (defun sucessores(no lop alg pmax)
     (cond 
         ((and (equal alg 'dfs) (>= (no-profundidade no) pmax) ) nil)
-        (t (mapcar #'(lambda (op) (sucessores-aux no op)) lop))
+        (t
+            (mapcar #'(lambda (board) (sucessores-aux no board))   
+            (append(global-play 1 0 (no-estado no)) (global-play 0 5 (no-estado no))))
+        )
     )
 )
-(print (sucessores (no-teste) (operadores) 'dfs 2))
-;; resultado: (((0 2) 1 ((2 2) 0 NIL)) ((2 0) 1 ((2 2) 0 NIL)) ((3 2) 1 ((2 2) 0 NIL)) ((2 5) 1 ((2 2) 0 NIL)) ((0 4) 1 ((2 2) 0 NIL)) ((3 1) 1 ((2 2) 0 NIL)))
-;; teste: (sucessores (no-teste) (operadores) 'dfs 2)
-;; resultado: (((0 2) 1 ((2 2) 0 NIL)) ((2 0) 1 ((2 2) 0 NIL)) ((3 2) 1 ((2 2) 0 NIL)) ((2 5) 1 ((2 2) 0 NIL)) ((0 4) 1 ((2 2) 0 NIL)) ((3 1) 1 ((2 2) 0 NIL)))
+
+
 (defun abertos-bfs(abertos nosucessores)
     (append abertos nosucessores)
 )
@@ -343,28 +389,35 @@
     (append nosucessores abertos)
 )
 (defun no-existep(no fechados)
-   (eval (cons 'or (mapcar #'(lambda (nof) (equal (no-estado no) (no-estado nof)) fechados))))
+  (cond
+    ( (equal nil fechados) nil)
+    (t (eval (cons 'or (
+    mapcar #'(lambda (nof) (equal (no-estado no) (no-estado nof))) fechados))))
+  )
 )
+
 ;;; Algoritmos
 ;; procura na largura
-;; teste: (bfs (no-teste) 'no-solucaop 'sucessores (operadores))
-;; resultado: ((3 1) 1 ((2 2) 0 NIL))
-(defun bfs (no &optional( abertos (list no)) (fechados nil) )
+;; teste: (bfs (no-teste) 
+;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 ((# #) 8 (# 7 #))))
+(defun bfs (no &optional (abertos (list no)) (fechados nil) )
     (cond 
+        ((null abertos) nil)
         ((no-solucaop (car abertos)) (car abertos))
-        ((null abertos) nil)    
-        (t 
-     (bfs nil (abertos-bfs (cdr abertos) (apply #'append (mapcar #'(lambda (nos) (if (no-existep nos fechados) nil)
-      (list nos)
-        (sucessores (car abertos) (operadores) 'bfs nil))
+        ((no-existep (car abertos) fechados) (bfs nil (cdr abertos) fechados))
+        (t (bfs nil (abertos-bfs (cdr abertos) (sucessores (car abertos) nil 'bfs nil)) (cons (car abertos) fechados))) 
         )
-        )) 
-        (cons (car abertos) fechados)
     )
-    ))
-)
-(print (bfs (no-teste)))
-;; procura na profundidade
-;; teste: (dfs (no-teste) 'no-solucaop 'sucessores (operadores) 10)
-;; resultado: ((3 1) 1 ((2 2) 0 NIL))
 
+;;; Algoritmos
+;; procura na largura
+;; teste: (dfs (no-teste) 
+;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 ((# #) 8 (# 7 #))))
+(defun dfs (no &optional( abertos (list no)) (fechados nil) )
+    (cond 
+        ((null abertos) nil)
+        ((no-solucaop (car abertos)) (car abertos))
+        ((no-existep (car abertos) fechados) (dfs nil (cdr abertos) fechados))
+        (t (dfs nil (abertos-dfs (cdr abertos) (sucessores (car abertos) nil 'dfs 10)) (cons (car abertos) fechados))) 
+    )
+)
