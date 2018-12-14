@@ -3,15 +3,15 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
-;;;;; Construtor ;;;;;
+;;;;;;;;;;;;;;; Construtor ;;;;;;;;;;;;;;;
 ;; custo = f | heuristica = g
 (defun create-node (board heuristica custo &optional (depth 0) (parent nil))
-  "Construtor do nó das árvores para os algoritmos"
+  "Construtor do no das arvores para os algoritmos"
   (list board heuristica custo depth parent)
 )
 
 
-;;;;; getters ;;;;;
+;;;;;;;;;;;;;;; getters ;;;;;;;;;;;;;;;
 
 ;; Test: (get-node-state (teste))
 ;; Result: ((8 8 8 8 8 8) (8 8 8 8 8 8))
@@ -23,7 +23,7 @@
 ;; Teste: (get-node-heuristic (teste))
 ;; Result: heuristica-default
 (defun get-node-heuristic (node)
-  "Retorna a heuristica que é usada para calcular o custo do no"
+  "Retorna a heuristica que e usada para calcular o custo do no"
   (second node)
 )
 
@@ -48,15 +48,16 @@
   (fifth node)
 )
 
-;; Test: (node-solutionop (teste))
+;; Test: (node-solutionp (teste))
 ;; Result: nil
-(defun node-solutionop (node) 
+(defun node-solutionp (node) 
   "Verifica se o {node} e um no solucao"
   (cond ((board-emptyp (get-node-state node))))
 )
 
 
-;;;;; Funções auxiliares aos algos ;;;;;
+;;;;;;;;;;;;;;; Funcoes auxiliares aos algos ;;;;;;;;;;;;;;;
+
 (defun shortest-cost-sort-compare (a b)
   "Funcao de comparacao de custo mais baixo para o sort"
   (< (get-node-cost a) (get-node-cost b))
@@ -74,13 +75,13 @@
           (t (get-node-in-abertos board (rest abertos)))))
 )
 
-;; teste: (sucessores (teste3) (list (teste3)))
+;; teste: (sucessores-a* (teste3) (list (teste3)))
 ;; result: (((((0 0 0 0 0 3) (1 1 1 1 5 1)) heuristica-default 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 0 3) (0 0 0 0 0 1)) heuristica-default 11 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) (((8 0 0 0 1 0) (0 0 0 0 4 0)) heuristica-default 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL))) 3)
 ;; returns: (novaListaAbertos numNodesGerados)
-(defun sucessores (node abertos isFirstCall &optional (sucs '()) (rowIndex 0) (cellIndex 0))
+(defun sucessores-a* (node abertos isFirstCall &optional (sucs '()) (rowIndex 0) (cellIndex 0))
   "Percorre as posicoes todas do estado do {node} e gera os seus nos sucessores"
   (cond ((AND (= rowIndex 0) (= cellIndex 0) (not isFirstCall)) (build-end-sucs-list sucs abertos)) ; deu a volta toda
-        (t (let* ((result-sucs (sucessores-aux rowIndex cellIndex node abertos)) ; Devolve (listaAbertos sucessor)
+        (t (let* ((result-sucs (sucessores-aux-a* rowIndex cellIndex node abertos)) ; Devolve (listaAbertos sucessor)
 
                  (nextRow (get-next-row rowIndex cellIndex))
 
@@ -89,21 +90,20 @@
                  (newSucs (cond ((null (first result-sucs)) sucs)
                                 (t (append sucs (list (first result-sucs)))))))
 
-             (sucessores node (list (first result-sucs)) nil newSucs nextRow nextCell))))
+             (sucessores-a* node (list (first result-sucs)) nil newSucs nextRow nextCell))))
 )
 
 (defun build-end-sucs-list (sucs abertos)
-  "Constrói a lista retornada no final da função sucessores"
+  "Constroi a lista retornada no final da funcaoo sucessores-a*"
   (cond ((OR (null abertos) (null (first abertos))) (list sucs (list-length sucs)))
         (t (list (append sucs abertos) (list-length sucs)))) 
 )
 
-;; teste: (sucessores-aux 0 0 (teste3) '())
+;; teste: (sucessores-aux-a* 0 0 (teste3) '())
 ;; result: ((((0 0 0 0 0 3) (1 1 1 1 5 1)) heuristica-default 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) 0)
 ;; returns: (listaAbertos numNodesGerados) 
-(defun sucessores-aux (rowIndex cellIndex parentNode abertos)
-  "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no,
-   gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
+(defun sucessores-aux-a* (rowIndex cellIndex parentNode abertos)
+  "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no, gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
   (let ((board (get-node-state parentNode)))
     
     (cond ((is-move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
@@ -141,11 +141,58 @@
     (t (cons (first list) (replace-nth-in-list (rest list) (- n 1) elem))))
 )
 
-;;;;; HEURISTICAS ;;;;;
+(defun no-existe-fechadosp(no fechados)
+  (cond
+    ((null fechados) nil)
+    (t (eval (cons 'or (mapcar #'(lambda (nof)
+                                    (equal (get-node-state no) (get-node-state nof))) fechados))))
+  )
+)
+
+
+(defun sucessores(no alg pmax)
+    (cond 
+        ((and (equal alg 'dfs) (>= (get-node-depth no) pmax) ) nil)
+        (t
+            (mapcar #'(lambda (board) (create-node board (1+ (get-node-depth no)) no))
+                    (append (sucessores-aux 1 0 (get-node-state no)) (sucessores-aux 0 5 (get-node-state no))))
+        )
+    )
+)
+
+(defun sucessores-aux(rowIndex cellIndex board &aux (nextCell (get-next-cellV1 rowIndex cellIndex)))
+    (cond 
+        ( (null nextCell) (list (allocate-pieces rowIndex cellIndex board) ))
+        ( (not (is-move-validp rowIndex cellIndex board)) (sucessores-aux rowIndex nextCell board ) )
+        ( (columnsValid rowIndex cellIndex) 
+            (append (sucessores-aux rowIndex nextCell board) (list (allocate-pieces rowIndex cellIndex board) ))
+        )
+    )
+)
+
+(defun columnsValid(row column)
+  (cond 
+        ((and (= row 0) (> column 0) (<= column 5)) t )
+        ((and (= row 1) (< column 5) (>= column 0)) t )
+        (t nil)
+  )
+)
+
+(defun get-next-cellV1 (rowIndex cellIndex)
+  "Calcula e retorna o index da proxima coluna com base no index da coluna e linha atual"
+  (cond 
+    ((eq nil cellIndex) nil)
+    ((AND (> cellIndex 0) (= rowIndex 0) ) (- cellIndex 1))
+    ((AND (< cellIndex 5) (= rowIndex 1) ) (1+ cellIndex))
+    (t nil)
+  )
+)
+
+;;;;;;;;;;;;;;; HEURISTICAS ;;;;;;;;;;;;;;;
 
 ;; verifica qual a heuristica a usar e chama-a com os respetivos argumentos
 (defun call-heuristic (heuristica board parentNode)
-  "Como as heuristicas têm argumentos diferentes, esta função vê qual é a heuristica que o node está a usar e chama a respetiva função com os argumentso corretos"
+  "Como as heuristicas tem argumentos diferentes, esta funcao ve qual a heuristica que o node esta a usar e chama a respetiva funcao com os argumentos corretos"
   (cond ((string-equal heuristica 'heuristica-default) (heuristica-default board parentNode))
         (t (heuristica-extra board 0 0 0 t)))
 )
@@ -159,13 +206,13 @@
 ;; teste: (board-value (get-node-state (teste)))
 ;; result: 96
 (defun board-value (board) 
-  "Função auxiliar à heuristica default. Calcula o valor total (soma do valor de cada posicao) do tabuleiro recebido"
+  "Funcao auxiliar a heuristica default. Calcula o valor total (soma do valor de cada posicao) do tabuleiro recebido"
   (+ (apply '+ (first board)) (apply '+ (second board)))
 )
 
 
 (defun heuristica-extra (board numJogadasPossiveis rowIndex cellIndex &optional (isFirstCall nil))
-  "Calcula o número de jogadas validas no tabuleiro"
+  "Calcula o numero de jogadas validas no tabuleiro"
   (cond ((AND (not isFirstCall) (= rowIndex 0) (= cellIndex 0)) numJogadasPossiveis)
         (t (let* ((nextRow (get-next-row rowIndex cellIndex))
 
@@ -175,7 +222,8 @@
                    (t (heuristica-extra board numJogadasPossiveis nextRow nextCell))))))
 )
 
-;;;;; Algos ;;;;;
+;;;;;;;;;;;;;;; Algos ;;;;;;;;;;;;;;;
+
 ;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
 (defun a* (starter-node &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
   "Algoritmo de procura em espaco de estados A*"
@@ -183,8 +231,8 @@
         (t 
            (let ((currNode (first abertos)))
              
-             ; nao vale a pena gerar os sucessores se este for no solução
-             (cond ((node-solutionop currNode) (list nodes-gerados
+             ; nao vale a pena gerar os sucessores se este for no solucao
+             (cond ((node-solutionp currNode) (list nodes-gerados
                                                      nodes-expandidos
                                                      (penetrancia (get-node-depth currNode) nodes-gerados)
                                                      (fator-ramificacao (get-node-depth currNode) nodes-gerados)
@@ -193,7 +241,7 @@
                    ; nao e solucao, vamos continuar
                    (t (let* ((newFechados (append fechados (list currNode)))
                   
-                             (sucsGerados (sucessores currNode (rest abertos) t))
+                             (sucsGerados (sucessores-a* currNode (rest abertos) t))
 
                              (newAbertos (sort (first sucsGerados) 'shortest-cost-sort-compare)))
 
@@ -202,6 +250,45 @@
        )
   )
 )
+
+;; procura em largura - BFS
+;; teste: (bfs (no-teste) 
+;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 (((0 0 0 0 1 1) (0 0 0 0 0 0)) 8 (((0 0 0 1 1 1) (0 0 0 0 0 0)) 7 (((0 0 1 1 1 1) (0 0 0 0 0 0)) 6 (((0 0 1 1 1 1) (1 0 0 0 0 0)) 5 (((0 0 1 1 1 1) (1 1 0 0 0 0)) 4 (((0 0 1 1 1 1) (1 1 1 0 0 0)) 3 (((0 0 1 1 1 1) (1 1 1 1 0 0)) 2 (((5 0 1 1 1 1) (0 0 0 0 0 0)) 1 (((5 0 0 0 0 0) (0 0 0 0 0 5)) 0 NIL)))))))))))
+;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
+(defun bfs (no &optional (abertos (list no)) (fechados nil) (nos-gerados 1) (nos-expandidos 1))
+  
+  (let ((noAtual (first abertos))) 
+    (cond 
+        ((null abertos) nil)
+
+        ((node-solutionp noAtual) (list nos-gerados
+                                        nos-expandidos
+                                        (penetrancia (get-node-depth noAtual) nos-gerados)
+                                        1;(fator-ramificacao (get-node-depth noAtual) nos-gerados) - fator de ramifiï¿½ï¿½o tï¿½ a demorar de colhï¿½es
+                                        noAtual))
+
+        ((no-existe-fechadosp noAtual fechados) (bfs nil (rest abertos) fechados))
+
+        (t (bfs nil (append (rest abertos) (sucessores noAtual 'bfs nil)) (cons noAtual fechados))) 
+    )
+  )
+)
+
+;; procura em profundidade DFS
+;; teste: (dfs (no-teste) 
+;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 (((0 0 0 0 1 1) (0 0 0 0 0 0)) 8 (((0 0 0 1 1 1) (0 0 0 0 0 0)) 7 (((0 0 1 1 1 1) (0 0 0 0 0 0)) 6 (((0 0 1 1 1 1) (1 0 0 0 0 0)) 5 (((0 0 1 1 1 1) (1 1 0 0 0 0)) 4 (((0 0 1 1 1 1) (1 1 1 0 0 0)) 3 (((0 0 1 1 1 1) (1 1 1 1 0 0)) 2 (((5 0 1 1 1 1) (0 0 0 0 0 0)) 1 (((5 0 0 0 0 0) (0 0 0 0 0 5)) 0 NIL)))))))))))
+(defun dfs (no &optional(abertos (list no)) (fechados nil))
+  (let ((noAtual (first abertos))) 
+    (cond 
+        ((null abertos) nil)
+        ((node-solutionp noAtual) noAtual)
+        ((no-existe-fechadosp noAtual fechados) (dfs nil (rest abertos) fechados))
+        (t (dfs nil (append (rest abertos) (sucessores noAtual 'dfs 10)) (cons noAtual fechados))) 
+    )
+  )
+)
+
+
 
 ;;;;; Avaliacao de eficiecia ;;;;;
 ;; penetrancia

@@ -1,5 +1,5 @@
 ;;;; projeto.lisp
-;;;; Funções de interção com o utilizador, entrada e saíde de dados e misc
+;;;; Funcoeses de interaco com o utilizador, entrada e saida de dados e misc
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
@@ -49,9 +49,14 @@
   (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 'heuristica-default 0)
 )
 
+(defun no-teste ()
+  "Define um no teste do problema da vasilhas em que A=2, B=2, profundidade=0 e pai=NIL"
+  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) nil 0 0)
+)
+
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
 (defun start-game() 
-  "Funcao de nome bonito para começar o jogo. Carrega os ficheiros e chama o menu pricipal"
+  "Funcao de nome bonito para comecar o jogo. Carrega os ficheiros e chama o menu pricipal"
   (progn 
     (load-depedencies)
     (start-menu (read-problemas))
@@ -59,7 +64,7 @@
 )
 
 (defun get-curr-dir ()
-  "Funcao que obter um caminho que é usado para carregar os .lisp e .dat"
+  "Funcao que obter um caminho que e usado para carregar os .lisp e .dat"
   (string "C:/Users/Tiago/Documents/ips/IA/projeto/parte 1")
 )
 
@@ -79,7 +84,7 @@
 
 ;;;;;;;;;; USER INTERACTION ;;;;;;;;;; 
 (defun start-menu (problemas)
-  "Funcao que mostra o menu inicial do jogo e obtem respota do utilizador (para começar o sair)"
+  "Funcao que mostra o menu inicial do jogo e obtem respota do utilizador (para comecar ou sair)"
   (progn
     (format t "~% ~% ~%Bem vindo ao melhor jogo de sempre meu caro! ~%
              1 - Jogar
@@ -88,7 +93,7 @@
       (cond ((= answer 1) (select-problema problemas))
             ((= answer 2) (format t "Oh :( ~% ~%"))
             (t (progn 
-                 (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
+                 (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
                  (start-menu problemas)
             ))
       )
@@ -105,7 +110,7 @@
         (maxAnswer (list-length problemas)))
 
       (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
-               (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
+               (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
                (select-problema problemas))
             (t (select-algo (nth (- answer 1) problemas)))))
   )
@@ -133,7 +138,7 @@
 
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 3)) 
                (progn
-                 (format t "~% ~% >> Respota inválida, vamos tentar outra vez  << ~% ~%")
+                 (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
                  (select-algo board)
                ))
             (t (eval-algo board (get-algo-name answer)))))
@@ -141,20 +146,20 @@
 )
 
 (defun build-algo-options(board)
-  "Função que constrói o menu de escolha do algoritmo de procura"
-  (format t " > Escolha um algoritmo para aplicar na resolução do problema: ~%   ~A ~% 1 - BFS ~% 2 - DFS ~% 3 - A* ~% ~%" board)
+  "Funï¿½ï¿½o que constrï¿½i o menu de escolha do algoritmo de procura"
+  (format t " > Escolha um algoritmo para aplicar na resolucao do problema: ~%   ~A ~% 1 - BFS ~% 2 - DFS ~% 3 - A* ~% ~%" board)
 )
 
 (defun get-dfs-depth() 
   "Funcao pede a profundidade maxima do dfs ao utilizador"
   (progn 
-    (format t " > Introduza a profundidade máximo do algortmo ~%")
+    (format t " > Introduza a profundidade maximo do algortmo ~%")
 
     (let ((answer (read)))
 
       (cond ((OR (not (numberp answer)) (< answer 1))
                (progn 
-                 (format t "~% ~% >> Tem que ser número positivo, vamos tentar outra vez << ~% ~%")
+                 (format t "~% ~% >> Tem que ser numero positivo, vamos tentar outra vez << ~% ~%")
                  (get-dfs-depth)
                ))
             (t answer)))
@@ -189,7 +194,7 @@
 )
 
 (defun eval-algo (board algo)  
-  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, então pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo, senão inicia-se logo"
+  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, entao pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo, senï¿½o inicia-se logo"
   (cond ((string-equal algo 'dfs) (init-algo board 'dfs nil (get-dfs-depth)))
         ((string-equal algo 'a*) (init-algo board 'a* (get-heuristica)))
         (t (init-algo board algo)))
@@ -206,7 +211,7 @@
 
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2))
                (progn 
-                 (format t "~% ~% >> Resposta inválida, vamos tentar outra vez << ~% ~%")
+                 (format t "~% ~% >> Resposta invalida, vamos tentar outra vez << ~% ~%")
                  (get-heuristica)
                ))
             (t (cond ((= answer 1) 'heuristica-default)
@@ -229,12 +234,12 @@
 (defun format-results (results output algo depth board heuristica runtime)
   "Funcao que formata os resultados (results) do algoritmo para o {output} especificado (t > consola, filestream > ficheiro)"
   (progn 
-    ;; por questões de legibilidade humana, as linhas tão em formats diferentes
+    ;; por questoes de legibilidade humana, as linhas estao em formats diferentes
     ;; caracteristicas
-    (format output "> Características: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
+    (format output "> Caracteristicas: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
              algo heuristica depth board)
     ;; resultados
-    (format output "> Resultados: ~% - Nós gerados: ~d ~% - Nós expandidos: ~d ~% - Penetrância: ~d ~% - Fator de ramificação: ~d ~% - Tempo de execução: ~d segundo(s) ~% - Profundidade da solução: ~d ~%"
+    (format output "> Resultados: ~% - Nos gerados: ~d ~% - Nos expandidos: ~d ~% - Penetrï¿½ncia: ~d ~% - Fator de ramificacao: ~d ~% - Tempo de execucao: ~d segundo(s) ~% - Profundidade da solucao: ~d ~%"
             (first results) (second results) (third results) (fourth results) runtime (get-node-depth (fifth results)))
     (get-solucao (fifth results) output)
   )
@@ -243,7 +248,7 @@
 (defun get-solucao (node output)
   "Funcao que faz o output da solucao. Usa \"get-caminho-solucao\" para mostrar o caminho solucao"
   (progn 
-    (format output " - Solução: ")
+    (format output " - Solucao: ")
     (get-caminho-solucao node output)
     (format output "~% ~% --------------------------------------------- ~% ~%")
   )
@@ -261,7 +266,7 @@
 
 ;;;;;;;;;; PROBLEMAS INPUT ;;;;;;;;;; 
 (defun read-problemas ()
-  "Abre o ficheiro problemas.dat existente na (get-curr-dir) e chama as funções read-problemas-aux e build-boards  para ler of ficheiro e construir os respetivos ficheiros. Lança error se não encontrar o ficheiro"
+  "Abre o ficheiro problemas.dat existente na (get-curr-dir) e chama as funcoes read-problemas-aux e build-boards  para ler of ficheiro e construir os respetivos ficheiros. Lanaa error se nao encontrar o ficheiro"
   (with-open-file (file 
                    (concatenate 'string (get-curr-dir) "/problemas.dat")
                    :direction :input
@@ -270,7 +275,7 @@
 )
 
 (defun read-problemas-aux(input &optional (output))
-  "Percorre o ficheiro recebido (input) linha a linha recusrivamente e adiciona-as ao output. No final, retorna o output, que é uma lista cujos elementos são as várias linhas do ficheiro"
+  "Percorre o ficheiro recebido (input) linha a linha recusrivamente e adiciona-as ao output. No final, retorna o output, que e uma lista cujos elementos sso as varias linhas do ficheiro"
   (let ((line (read-line input nil)))
     (cond ((not (null line))
               (read-problemas-aux input (append output (list line))))
@@ -278,13 +283,13 @@
 )
 
 (defun build-boards(stringBoards &optional (boards))
-  "Recebe a lista retornada em read-problemas-aux e percorre-a recursivamente, criando listas a partir de cada elemento de {stringBoards}, que são strings, utilizando a função build-board-aux. No final retorna uma lista de lsitas com os vários boards lidos do ficheiro."
+  "Recebe a lista retornada em read-problemas-aux e percorre-a recursivamente, criando listas a partir de cada elemento de {stringBoards}, que sao strings, utilizando a funcao build-board-aux. No final retorna uma lista de lsitas com os varios boards lidos do ficheiro."
   (cond ((null stringBoards) boards)
         (t (build-boards (rest stringBoards) (append boards (list (build-board-aux (first stringBoards)))))))
 )
 
 (defun build-board-aux (stringBoard)
-  "Separar a string, que representa o tabuleiro recebida (stringBoard), em duas, sendo cada string uma linha do tabuleiro, e constrói uma nova lista com essas duas strings e retorna-a."
+  "Separar a string, que representa o tabuleiro recebida (stringBoard), em duas, sendo cada string uma linha do tabuleiro, e constroi uma nova lista com essas duas strings e retorna-a."
   (let ((board (split-sequence "," stringBoard)))
     (list (read-from-string (first board)) (read-from-string (second board))))
 )
