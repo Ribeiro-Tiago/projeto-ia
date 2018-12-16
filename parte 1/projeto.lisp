@@ -65,7 +65,8 @@
 
 (defun get-curr-dir ()
   "Funcao que obter um caminho que e usado para carregar os .lisp e .dat"
-  (string "/Users/tiago/Documents/projetoIA/projeto-ia/parte 1")
+  ; (string "/Users/tiago/Documents/projetoIA/projeto-ia/parte 1"); - Alves mac
+  (string "C:/Users/Tiago/Documents/ips/IA/projeto/parte 1"); - Ribeiro windows
 )
 
 (defun load-depedencies ()
@@ -146,7 +147,7 @@
 )
 
 (defun build-algo-options(board)
-  "Fun��o que constr�i o menu de escolha do algoritmo de procura"
+  "Funcao que constroi o menu de escolha do algoritmo de procura"
   (format t " > Escolha um algoritmo para aplicar na resolucao do problema: ~%   ~A ~% 1 - BFS ~% 2 - DFS ~% 3 - A* ~% ~%" board)
 )
 
@@ -192,7 +193,7 @@
 )
 
 (defun eval-algo (board algo)  
-  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, entao pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo, sen�o inicia-se logo"
+  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, entao pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo. Se for A* pedimos ao utilizador para escohler a heuristica, senao inicia-se logo"
   (cond ((string-equal algo 'dfs) (init-algo board 'dfs nil (get-dfs-depth)))
         ((string-equal algo 'a*) (init-algo board 'a* (get-heuristica)))
         ((string-equal algo 'bfs) (init-algo board 'bfs nil))
@@ -239,7 +240,7 @@
     (format output "> Caracteristicas: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
              algo heuristica depth board)
     ;; resultados
-    (format output "> Resultados: ~% - Nos gerados: ~d ~% - Nos expandidos: ~d ~% - Penetr�ncia: ~d ~% - Fator de ramificacao: ~d ~% - Tempo de execucao: ~d segundo(s) ~% - Profundidade da solucao: ~d ~%"
+    (format output "> Resultados: ~% - Nos gerados: ~d ~% - Nos expandidos: ~d ~% - Penetrancia: ~d ~% - Fator de ramificacao: ~d ~% - Tempo de execucao: ~d segundo(s) ~% - Profundidade da solucao: ~d ~%"
             (first results) (second results) (third results) (fourth results) runtime (get-node-depth (fifth results)))
     (get-solucao (fifth results) output)
   )

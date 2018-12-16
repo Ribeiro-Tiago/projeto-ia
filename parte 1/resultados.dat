@@ -460,3 +460,420 @@
  
  --------------------------------------------- 
  
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((8 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: ((0 0 0 0 0 0) (0 0 0 0 0 0)) 
+ - Nos expandidos: 1 
+ - Penetr�ncia: (((0 0 0 0 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 1 1 0) (0 0 0 0 0 0)) 1 (((0 0 1 1 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 1 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 1 1)) 1 (((8 0 0 0 0 3) (0 0 0 0 0 0)) 1 (((8 0 0 0 0 3) (0 0 0 0 0 1)) 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) NIL 0 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 
+ - Fator de ramificacao: 0 
+ - Tempo de execucao: 0.023 segundo(s) 
+ - Profundidade da solucao: NIL 
+ - Solucao: 
+    > NIL
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: ((0 0 0 0 0 0) (0 0 0 0 0 0)) 
+ - Nos expandidos: 1 
+ - Penetr�ncia: (((0 0 0 0 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 1 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 3) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 3) (0 0 0 0 0 1)) 1 (((0 0 0 0 0 2) (0 0 0 0 4 0)) NIL 0 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 
+ - Fator de ramificacao: 0 
+ - Tempo de execucao: 0.002 segundo(s) 
+ - Profundidade da solucao: NIL 
+ - Solucao: 
+    > NIL
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: A* 
+ - Heuristica: HEURISTICA-DEFAULT 
+ - Profundidade: 0 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 8 
+ - Nos expandidos: 5 
+ - Penetr�ncia: 0.625 
+ - Fator de ramificacao: 1.1609917 
+ - Tempo de execucao: 0.007 segundo(s) 
+ - Profundidade da solucao: 5 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 1))
+    > ((0 0 0 0 0 2) (0 0 0 0 4 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 0 
+ - Nos expandidos: 0 
+ - Penetr�ncia: 0 
+ - Fator de ramificacao: 1 
+ - Tempo de execucao: 0.003 segundo(s) 
+ - Profundidade da solucao: 0 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 0 
+ - Nos expandidos: 0 
+ - Penetr�ncia: 0 
+ - Fator de ramificacao: N/A 
+ - Tempo de execucao: 0.006 segundo(s) 
+ - Profundidade da solucao: 0 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 17 
+ - Nos expandidos: 5 
+ - Penetrancia: 0 
+ - Fator de ramificacao: N/A 
+ - Tempo de execucao: 0.003 segundo(s) 
+ - Profundidade da solucao: 0 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 17 
+ - Nos expandidos: 5 
+ - Penetrancia: 0.29411766 
+ - Fator de ramificacao: N/A 
+ - Tempo de execucao: 0.002 segundo(s) 
+ - Profundidade da solucao: 5 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 1))
+    > ((0 0 0 0 0 2) (0 0 0 0 4 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 17 
+ - Nos expandidos: 5 
+ - Penetrancia: 0.29411766 
+ - Fator de ramificacao: 1.4402046 
+ - Tempo de execucao: 0.007 segundo(s) 
+ - Profundidade da solucao: 5 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 1))
+    > ((0 0 0 0 0 2) (0 0 0 0 4 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: BFS 
+ - Heuristica: NIL 
+ - Profundidade: 0 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 67 
+ - Nos expandidos: 20 
+ - Penetrancia: 0.07462686 
+ - Fator de ramificacao: N/A 
+ - Tempo de execucao: 0.014 segundo(s) 
+ - Profundidade da solucao: 5 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 1))
+    > ((0 0 0 0 0 2) (0 0 0 0 4 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: BFS 
+ - Heuristica: NIL 
+ - Profundidade: 0 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 67 
+ - Nos expandidos: 20 
+ - Penetrancia: 0.07462686 
+ - Fator de ramificacao: 2.0375252 
+ - Tempo de execucao: 0.017 segundo(s) 
+ - Profundidade da solucao: 5 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 1))
+    > ((0 0 0 0 0 2) (0 0 0 0 4 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: BFS 
+ - Heuristica: NIL 
+ - Profundidade: 0 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 67 
+ - Nos expandidos: 20 
+ - Penetrancia: 0.07462686 
+ - Fator de ramificacao: 2.0375252 
+ - Tempo de execucao: 0.023 segundo(s) 
+ - Profundidade da solucao: 5 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 1))
+    > ((0 0 0 0 0 2) (0 0 0 0 4 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 17 
+ - Nos expandidos: 5 
+ - Penetrancia: 0.29411766 
+ - Fator de ramificacao: 1.4402046 
+ - Tempo de execucao: 0.008 segundo(s) 
+ - Profundidade da solucao: 5 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 3) (0 0 0 0 0 1))
+    > ((0 0 0 0 0 2) (0 0 0 0 4 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((2 2 2 2 2 2) (2 2 2 2 2 2)) 
+ 
+> Resultados: 
+ - Nos gerados: 142 
+ - Nos expandidos: 20 
+ - Penetrancia: 0.14084508 
+ - Fator de ramificacao: 1.1646233 
+ - Tempo de execucao: 0.12 segundo(s) 
+ - Profundidade da solucao: 20 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 2 0) (0 0 0 0 0 0))
+    > ((0 0 1 0 2 0) (0 0 0 0 0 0))
+    > ((0 0 0 2 2 0) (0 0 0 0 0 0))
+    > ((0 1 0 2 2 0) (0 0 0 0 0 0))
+    > ((0 0 2 2 2 0) (0 0 0 0 0 0))
+    > ((0 0 2 2 2 0) (1 0 0 0 0 0))
+    > ((3 0 2 2 2 0) (0 0 0 0 0 0))
+    > ((2 2 2 2 2 0) (0 0 0 0 0 0))
+    > ((2 2 2 2 2 0) (0 1 0 0 0 0))
+    > ((2 2 2 2 2 0) (2 0 0 0 0 0))
+    > ((2 2 2 2 2 0) (2 0 1 0 0 0))
+    > ((2 2 2 2 2 0) (2 2 0 0 0 0))
+    > ((2 2 2 2 2 0) (2 2 0 1 0 0))
+    > ((2 2 2 2 2 0) (2 2 2 0 0 0))
+    > ((2 2 2 2 2 0) (2 2 2 0 1 0))
+    > ((2 2 2 2 2 0) (2 2 2 2 0 0))
+    > ((2 2 2 2 2 0) (2 2 2 2 0 1))
+    > ((2 2 2 2 2 0) (2 2 2 2 2 0))
+    > ((2 2 2 2 2 2) (2 2 2 2 2 2))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: A* 
+ - Heuristica: HEURISTICA-DEFAULT 
+ - Profundidade: 0 
+ - Problema: ((2 2 2 2 2 2) (2 2 2 2 2 2)) 
+ 
+> Resultados: 
+ - Nos gerados: 75 
+ - Nos expandidos: 15 
+ - Penetrancia: 0.2 
+ - Fator de ramificacao: 1.1845436 
+ - Tempo de execucao: 0.054 segundo(s) 
+ - Profundidade da solucao: 15 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 1 0 0 0 0) (0 0 0 0 0 0))
+    > ((1 1 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 3 0 0 0) (0 0 0 0 0 0))
+    > ((1 0 3 0 0 0) (0 0 0 0 0 0))
+    > ((0 3 3 0 0 0) (0 0 0 0 0 0))
+    > ((0 2 2 3 0 0) (0 0 0 0 0 0))
+    > ((0 2 2 2 2 0) (0 0 0 0 0 0))
+    > ((0 2 2 2 2 0) (0 0 0 0 1 0))
+    > ((0 2 2 2 2 0) (0 0 0 0 1 2))
+    > ((0 2 2 2 2 0) (0 0 0 3 0 1))
+    > ((0 2 2 2 2 0) (0 0 0 3 3 0))
+    > ((0 2 2 2 2 0) (0 0 3 2 2 0))
+    > ((0 2 2 2 2 0) (0 2 2 2 2 0))
+    > ((0 2 2 2 2 2) (0 2 2 2 2 2))
+    > ((2 2 2 2 2 2) (2 2 2 2 2 2))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((0 3 0 3 0 3) (3 0 3 0 3 0)) 
+ 
+> Resultados: 
+ - Nos gerados: 93 
+ - Nos expandidos: 17 
+ - Penetrancia: 0.1827957 
+ - Fator de ramificacao: 1.1706047 
+ - Tempo de execucao: 0.074 segundo(s) 
+ - Profundidade da solucao: 17 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 1 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 4) (0 0 0 0 0 0))
+    > ((0 0 1 0 0 4) (0 0 0 0 0 0))
+    > ((0 1 1 0 0 4) (0 0 0 0 0 0))
+    > ((0 0 0 3 0 4) (0 0 0 0 0 0))
+    > ((1 0 0 3 0 4) (0 0 0 0 0 0))
+    > ((0 3 0 3 0 4) (0 0 0 0 0 0))
+    > ((0 3 0 3 0 4) (0 1 0 0 0 0))
+    > ((0 3 0 3 0 4) (0 1 1 0 0 0))
+    > ((0 3 0 3 0 4) (3 0 0 0 0 0))
+    > ((0 3 0 3 0 4) (3 0 0 1 0 0))
+    > ((0 3 0 3 0 4) (3 0 0 1 1 0))
+    > ((0 3 0 3 0 4) (3 0 3 0 0 0))
+    > ((0 3 0 3 0 4) (3 0 3 0 0 1))
+    > ((0 3 0 3 0 3) (3 0 3 0 3 0))
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((1 2 3 4 5 6) (6 5 4 3 2 1)) 
+ 
+> Resultados: 
+ - Nos gerados: 329 
+ - Nos expandidos: 42 
+ - Penetrancia: 0.12765958 
+ - Fator de ramificacao: 1.0800438 
+ - Tempo de execucao: 0.535 segundo(s) 
+ - Profundidade da solucao: 42 
+ - Solucao: 
+    > ((0 0 0 0 0 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 1 1 1 0) (0 0 0 0 0 0))
+    > ((0 1 1 1 1 0) (0 0 0 0 0 0))
+    > ((1 1 1 1 1 0) (0 0 0 0 0 0))
+    > ((0 0 0 0 0 6) (0 0 0 0 0 0))
+    > ((0 0 0 1 0 6) (0 0 0 0 0 0))
+    > ((0 0 1 1 0 6) (0 0 0 0 0 0))
+    > ((0 1 1 1 0 6) (0 0 0 0 0 0))
+    > ((1 1 1 1 0 6) (0 0 0 0 0 0))
+    > ((0 0 0 0 5 6) (0 0 0 0 0 0))
+    > ((0 0 1 0 5 6) (0 0 0 0 0 0))
+    > ((0 1 1 0 5 6) (0 0 0 0 0 0))
+    > ((1 1 1 0 5 6) (0 0 0 0 0 0))
+    > ((0 0 0 4 5 6) (0 0 0 0 0 0))
+    > ((0 1 0 4 5 6) (0 0 0 0 0 0))
+    > ((1 1 0 4 5 6) (0 0 0 0 0 0))
+    > ((0 0 3 4 5 6) (0 0 0 0 0 0))
+    > ((1 0 3 4 5 6) (0 0 0 0 0 0))
+    > ((0 2 3 4 5 6) (0 0 0 0 0 0))
+    > ((1 2 3 4 5 6) (0 0 0 0 0 0))
+    > ((1 2 3 4 5 6) (0 1 0 0 0 0))
+    > ((1 2 3 4 5 6) (0 1 1 0 0 0))
+    > ((1 2 3 4 5 6) (0 1 1 1 0 0))
+    > ((1 2 3 4 5 6) (0 1 1 1 1 0))
+    > ((1 2 3 4 5 6) (0 1 1 1 1 1))
+    > ((1 2 3 4 5 6) (6 0 0 0 0 0))
+    > ((1 2 3 4 5 6) (6 0 1 0 0 0))
+    > ((1 2 3 4 5 6) (6 0 1 1 0 0))
+    > ((1 2 3 4 5 6) (6 0 1 1 1 0))
+    > ((1 2 3 4 5 6) (6 0 1 1 1 1))
+    > ((1 2 3 4 5 6) (6 5 0 0 0 0))
+    > ((1 2 3 4 5 6) (6 5 0 1 0 0))
+    > ((1 2 3 4 5 6) (6 5 0 1 1 0))
+    > ((1 2 3 4 5 6) (6 5 0 1 1 1))
+    > ((1 2 3 4 5 6) (6 5 4 0 0 0))
+    > ((1 2 3 4 5 6) (6 5 4 0 1 0))
+    > ((1 2 3 4 5 6) (6 5 4 0 1 1))
+    > ((1 2 3 4 5 6) (6 5 4 3 0 0))
+    > ((1 2 3 4 5 6) (6 5 4 3 0 1))
+    > ((1 2 3 4 5 6) (6 5 4 3 2 0))
+    > ((1 2 3 4 5 6) (6 5 4 3 2 1))
+ 
+ --------------------------------------------- 
+ 
