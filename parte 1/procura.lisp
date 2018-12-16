@@ -105,23 +105,14 @@
 (defun sucessores-aux-a* (rowIndex cellIndex parentNode abertos)
   "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no, gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
   (let ((board (get-node-state parentNode)))
-    
     (cond ((is-move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
-
         (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
-
                (depth (1+ (get-node-depth parentNode)))
-               
                (heuristic (get-node-heuristic parentNode))
-
                (value (+ (call-heuristic heuristic newBoard parentNode) depth))
-
                (oldNode (get-node-in-abertos newBoard abertos))
-
                (newNode (create-node newBoard heuristic value depth parentNode)))
-
            (cond ((not (first oldNode)) (cons newNode '(0))) ; nao esta em abertos
-
                  (t (cond ((> value (get-node-cost (first oldNode))); esta em abertos, vamos comparar valores e substituir se no gerado for superior
                           (cons newNode (replace-nth-in-list abertos (second oldNode) (first oldNode))))))
            )
@@ -141,6 +132,8 @@
     (t (cons (first list) (replace-nth-in-list (rest list) (- n 1) elem))))
 )
 
+;; teste: (no-existe-fechadosp (no-teste) nil)
+;; result: T 
 (defun no-existe-fechadosp(no fechados)
   (cond
     ((null fechados) nil)
@@ -149,7 +142,9 @@
   )
 )
 
-
+;; sucessores
+;; teste: (sucessores (no-teste) 'bfs nil)
+;; result: ((((5 0 0 1 1 1) (0 0 0 0 0 0)) 1 (((5 0 0 0 0 0) (0 0 0 0 0 5)) HEURISTICA-DEFAULT 0 0 NIL) 0 NIL) (((0 0 0 0 0 0) (1 1 1 0 0 5)) 1 (((5 0 0 0 0 0) (0 0 0 0 0 5)) HEURISTICA-DEFAULT 0 0 NIL) 0 NIL))
 (defun sucessores(no alg pmax)
     (cond 
         ((and (equal alg 'dfs) (>= (get-node-depth no) pmax) ) nil)
@@ -159,7 +154,9 @@
         )
     )
 )
-
+;; teste:  (sucessores-aux 0 0 '((5 0 0 1 1 1) (0 0 0 0 0 0)))
+;; result: (((0 0 0 1 1 1) (1 1 1 0 0 0))) 
+;; returns: (listaSucessoroers listaSucessoroers) 
 (defun sucessores-aux(rowIndex cellIndex board &aux (nextCell (get-next-cellV1 rowIndex cellIndex)))
     (cond 
         ( (null nextCell) (list (allocate-pieces rowIndex cellIndex board) ))
@@ -169,7 +166,9 @@
         )
     )
 )
-
+;; teste: (columnsValid 0 0)
+;; result: nil
+;; returns: (bolean numNodesGerados) 
 (defun columnsValid(row column)
   (cond 
         ((and (= row 0) (> column 0) (<= column 5)) t )
@@ -177,7 +176,9 @@
         (t nil)
   )
 )
-
+;; teste: (sucessores-aux-a* 0 0 (teste3) '())
+;; result: ((((0 0 0 0 0 3) (1 1 1 1 5 1)) heuristica-default 13 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) 14 14 0 NIL)) 0)
+;; returns: (listaAbertos numNodesGerados) 
 (defun get-next-cellV1 (rowIndex cellIndex)
   "Calcula e retorna o index da proxima coluna com base no index da coluna e linha atual"
   (cond 
@@ -225,7 +226,7 @@
 ;;;;;;;;;;;;;;; Algos ;;;;;;;;;;;;;;;
 
 ;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
-(defun a* (starter-node &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
+(defun a* (starter-node depth &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
   "Algoritmo de procura em espaco de estados A*"
   (cond ((null abertos) nil)
         (t 
@@ -245,7 +246,7 @@
 
                              (newAbertos (sort (first sucsGerados) 'shortest-cost-sort-compare)))
 
-                    (a* (first newAbertos) newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (second sucsGerados))))))
+                    (a* (first newAbertos) depth newAbertos newFechados (1+ nodes-expandidos) (+ nodes-gerados (second sucsGerados))))))
            )
        )
   )
@@ -255,21 +256,16 @@
 ;; teste: (bfs (no-teste) 
 ;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 (((0 0 0 0 1 1) (0 0 0 0 0 0)) 8 (((0 0 0 1 1 1) (0 0 0 0 0 0)) 7 (((0 0 1 1 1 1) (0 0 0 0 0 0)) 6 (((0 0 1 1 1 1) (1 0 0 0 0 0)) 5 (((0 0 1 1 1 1) (1 1 0 0 0 0)) 4 (((0 0 1 1 1 1) (1 1 1 0 0 0)) 3 (((0 0 1 1 1 1) (1 1 1 1 0 0)) 2 (((5 0 1 1 1 1) (0 0 0 0 0 0)) 1 (((5 0 0 0 0 0) (0 0 0 0 0 5)) 0 NIL)))))))))))
 ;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
-(defun bfs (no &optional (abertos (list no)) (fechados nil) (nos-gerados 1) (nos-expandidos 1))
-  
+(defun bfs (no depth &optional (abertos (list no)) (fechados nil) (nos-gerados 1) (nos-expandidos 1))
   (let ((noAtual (first abertos))) 
     (cond 
         ((null abertos) nil)
-
-        ((node-solutionp noAtual) (list nos-gerados
+          ((node-solutionp noAtual) (list nos-gerados
                                         nos-expandidos
                                         (penetrancia (get-node-depth noAtual) nos-gerados)
                                         1;(fator-ramificacao (get-node-depth noAtual) nos-gerados) - fator de ramifi��o t� a demorar de colh�es
                                         noAtual))
-
-        ((no-existe-fechadosp noAtual fechados) (bfs nil (rest abertos) fechados))
-
-        (t (bfs nil (append (rest abertos) (sucessores noAtual 'bfs nil)) (cons noAtual fechados))) 
+        (t (bfs nil depth (append (cdr abertos) (remove-rep (sucessores (car abertos) 'bfs depth) abertos fechados ) ) (cons noAtual fechados))) 
     )
   )
 )
@@ -277,18 +273,27 @@
 ;; procura em profundidade DFS
 ;; teste: (dfs (no-teste) 
 ;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 (((0 0 0 0 1 1) (0 0 0 0 0 0)) 8 (((0 0 0 1 1 1) (0 0 0 0 0 0)) 7 (((0 0 1 1 1 1) (0 0 0 0 0 0)) 6 (((0 0 1 1 1 1) (1 0 0 0 0 0)) 5 (((0 0 1 1 1 1) (1 1 0 0 0 0)) 4 (((0 0 1 1 1 1) (1 1 1 0 0 0)) 3 (((0 0 1 1 1 1) (1 1 1 1 0 0)) 2 (((5 0 1 1 1 1) (0 0 0 0 0 0)) 1 (((5 0 0 0 0 0) (0 0 0 0 0 5)) 0 NIL)))))))))))
-(defun dfs (no &optional(abertos (list no)) (fechados nil))
+(defun dfs (no depth &optional(abertos (list no)) (fechados nil))
   (let ((noAtual (first abertos))) 
     (cond 
         ((null abertos) nil)
         ((node-solutionp noAtual) noAtual)
-        ((no-existe-fechadosp noAtual fechados) (dfs nil (rest abertos) fechados))
-        (t (dfs nil (append (rest abertos) (sucessores noAtual 'dfs 10)) (cons noAtual fechados))) 
+        ((no-existe-fechadosp noAtual fechados) (dfs nil depth (rest abertos) fechados))
+        (t (dfs nil depth (append (rest abertos) (remove-rep (sucessores noAtual 'dfs depth)  abertos fechados) ) (cons noAtual fechados))) 
     )
   )
 )
-
-
+;; procura em profundidade DFS
+;; teste: (remove-rep (no-teste) 
+;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 (((0 0 0 0 1 1) (0 0 0 0 0 0)) 8 (((0 0 0 1 1 1) (0 0 0 0 0 0)) 7 (((0 0 1 1 1 1) (0 0 0 0 0 0)) 6 (((0 0 1 1 1 1) (1 0 0 0 0 0)) 5 (((0 0 1 1 1 1) (1 1 0 0 0 0)) 4 (((0 0 1 1 1 1) (1 1 1 0 0 0)) 3 (((0 0 1 1 1 1) (1 1 1 1 0 0)) 2 (((5 0 1 1 1 1) (0 0 0 0 0 0)) 1 (((5 0 0 0 0 0) (0 0 0 0 0 5)) 0 NIL)))))))))))
+(defun remove-rep(sucessores abertos fechados)
+    (apply #'append  (mapcar #'(lambda (s) (cond 
+        ((no-existe-fechadosp s fechados)  nil)
+        ((no-existe-fechadosp s abertos)  nil)
+        (t (list s))
+    )  ) sucessores)
+    )
+)
 
 ;;;;; Avaliacao de eficiecia ;;;;;
 ;; penetrancia

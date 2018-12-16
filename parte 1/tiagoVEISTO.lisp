@@ -25,6 +25,13 @@
   '((0 0 0 0 0 2)
     (0 0 0 0 4 0))
 )
+(defun board-a ()
+  "Retorna o tabuleiro do problema a do enunciado"
+  '(
+      (8 0 0 0 0 2) 
+     (0 0 0 0 4 0)
+  )
+)
 
 
 (defun board-b ()
@@ -396,6 +403,15 @@
   )
 )
 
+(defun remove-rep(sucessores abertos fechados)
+    (apply #'append  (mapcar #'(lambda (s) (cond 
+        ((no-existep s fechados)  nil)
+        ((no-existep s abertos)  nil)
+        (t (list s))
+    )  ) sucessores)
+    )
+)
+
 ;;; Algoritmos
 ;; procura na largura
 ;; teste: (bfs (no-teste) 
@@ -404,20 +420,30 @@
     (cond 
         ((null abertos) nil)
         ((no-solucaop (car abertos)) (car abertos))
-        ((no-existep (car abertos) fechados) (bfs nil (cdr abertos) fechados))
-        (t (bfs nil (abertos-bfs (cdr abertos) (sucessores (car abertos) nil 'bfs nil)) (cons (car abertos) fechados))) 
+        ((no-existep (car abertos) fechados) (bfs nil (cdr abertos) (cons (car abertos) fechados)))
+        (t (bfs nil (abertos-bfs (cdr abertos) (remove-rep (sucessores (car abertos) nil 'bfs nil)  abertos fechados)) (cons (car abertos) fechados))) 
         )
     )
+
 
 ;;; Algoritmos
 ;; procura na largura
 ;; teste: (dfs (no-teste) 
 ;; resultado: (((0 0 0 0 0 0) (0 0 0 0 0 0)) 10 (((0 0 0 0 0 1) (0 0 0 0 0 0)) 9 ((# #) 8 (# 7 #))))
-(defun dfs (no &optional( abertos (list no)) (fechados nil) )
+;;(defun dfs (no &optional( abertos (list no)) (fechados nil) )
+;;    (cond 
+;;        ((null abertos) nil)
+;;        ((no-solucaop (car abertos)) (car abertos))
+;;        ((no-existep (car abertos) fechados) (dfs nil (cdr abertos) fechados))
+;;        (t (dfs nil (abertos-dfs (cdr abertos) (sucessores (car abertos) nil 'dfs 10)) (cons (car abertos) fechados))) 
+;;    )
+;;)
+(defun dfs (no pm &optional( abertos (list no)) (fechados nil) )
     (cond 
         ((null abertos) nil)
         ((no-solucaop (car abertos)) (car abertos))
-        ((no-existep (car abertos) fechados) (dfs nil (cdr abertos) fechados))
-        (t (dfs nil (abertos-dfs (cdr abertos) (sucessores (car abertos) nil 'dfs 10)) (cons (car abertos) fechados))) 
+        ((no-existep (car abertos) fechados) (dfs nil pm (cdr abertos) (cons (car abertos) fechados)))
+        ((equal nil (tes (sucessores (car abertos) nil 'dfs nil)  abertos fechados)) (dfs nil (cdr abertos) (cons (car abertos) fechados)))
+        (t (dfs nil pm (abertos-dfs (cdr abertos) (tes (sucessores (car abertos) nil 'dfs nil)  abertos fechados)) (cons (car abertos) fechados))) 
     )
 )

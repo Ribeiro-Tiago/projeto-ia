@@ -65,7 +65,7 @@
 
 (defun get-curr-dir ()
   "Funcao que obter um caminho que e usado para carregar os .lisp e .dat"
-  (string "C:/Users/Tiago/Documents/ips/IA/projeto/parte 1")
+  (string "/Users/tiago/Documents/projetoIA/projeto-ia/parte 1")
 )
 
 (defun load-depedencies ()
@@ -154,9 +154,7 @@
   "Funcao pede a profundidade maxima do dfs ao utilizador"
   (progn 
     (format t " > Introduza a profundidade maximo do algortmo ~%")
-
     (let ((answer (read)))
-
       (cond ((OR (not (numberp answer)) (< answer 1))
                (progn 
                  (format t "~% ~% >> Tem que ser numero positivo, vamos tentar outra vez << ~% ~%")
@@ -171,7 +169,7 @@
 (defun init-algo (board algo &optional (heuristica nil) (depth 0))
   "Funcao que aplica o algoritmo escolhido no problema escolhido e depois cria um ficheiro com os resultados (com recurso a funcao \"write-results-to-file\") e mostra na consola (com recurso a funcao \"format-results\")"
   (let* ((start-time (get-internal-real-time))
-         (results (funcall algo (create-node board heuristica 0)))
+         (results (funcall algo (create-node board heuristica 0) depth))
          (runtime (float (/ (- (get-internal-real-time) start-time) internal-time-units-per-second)))
          (path (concatenate 'string (get-curr-dir) "/resultados.dat")))
 
@@ -197,6 +195,8 @@
   "Avalia o algortimo escolhido. Se o escolhido foi o DFS, entao pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo, sen�o inicia-se logo"
   (cond ((string-equal algo 'dfs) (init-algo board 'dfs nil (get-dfs-depth)))
         ((string-equal algo 'a*) (init-algo board 'a* (get-heuristica)))
+        ((string-equal algo 'bfs) (init-algo board 'bfs nil))
+
         (t (init-algo board algo)))
 )
 
