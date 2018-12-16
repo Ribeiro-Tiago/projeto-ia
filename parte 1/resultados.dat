@@ -424,3 +424,39 @@
  
  --------------------------------------------- 
  
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 100 
+ - Problema: ((8 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: ((0 0 0 0 0 0) (0 0 0 0 0 0)) 
+ - Nos expandidos: 1 
+ - Penetr�ncia: (((0 0 0 0 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 1 1 0) (0 0 0 0 0 0)) 1 (((0 0 1 1 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 1 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 1 1)) 1 (((8 0 0 0 0 3) (0 0 0 0 0 0)) 1 (((8 0 0 0 0 3) (0 0 0 0 0 1)) 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) NIL 0 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 
+ - Fator de ramificacao: 0 
+ - Tempo de execucao: 0.018 segundo(s) 
+ - Profundidade da solucao: NIL 
+ - Solucao: 
+    > NIL
+ 
+ --------------------------------------------- 
+ 
+> Caracteristicas: 
+ - Algoritmo: DFS 
+ - Heuristica: NIL 
+ - Profundidade: 10 
+ - Problema: ((8 0 0 0 0 2) (0 0 0 0 4 0)) 
+ 
+> Resultados: 
+ - Nos gerados: ((0 0 0 0 0 0) (0 0 0 0 0 0)) 
+ - Nos expandidos: 1 
+ - Penetr�ncia: (((0 0 0 0 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 1 1 0) (0 0 0 0 0 0)) 1 (((0 0 1 1 1 0) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (0 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 0 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 0 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 0 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 0 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 1 0)) 1 (((0 0 0 0 0 4) (1 1 1 1 1 1)) 1 (((8 0 0 0 0 3) (0 0 0 0 0 0)) 1 (((8 0 0 0 0 3) (0 0 0 0 0 1)) 1 (((8 0 0 0 0 2) (0 0 0 0 4 0)) NIL 0 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 0 NIL) 
+ - Fator de ramificacao: 0 
+ - Tempo de execucao: 0.019 segundo(s) 
+ - Profundidade da solucao: NIL 
+ - Solucao: 
+    > NIL
+ 
+ --------------------------------------------- 
+ 

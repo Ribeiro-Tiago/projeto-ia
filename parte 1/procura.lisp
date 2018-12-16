@@ -260,6 +260,7 @@
   (let ((noAtual (first abertos))) 
     (cond 
         ((null abertos) nil)
+          ((no-existe-fechadosp noAtual fechados) (dfs nil depth (cdr abertos) fechados))
           ((node-solutionp noAtual) (list nos-gerados
                                         nos-expandidos
                                         (penetrancia (get-node-depth noAtual) nos-gerados)
@@ -278,8 +279,8 @@
     (cond 
         ((null abertos) nil)
         ((node-solutionp noAtual) noAtual)
-        ((no-existe-fechadosp noAtual fechados) (dfs nil depth (rest abertos) fechados))
-        (t (dfs nil depth (append (rest abertos) (remove-rep (sucessores noAtual 'dfs depth)  abertos fechados) ) (cons noAtual fechados))) 
+        ((no-existe-fechadosp noAtual fechados) (dfs nil depth (cdr abertos) fechados))
+        (t (dfs nil depth (append  (remove-rep (sucessores noAtual 'dfs depth)  abertos fechados) (cdr abertos) ) (cons noAtual fechados))) 
     )
   )
 )
