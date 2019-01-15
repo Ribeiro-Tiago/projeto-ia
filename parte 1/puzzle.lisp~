@@ -128,7 +128,7 @@
         )
 
     (cond
-      ((>= numPieces 0)
+      ((> numPieces 0)
          (allocate-pieces-aux
              (- numPieces 1)
              nextRow
