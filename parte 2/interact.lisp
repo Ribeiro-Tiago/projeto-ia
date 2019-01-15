@@ -59,13 +59,13 @@
   "Funcao de nome bonito para comecar o jogo. Carrega os ficheiros e chama o menu pricipal"
   (progn 
     (load-depedencies)
-    (start-menu (read-problemas))
+    (start-menu)
   )
 )
 
 (defun get-curr-dir ()
   "Funcao que obter um caminho que e usado para carregar os .lisp e .dat"
-  ; (string "/Users/tiago/Documents/projetoIA/projeto-ia/parte 1"); - Alves mac
+  ; (string "/Users/tiago/Documents/projetoIA/projeto-ia/parte 2"); - Alves mac
   (string "C:/Users/Tiago/Documents/ips/IA/projeto/parte 1"); - Ribeiro windows
 )
 
@@ -73,96 +73,79 @@
   "Funcao que carrega as dependencias do projeto" 
   (let ((path (get-curr-dir)))
     (progn
-      (compile-file (concatenate 'string path "/puzzle.lisp"))
-      (compile-file (concatenate 'string path "/procura.lisp"))
+      (compile-file (concatenate 'string path "/jogo.lisp"))
+      (compile-file (concatenate 'string path "/algoritmo.lisp"))
 
-      (load (concatenate 'string path "/puzzle.lisp"))
-      (load (concatenate 'string path "/procura.lisp"))
+      (load (concatenate 'string path "/jogo.lisp"))
+      (load (concatenate 'string path "/algoritmo.lisp"))
     )
   )
 )
 
 
 ;;;;;;;;;; USER INTERACTION ;;;;;;;;;; 
-(defun start-menu (problemas)
+(defun start-menu ()
   "Funcao que mostra o menu inicial do jogo e obtem respota do utilizador (para comecar ou sair)"
   (progn
-    (format t "~% ~% ~%Bem vindo ao melhor jogo de sempre meu caro! ~%
+    (format t "~% ~% ~%Bem vindo a versao dois do melhor jogo de sempre meu caro! ~%
              1 - Jogar
              2 - Sair ~%")
     (let ((answer (read)))
-      (cond ((= answer 1) (select-problema problemas))
+      (cond ((= answer 1) (select-game-mode))
             ((= answer 2) (format t "Oh :( ~% ~%"))
             (t (progn 
                  (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
-                 (start-menu problemas)
+                 (start-menu)
             ))
       )
     )
   )
 )
 
-(defun select-problema (problemas)
-  "Funcao que constroi o menu de problemas (com base na funcao build-problemas-menu-options) e permite o utilizador escohler um dos problemas"
+(defun select-game-mode ()
+  "Funcao que constroi o menu de escolha de modo de jogo"
   (progn
-    (build-problemas-menu-options problemas)
+    (format t "~%> Escolha modo do jogo ~%1 - Humano VS Máquina ~%2 - Máquina VS Máquina ~%")
 
-    (let ((answer (read))
-        (maxAnswer (list-length problemas)))
+    (let ((answer (read)))
 
-      (cond ((OR (not (numberp answer)) (< answer 0) (> answer maxAnswer)) 
+      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2)) 
                (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
-               (select-problema problemas))
-            (t (select-algo (nth (- answer 1) problemas)))))
+               (select-game-mode))
+            ((= answer 1) (get-first-player))
+            (t (get-max-timer))))
   )
 )
 
-(defun build-problemas-menu-options(problemas &optional (index 0))
-  "Funcao que constroi as opcoes do menu de problemas"
-  (cond ((null problemas) (format t "~% ~%"))
-        ((= index 0) 
-           (progn
-             (format t " > Escolha um problema")
-             (build-problemas-menu-options problemas (1+ index))
-           ))
-        (t (progn 
-             (print-board index (first problemas))
-             (build-problemas-menu-options (rest problemas) (1+ index)))))
-)
-
-(defun select-algo (board)
-  "Funcao que permite o utilizador escolher um algoritmo de procura para aplicar no problema escolhido anteriormente"
-  (progn 
-    (build-algo-options board)
-
+(defun get-first-player ()
+  "Funcao que permite o utilizador definir quem é o primeiro jogador"
+  (progn
+    (format t "~%> Quem começa o jogo? ~%1 - Humano ~%2 - Máquina ~%")
+    
     (let ((answer (read)))
-
-      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 3)) 
-               (progn
-                 (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
-                 (select-algo board)
-               ))
-            (t (eval-algo board (get-algo-name answer)))))
+      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2)) 
+               (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
+               (get-first-player))
+            (t (get-max-timer answer))))
   )
 )
 
-(defun build-algo-options(board)
-  "Funcao que constroi o menu de escolha do algoritmo de procura"
-  (format t " > Escolha um algoritmo para aplicar na resolucao do problema: ~%   ~A ~% 1 - BFS ~% 2 - DFS ~% 3 - A* ~% ~%" board)
-)
-
-(defun get-dfs-depth() 
-  "Funcao pede a profundidade maxima do dfs ao utilizador"
-  (progn 
-    (format t " > Introduza a profundidade maximo do algortmo ~%")
+(defun get-max-timer (&optional (firstPlayer 1))
+  "Funcao que permite o utilizador definir o tempo máximo de execução de cada jogada da máquina"
+  (progn
+    (format t "~%> Tempo máximo (em milisegundos) de cada jogada da máquina (entre 1000 e 5000)~%")
+    
     (let ((answer (read)))
-      (cond ((OR (not (numberp answer)) (< answer 1))
-               (progn 
-                 (format t "~% ~% >> Tem que ser numero positivo, vamos tentar outra vez << ~% ~%")
-                 (get-dfs-depth)
-               ))
-            (t answer)))
+      (cond ((OR (not (numberp answer)) (< answer 1000) (> answer 5000)) 
+               (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
+               (get-max-timer firstPlayer))
+
+            (t (start firstPlayer answer))))
   )
+)
+
+(defun start (firstPlayer maxTimer)
+  (list firstPlayer maxTimer)
 )
 
 ;;;;;;;;;; ALGORYTHM ;;;;;;;;;; 
@@ -185,40 +168,6 @@
   )
 )
 
-(defun get-algo-name (index)
-  "Funcao que retorna o nome do algoritmo com base no index inserido pelo user"
-  (cond ((= index 1) 'bfs)
-        ((= index 2) 'dfs)
-        (t 'a*))
-)
-
-(defun eval-algo (board algo)  
-  "Avalia o algortimo escolhido. Se o escolhido foi o DFS, entao pedimos ao utilizador a profundidade maximo do algoritmo e depois iniciamos o algoritmo. Se for A* pedimos ao utilizador para escohler a heuristica, senao inicia-se logo"
-  (cond ((string-equal algo 'dfs) (init-algo board 'dfs nil (get-dfs-depth)))
-        ((string-equal algo 'a*) (init-algo board 'a* (get-heuristica)))
-        ((string-equal algo 'bfs) (init-algo board 'bfs nil))
-
-        (t (init-algo board algo)))
-)
-
-(defun get-heuristica ()
-  "Funcao pede ao utilizador para escolher a heuristica a usar"
-  (progn 
-    (format t " > Escolha uma heuristica a usar: ~%")
-    (format t "1 - Heuristica default (fornecida no enunciado) ~%")
-    (format t "2 - Heuristica extra (criado pelo grupo) ~%")
-
-    (let ((answer (read)))
-
-      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2))
-               (progn 
-                 (format t "~% ~% >> Resposta invalida, vamos tentar outra vez << ~% ~%")
-                 (get-heuristica)
-               ))
-            (t (cond ((= answer 1) 'heuristica-default)
-                     (t 'heuristica-extra)))))
-  )
-)
 
 ;;;;;;;;;; FINAL OUTPUT ;;;;;;;;;; 
 
