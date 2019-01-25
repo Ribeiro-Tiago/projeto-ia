@@ -95,7 +95,7 @@
 (defun sucessores-aux (rowIndex cellIndex parentNode abertos)
   "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no, gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
   (let ((board (get-node-state parentNode)))
-    (cond ((is-move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
+    (cond ((move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
         (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
 
                (depth (1+ (get-node-depth parentNode)))
@@ -184,5 +184,9 @@
 
 (defun hash-node (no)
   "Funcao que converte o estado e as pecas dos jogadores de um no numa string para que possa ser usada como key na hash table de memoizacao"
-  (concatenate 'string (format nil "~S" (get-estado-no no)) (format nil "~S" (get-pecas-jogador1-no no)) (format nil "~S" (get-pecas-jogador2-no no)))
+  (concatenate 'string (to-string (get-estado-no no)) (to-string (get-pecas-jogador1-no no)) (to-string (get-pecas-jogador2-no no)))
+)
+
+(defun to-string (item)
+  (format nil "~S" item)
 )

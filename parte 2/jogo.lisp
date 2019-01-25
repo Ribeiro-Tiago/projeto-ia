@@ -143,14 +143,13 @@
           (t board)))
 )
 
-(defun is-move-validp (rowIndex cellIndex board)
+(defun move-validp (rowIndex cellIndex board)
   "Verifica se o valor da [rowIndex[cellIndex]] e 0. Se for 0 nao ha jogada a fazer entao e considerada invalida"
   (cond ((= (get-cell rowIndex cellIndex board) 0) nil)
         (t t))
 )
 
-(defun end-game (board)
-  "verifica se o tabuleiro está vazio. Se sim, retorna o vencedor, caso contrário retonra nil"
-  (cond ((board-emptyp board) (get-vencedor))
-        (t nil))
+(defun row-emptyp (rowIndex board)
+  "Verifica se a linha correspondente ao rowIndex está vazia ou não"
+  (= (apply '+ (nth rowIndex board)) 0)
 )
