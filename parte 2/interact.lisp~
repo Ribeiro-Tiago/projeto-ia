@@ -4,6 +4,15 @@
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
 ;;;; funcoes que criam starter nodes para testar os algos ;;;;
+(defun start-board () 
+  ;'((8 8 8 8 8 8) (8 8 8 8 8 8))
+  '((3 0 0 0 0 0) (0 0 0 0 0 3))
+)
+
+(defun start-board2 () 
+  '((1 0 0 0 0 0) (0 0 0 0 0 1))
+)
+
 (defun teste ()
   "Funcao que cria no inicial reference ao problema g para testar"
   (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 0)
@@ -117,6 +126,7 @@
   )
 )
 
+
 (defun get-first-player ()
   "Funcao que permite o utilizador definir quem é o primeiro jogador"
   (progn
@@ -127,11 +137,12 @@
                (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
                (get-first-player))
 
-            (t (get-max-timer answer t))))
+            (t (get-max-timer (1- answer) t))))
   )
 )
 
-(defun get-max-timer (&optional (firstPlayer 1) (hasHuman nil)
+
+(defun get-max-timer (&optional (firstPlayer 0) (hasHuman nil) (board (start-board)) )
   "Funcao que permite o utilizador definir o tempo máximo de execução de cada jogada da máquina"
   (progn
     (format t "~%> Tempo máximo (em milisegundos) de cada jogada da máquina (entre 1000 e 5000)~%")
@@ -139,14 +150,73 @@
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1000) (> answer 5000)) 
                (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
-               (get-max-timer firstPlayer))
+               (get-max-timer firstPlayer hasHuman board))
 
-            (t (start firstPlayer answer hasHuman))))
+            (t (start firstPlayer answer hasHuman board))))
   )
 )
 
-(defun start (firstPlayer maxTimer hasHuman)
-  (list firstPlayer maxTimer)
+(defun start (firstPlayer maxTimer hasHuman board)
+  "Comeca o jogo. Mosta mensagem de inicio e pede a primeira jogada"
+  (progn 
+    (format t "~% ~% »» Muito bem, vamos começar o jogo! «« ~% ~% > Tabuleiro Inicial: ~%~%")
+    (make-play firstPlayer maxTimer hasHuman board))
+)
+
+(defun make-play (player maxTimer hasHuman board)
+  "Se o jogador poder jogar (i.e.: o lado dele tiver peças, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
+  (let ((newPlayer (switch-player player)))
+
+    ;; não podemos fazer jogada, passamos a vez
+    (cond ((row-emptyp player board)
+                   (progn 
+                     (pass-play board)
+                     (make-play newPlayer maxTimer hasHuman board)))
+
+          ;; podes fazer jogada, é isso que fazemos
+          (t (let ((newBoard (allocate-pieces player (get-play board player) board)))
+                 (cond ((board-emptyp newBoard) (game-over))
+                       (t (make-play newPlayer maxTimer hasHuman newBoard)))))))
+
+)
+
+(defun game-over ()
+  (format t "yay, finitooooo") 
+)
+
+(defun switch-player (currPlayer)
+  "Altera o jogador atual"
+  (- 1 currPlayer)
+)
+
+(defun get-play (board player)
+  "Mostra o tabuleiro atual ao jogador e pede uma jogada. Se valida (entre 1 e 6 com valor da casa > 0) devolve a posicao dessa jogada. Senao pede uma jogada valida"
+  (progn 
+    (format t "~% ~% > Escolha a sua jogada, jogador ~d (1 - 6) ~%~%" player)
+    (playing-board board)
+
+    (let ((answer (read)))
+      (cond ((OR (not (numberp answer)) (< answer 1) (> answer 6)) (jogada-invalida board player))
+
+            ((not (move-validp player (1- answer) board)) (jogada-invalida board player))
+            
+            (t (1- answer))))
+  )
+)
+
+(defun pass-play (board)
+  "Informa o utilizador que nao tem jogadas possiveis e espera que ele carregue no enter para passar a frente"
+  (progn 
+    (format t "~% ~% > Não tem jogadas possiveis. Pressione qualquer tecla para passar a vez~%~%")
+    (playing-board board)
+    (read-char))
+)
+
+(defun jogada-invalida (board player)
+  "Funcao auxiliar ao get-play para DRY. Esta e chamada quando o jogador escolher uma jogada invalida e  mostra mensagem de erro e chama o get-play novamente"
+  (progn 
+    (format t "~% ~% >> Jogada invalida, vamos tentar outra vez  << ~% ~%")
+    (get-play board player))
 )
 
 ;;;;;;;;;; FINAL OUTPUT ;;;;;;;;;; 

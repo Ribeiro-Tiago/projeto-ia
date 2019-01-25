@@ -5,12 +5,15 @@
 
 ;;;; funcoes que criam starter nodes para testar os algos ;;;;
 (defun start-board () 
-  ;'((8 8 8 8 8 8) (8 8 8 8 8 8))
-  '((3 0 0 0 0 0) (0 0 0 0 0 3))
+  '((8 8 8 8 8 8) (8 8 8 8 8 8))
 )
-
+ 
 (defun start-board2 () 
   '((1 0 0 0 0 0) (0 0 0 0 0 1))
+)
+
+(defun start-board3 () 
+  '((3 0 0 0 0 0) (0 0 0 0 0 3))
 )
 
 (defun teste ()
@@ -166,7 +169,7 @@
 (defun make-play (player maxTimer hasHuman board)
   "Se o jogador poder jogar (i.e.: o lado dele tiver peças, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
   (let ((newPlayer (switch-player player)))
-
+    
     ;; não podemos fazer jogada, passamos a vez
     (cond ((row-emptyp player board)
                    (progn 
@@ -174,10 +177,15 @@
                      (make-play newPlayer maxTimer hasHuman board)))
 
           ;; podes fazer jogada, é isso que fazemos
-          (t (let ((newBoard (allocate-pieces player (get-play board player) board)))
-                 (cond ((board-emptyp newBoard) (game-over))
-                       (t (make-play newPlayer maxTimer hasHuman newBoard)))))))
+          (t (let* ((getPlayFunc (cond ((AND hasHuman (= player 0)) 'get-play)
+                                       (t 'get-ai-play)))
 
+                    (newBoard (allocate-pieces player (funcall getPlayFunc board player) board)))
+
+
+                 (cond ((board-emptyp newBoard) (game-over))
+
+                       (t (make-play newPlayer maxTimer hasHuman newBoard)))))))
 )
 
 (defun game-over ()
@@ -187,6 +195,11 @@
 (defun switch-player (currPlayer)
   "Altera o jogador atual"
   (- 1 currPlayer)
+)
+
+(defun get-ai-play (board player)
+  (format t "ai play")
+  1
 )
 
 (defun get-play (board player)
