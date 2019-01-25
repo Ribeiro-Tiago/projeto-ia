@@ -184,5 +184,9 @@
 
 (defun hash-node (no)
   "Funcao que converte o estado e as pecas dos jogadores de um no numa string para que possa ser usada como key na hash table de memoizacao"
-  (concatenate 'string (format nil "~S" (get-estado-no no)) (format nil "~S" (get-pecas-jogador1-no no)) (format nil "~S" (get-pecas-jogador2-no no)))
+  (concatenate 'string (to-string (get-estado-no no)) (to-string (get-pecas-jogador1-no no)) (to-string (get-pecas-jogador2-no no)))
+)
+
+(defun to-string (item)
+  (format nil "~S" item)
 )

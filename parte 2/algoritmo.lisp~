@@ -3,9 +3,6 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
-;;;;;;;;;;;;;;; variaveis globais ;;;;;;;;;;;;;;;
-(defvar *hashTable* (make-hash-table))
-
 ;;;;;;;;;;;;;;; Construtor ;;;;;;;;;;;;;;;
 ;; custo = f | heuristica = g
 (defun create-node (board custo &optional (depth 0) (parent nil))
@@ -137,6 +134,7 @@
 )
 
 
+
 ;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
 (defun a* (starter-node depth &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
   "Algoritmo de procura em espaco de estados A*"
@@ -162,27 +160,4 @@
            )
        )
   )
-)
-
-
-;;;;;;;;;;;;;;; MEMOIZACAO ;;;;;;;;;;;;;;;
-(defun memoizacao (node)
-  "Funcao que verifica se ja existe um resultado alfabeta para o no passado na hash table, caso exista devolve-o, caso nao exista calcula o seu valor, retorna-o e insere-o na hash table"
-  (let ((nodeTable (get-hash-node node)))
-    (cond ((null nodeTable) ;; calcula  
-           (let ((newNode (alfabeta)))
-             (setf (get-hash-node node) newNode)
-             newNode
-             ))
-          (t nodeTable)))
-)
-
-(defun get-hash-node (node) 
-  "Funcao que vai buscar o no a hash table"
-  (gethash (hash-node node) *hashTable*)
-)
-
-(defun hash-node (no)
-  "Funcao que converte o estado e as pecas dos jogadores de um no numa string para que possa ser usada como key na hash table de memoizacao"
-  (concatenate 'string (format nil "~S" (get-estado-no no)) (format nil "~S" (get-pecas-jogador1-no no)) (format nil "~S" (get-pecas-jogador2-no no)))
 )
