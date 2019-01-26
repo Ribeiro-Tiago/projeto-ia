@@ -18,52 +18,52 @@
 
 (defun teste ()
   "Funcao que cria no inicial reference ao problema g para testar"
-  (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)) 0)
+  (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)))
 )
 
 (defun teste2 ()
   "Funcao que cria no inicial dum tabuleiro aleatorio para testar"
-  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 0)
+  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)))
 )
 
 (defun teste3 ()
   "Funcao que cria no inicial reference ao problema a para testar"
-  (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)) 'heuristica-extra 0)
+  (create-node '((0 0 0 0 0 2) (0 0 0 0 4 0)))
 ) 
 
 (defun teste4 ()
   "Funcao que cria no inicial reference ao problema b para testar"
-  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 0)
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)))
 )
 
 (defun teste5 ()
   "Funcao que cria no inicial reference ao problema c para testar"
-  (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)) 0)
+  (create-node '((0 3 0 3 0 3) (3 0 3 0 3 0)))
 )
 
 (defun teste6 ()
   "Funcao que cria no inicial reference ao problema f para testar"
-  (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)) 0)
+  (create-node '((48 0 0 0 0 0) (0 0 0 0 0 48)))
 )
 
 (defun teste7 ()
   "Funcao que cria no inicial reference ao problema d para testar"
-  (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)) 0)
+  (create-node '((1 2 3 4 5 6) (6 5 4 3 2 1)))
 )
 
 (defun teste8 ()
   "Funcao que cria no inicial reference ao problema e para testar"
-  (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)) 0)
+  (create-node '((2 4 6 8 10 12) (12 10 8 6 4 2)))
 )
 
 (defun teste9 ()
   "Funcao que cria no inicial reference ao problema a para testar"
-  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)) 0)
+  (create-node '((2 2 2 2 2 2) (2 2 2 2 2 2)))
 )
 
 (defun no-teste ()
   "Define um no teste do problema da vasilhas em que A=2, B=2, profundidade=0 e pai=NIL"
-  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 0 0)
+  (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)) 0)
 )
 
 ;;;;;;;;;; INITIALIZATION ;;;;;;;;;; 
@@ -140,7 +140,7 @@
                (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
                (get-first-player))
 
-            (t (get-max-timer (1- answer) t))))
+            (t (get-max-timer (1- answer) t)))) 
   )
 )
 
@@ -198,8 +198,7 @@
 )
 
 (defun get-ai-play (board player)
-  (format t "ai play")
-  1
+  (alfabeta board player)
 )
 
 (defun get-play (board player)

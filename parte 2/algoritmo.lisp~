@@ -3,6 +3,9 @@
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
+;;;;;;;;;;;;;;; variaveis globais ;;;;;;;;;;;;;;;
+(defvar *hashTable* (make-hash-table))
+
 ;;;;;;;;;;;;;;; Construtor ;;;;;;;;;;;;;;;
 ;; custo = f | heuristica = g
 (defun create-node (board custo &optional (depth 0) (parent nil))
@@ -92,7 +95,7 @@
 (defun sucessores-aux (rowIndex cellIndex parentNode abertos)
   "Verifica se a posicao [rowIndex[cellIndex]] e valida, se for expande esse no, gerando o novo tabuleiro deopis dessa jogada e criando um novo no. Senao passa a frente"
   (let ((board (get-node-state parentNode)))
-    (cond ((is-move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
+    (cond ((move-validp rowIndex cellIndex board) ; so geramos sucessores se for uma casa com valor > 0
         (let* ((newBoard (allocate-pieces rowIndex cellIndex board))
 
                (depth (1+ (get-node-depth parentNode)))
@@ -134,7 +137,6 @@
 )
 
 
-
 ;; returns (nosExpandidos nosGerados penetrancia, fatorRamificacao, noSolucao)
 (defun a* (starter-node depth &optional (abertos (list starter-node)) (fechados nil) (nodes-expandidos 0) (nodes-gerados 0))
   "Algoritmo de procura em espaco de estados A*"
@@ -160,4 +162,31 @@
            )
        )
   )
+)
+
+
+;;;;;;;;;;;;;;; MEMOIZACAO ;;;;;;;;;;;;;;;
+(defun memoizacao (node)
+  "Funcao que verifica se ja existe um resultado alfabeta para o no passado na hash table, caso exista devolve-o, caso nao exista calcula o seu valor, retorna-o e insere-o na hash table"
+  (let ((nodeTable (get-hash-node node)))
+    (cond ((null nodeTable) ;; calcula  
+           (let ((newNode (alfabeta)))
+             (setf (get-hash-node node) newNode)
+             newNode
+             ))
+          (t nodeTable)))
+)
+
+(defun get-hash-node (node) 
+  "Funcao que vai buscar o no a hash table"
+  (gethash (hash-node node) *hashTable*)
+)
+
+(defun hash-node (no)
+  "Funcao que converte o estado e as pecas dos jogadores de um no numa string para que possa ser usada como key na hash table de memoizacao"
+  (concatenate 'string (to-string (get-estado-no no)) (to-string (get-pecas-jogador1-no no)) (to-string (get-pecas-jogador2-no no)))
+)
+
+(defun to-string (item)
+  (format nil "~S" item)
 )
