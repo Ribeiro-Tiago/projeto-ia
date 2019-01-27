@@ -6,6 +6,8 @@ O problema e o algoritmo utilizado é escolhido pelo utilizador, de entre os dis
 
 Em termos de jogo, neste caso é uma variante do Adji‒boto e Oware, especialmente concebida para este projeto, e o objetivo é encontrar um estado onde já não haja mais peças no tabuleiro.
 
-Este projeto está dividido em duas partes (atualmente só a primeira parte se encontra disponível)
+Este projeto está dividido em duas partes
 
 [Parte 1](https://github.com/Ribeiro-Tiago/projeto-ia/tree/master/parte%201)
+
+[Parte 2](https://github.com/Ribeiro-Tiago/projeto-ia/tree/master/parte%202)
