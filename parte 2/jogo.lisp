@@ -45,17 +45,14 @@
 
 (defun update-board (rowIndex cellIndex board &optional (value 0))
   "Valida se {rowIndex}, {cellIndex} e {board} sao validos. Se sim, atualiza a posicao [rowIndex][cellIndex] do {board} com o {value} recebido e retorna o novo tabuleiro. Caso contrario retorna nil"
-  (cond 
-     ((= rowIndex 0) 
-        (cons 
-           (replace-position cellIndex (get-row rowIndex board) value) 
-           (list (second board))
-        ))
+  (cond ((= rowIndex 0) 
+              (cons 
+                (replace-position cellIndex (get-row rowIndex board) value) 
+                (list (second board))))
 
-     (t (cons 
-           (first board) 
-           (list (replace-position cellIndex (get-row rowIndex board) value))
-        )))
+        (t (cons 
+             (first board) 
+             (list (replace-position cellIndex (get-row rowIndex board) value)))))
 )
 
 (defun add-position (rowIndex cellIndex board)

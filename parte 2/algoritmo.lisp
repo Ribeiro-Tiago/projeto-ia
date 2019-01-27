@@ -34,7 +34,7 @@
 )
 
 (defun get-node-play-position (node)
-  "Retorna o número da casa de onde a jogada foi feita, de 1 a 6"
+  "Retorna o nï¿½mero da casa de onde a jogada foi feita, de 1 a 6"
   (1+ (third node))
 )
 
@@ -117,7 +117,7 @@
 )
 
 (defun columnsValid(row column)
-  "Verifica se a coluna é válida"
+  "Verifica se a coluna ï¿½ vï¿½lida"
   (cond ((and (= row 0) (>= column 0) (<= column 5)) t )
         ((and (= row 1) (<= column 5) (>= column 0)) t )
         (t nil))
@@ -149,7 +149,7 @@
 
 
 ;;;;;;;;;;;;;;; MEMOIZACAO ;;;;;;;;;;;;;;;
-(defun memoizacao (node jogador timeLimit &optional (mDepth 5000) (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
+(defun memoizacao (node jogador timeLimit &optional (mDepth 5) (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
   "Funcao que verifica se ja existe um resultado alfabeta para o no passado na hash table, caso exista devolve-o, caso nao exista calcula o seu valor, retorna-o e insere-o na hash table"
   (let ((nodeTable (gethash (hash-node (first node)) *hash-table*)))
     (cond ((null nodeTable)   
@@ -174,12 +174,12 @@
 )
 
 (defun plus-number-cuts-alfa ()
-  "Incrementa a variavel que conta o número de cortes alfa"
+  "Incrementa a variavel que conta o numero de cortes alfa"
   (setf *number-cuts-alfa* (1+ *number-cuts-alfa*))
 )
 
 (defun plus-number-cuts-beta ()
-  "Incrementa a variavel que conta o número de cortes beta"
+  "Incrementa a variavel que conta o numero de cortes beta"
   (setf *number-cuts-beta* (1+ *number-cuts-beta*))
 )
 
