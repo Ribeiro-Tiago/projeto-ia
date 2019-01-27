@@ -6,6 +6,9 @@
 ;;;;;;;;;;;;;;; variaveis globais ;;;;;;;;;;;;;;;
 (defvar *hash-table* (make-hash-table))
 (defvar *no-objetivo* nil)
+(defvar *number-cuts-alfa* 0)
+(defvar *number-cuts-beta* 0)
+(defvar *node-parsed* 0)
 
 ;;;;;;;;;;;;;;; Construtor ;;;;;;;;;;;;;;;
 ;; custo = f | heuristica = g
@@ -59,29 +62,35 @@
 
 
 ;;;;;;;;;;;;;;; ALFABETA ;;;;;;;;;;;;;;;
-(defun alfabeta (no jogador timeLimit &optional (mDepth 5) (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
-  (cond ((= mDepth 0) (funcao-avaliacao no))
+(defun alfabeta (no jogador timeLimit mDepth &optional (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
+  (cond ((or (= mDepth 0) (< timeLimit (- (get-universal-time) startTime))) (funcao-avaliacao no))
         (t (alfabeta-aux (sucessores-min-max no jogador) mDepth jogador timeLimit alfa beta startTime)) 
   )
 )
 
 (defun alfabeta-aux (sucessores mDepth jogador timeLimit alfa beta startTime &optional (trueValue -1))
   (cond ((null sucessores) trueValue)
-        (t (let* ((currNode (first sucessores))
-                  (valor (alfabeta currNode (switch-player jogador) timeLimit (- mDepth 1) alfa beta startTime)))
+        (t (progn 
+             (plus-nodes-parsed)
+             (let* ((currNode (first sucessores))
+                    (valor (alfabeta currNode (switch-player jogador) timeLimit (- mDepth 1) alfa beta startTime)))
 
-              (cond ((= jogador 0)
-                      (let ((novoB (min beta valor)))
-                         (cond ((<= novoB alfa) beta)
-                               (t (progn
-                                    (setf *no-objetivo* currNode)
-                                    (alfabeta-aux (rest sucessores) mDepth 1 timeLimit alfa novoB startTime valor))))))
+               (cond ((= jogador 0)
+                       (let ((novoB (min beta valor)))
+                          (cond ((<= novoB alfa) (progn 
+                                                    (plus-number-cuts-beta)
+                                                    beta))
+                                (t (progn
+                                     (setf *no-objetivo* currNode)
+                                     (alfabeta-aux (rest sucessores) mDepth 1 timeLimit alfa novoB startTime valor))))))
 
-                    (t (let ((novoA (max alfa valor)))
-                         (cond ((<= beta novoA) alfa)
-                               (t (progn 
-                                    (setf *no-objetivo* currNode)
-                                    (alfabeta-aux (rest sucessores) mDepth 0 timeLimit novoA beta startTime valor))))))))))
+                     (t (let ((novoA (max alfa valor)))
+                           (cond ((<= beta novoA) (progn 
+                                                    (plus-number-cuts-alfa) 
+                                                    alfa))
+                                 (t (progn 
+                                      (setf *no-objetivo* currNode)
+                                      (alfabeta-aux (rest sucessores) mDepth 0 timeLimit novoA beta startTime valor)))))))))))
 )
 
 
@@ -138,21 +147,47 @@
 
 
 ;;;;;;;;;;;;;;; MEMOIZACAO ;;;;;;;;;;;;;;;
-(defun memoizacao (node)
+(defun memoizacao (node jogador timeLimit &optional (mDepth 5000) (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
   "Funcao que verifica se ja existe um resultado alfabeta para o no passado na hash table, caso exista devolve-o, caso nao exista calcula o seu valor, retorna-o e insere-o na hash table"
-  (let ((nodeTable (gethash (hash-node node) *hash-table*)))
-    (cond ((null nodeTable) ;; calcula  
-           (let ((newNode (alfabeta))) (progn
-                                         (setf (gethash (hash-node node) *hash-table*) newNode)
-                                         newNode)))
-          (t nodeTable)))
+  (let ((nodeTable (gethash (hash-node (first node)) *hash-table*)))
+    (cond ((null nodeTable)   
+              (let ((newNode (alfabeta node jogador timeLimit mDepth alfa beta startTime ))) 
+                (progn 
+                  (setf (gethash (hash-node (first node)) *hash-table*) newNode) 
+                  newNode
+                )))
+          (t nodeTable)
+    )
+  )
 )
 
 (defun hash-node (no)
   "Funcao que converte o estado e as pecas dos jogadores de um no numa string para que possa ser usada como key na hash table de memoizacao"
-  (concatenate 'string (to-string (get-node-state no)) (to-string (get-node-depth no)))
+  (concatenate 'string (to-string (get-node-state no)))
 )
 
 (defun to-string (item)
   (format nil "~S" item)
+)
+
+(defun plus-number-cuts-alfa ()
+  "Incrementa a variavel que conta o número de cortes alfa"
+  (setf *number-cuts-alfa* (1+ *number-cuts-alfa*))
+)
+
+(defun plus-number-cuts-beta ()
+  "Incrementa a variavel que conta o número de cortes beta"
+  (setf *number-cuts-beta* (1+ *number-cuts-beta*))
+)
+
+(defun plus-nodes-parsed ()
+  "Incrementa a variavel que conta o numero de nos avaliados"
+  (setf *node-parsed* (1+ *node-parsed*))
+)
+
+(defun reset-play-stats ()
+  "Faz reset as variaveis de estaisticas para cada jogada"
+  (setf *number-cuts-alfa* 0)
+  (setf *number-cuts-beta* 0)
+  (setf *node-parsed* 0)
 )

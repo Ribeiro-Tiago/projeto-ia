@@ -1,5 +1,5 @@
 ;;;; interact.lisp
-;;;; Carrega os outros ficheiros de código, escreve e lê de ficheiros e trata da interação com o utilizador
+;;;; Carrega os outros ficheiros de código, escreve e lê de ficheiros e trata da interacao com o utilizador
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
@@ -123,7 +123,7 @@
 (defun select-game-mode ()
   "Funcao que constroi o menu de escolha de modo de jogo"
   (progn
-    (format t "~%> Escolha modo do jogo ~%1 - Humano VS Máquina ~%2 - Máquina VS Máquina ~%")
+    (format t "~%> Escolha modo do jogo ~%1 - Humano VS Maquina ~%2 - Maquina VS Maquina ~%")
 
     (let ((answer (read)))
 
@@ -139,7 +139,7 @@
 (defun get-first-player ()
   "Funcao que permite o utilizador definir quem é o primeiro jogador"
   (progn
-    (format t "~%> Quem começa o jogo? ~%1 - Humano ~%2 - Máquina ~%")
+    (format t "~%> Quem comeca o jogo? ~%1 - Humano ~%2 - Maquina ~%")
     
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2)) 
@@ -152,9 +152,9 @@
 
 
 (defun get-max-timer (&optional (firstPlayer 0) (gameMode 1) &aux (board (start-board3)))
-  "Funcao que permite o utilizador definir o tempo máximo de execução de cada jogada da máquina"
+  "Funcao que permite o utilizador definir o tempo maximo de execucao de cada jogada da maquina"
   (progn
-    (format t "~%> Tempo máximo (em segundos) de cada jogada da máquina (entre 1 e 5)~%")
+    (format t "~%> Tempo maximo (em segundos) de cada jogada da maquina (entre 1 e 5)~%")
     
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 5)) 
@@ -162,9 +162,10 @@
                (get-max-timer firstPlayer gameMode))
 
             (t (progn 
-                  (format t "~% ~% »» Muito bem, vamos começar o jogo! «« ~%~%")
-                   (cond ((= gameMode 0) (make-play firstPlayer answer board))
-                         (t (make-play-ai 0 answer board)))))))
+                  (write-results "~% ~%----------------------------------------- ~% ~% »» Muito bem, vamos comecar o jogo! «« ~%~%")
+                  (write-to-file "Tabuleiro de jogo: ~a ~%" board) 
+                  (cond ((= gameMode 0) (make-play firstPlayer answer board))
+                        (t (make-play-ai 0 answer board)))))))
   )
 )
 
@@ -174,24 +175,27 @@
 
     (cond ((row-emptyp player board)
              (progn 
-               (format t "~% > Máquina ~d não tem jogadas possiveis. A vez foi passada ~% " player)
+               (write-results "~% > Maquina ~d nao tem jogadas possiveis. A vez foi passada ~% " player)
                (make-play-ai newPlayer maxTimer board score)))
 
-          (t (progn 
-               (format t "~% > Máquina ~d a fazer a sua jogada... ~%" player)
-               (alfabeta (create-node board) player maxTimer)
+          (t (let ((startTime (get-internal-real-time)))
+               (progn 
+                 (format t "~% > Maquina ~d a fazer a sua jogada... ~%" player)
+                 (reset-play-stats)
+                 (memoizacao (create-node board) player maxTimer)
 
-               (let* ((jogada (get-node-next-play *no-objetivo*))
-                      (newBoard (get-node-state jogada)))
+                 (let* ((jogada (get-node-next-play *no-objetivo*))
+                        (newBoard (get-node-state jogada)))
 
-                 (format t "~% > Máquina ~d jogou na casa ~d." player (get-node-play-position jogada))
-                 (print-board newBoard)
-                 (check-for-gameover 
-                          newPlayer
-                          maxTimer
-                          newBoard
-                          'make-play-ai
-                          (update-score board newBoard player score)))))))
+                   (write-results "~% > Maquina ~d jogou " player)
+                   (print-play-stats (get-node-play-position jogada) (calc-elapsed-time startTime))
+                   (print-board newBoard)
+                   (check-for-gameover 
+                           newPlayer
+                           maxTimer
+                           newBoard
+                           'make-play-ai
+                           (update-score board newBoard player score))))))))
 )
 
 (defun get-pecas-comidas (oldBoard newBoard)
@@ -209,14 +213,14 @@
 )
 
 (defun make-play (player maxTimer board &optional (score '(0 0)))
-  "Se o jogador poder jogar, i.e.: o lado dele tiver peças, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
+  "Se o jogador poder jogar, i.e.: o lado dele tiver pecas, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
   (let ((newPlayer (switch-player player)))
     
-    ;; não podemos fazer jogada, passamos a vez
+    ;; nao podemos fazer jogada, passamos a vez
     (cond ((row-emptyp player board)
               (progn 
                 (cond ((= player 0) (pass-play board))
-                      (t (format t "~% ~% > A máquina não tem jogadas possiveis. A vez foi passada")))
+                      (t (write-results "~% ~% > A maquina nao tem jogadas possiveis. A vez foi passada")))
                 (make-play newPlayer maxTimer board score)))
 
           ;; podemos fazer jogada, vemos se é jogada do user 
@@ -230,33 +234,45 @@
                        (update-score board newBoard player score))))
 
           ;; podemos fazer jogada e é do pc 
-          (t (progn 
-               (format t "~% > Máquina a fazer a sua jogada... ~%")
-               (alfabeta (create-node board) player maxTimer)
+          (t (let ((startTime (get-internal-real-time)))
+               (progn 
+                 (format t "~% > Maquina a fazer a sua jogada... ~%")
+                 (reset-play-stats)
+                 (memoizacao (create-node board) player maxTimer)
                
-               (let* ((jogada (get-node-next-play *no-objetivo*))
-                      (newBoard (get-node-state jogada)))
+                 (let* ((jogada (get-node-next-play *no-objetivo*))
+                        (newBoard (get-node-state jogada)))
 
-                 (format t "~% > Máquina jogou na casa ~d." (get-node-play-position jogada))
-                 (check-for-gameover 
-                           newPlayer
-                           maxTimer 
-                           newBoard
-                           'make-play 
-                           (update-score board newBoard player score)))))))
+                   (write-results "~% > Maquina jogou")
+                   (print-play-stats (get-node-play-position jogada) (calc-elapsed-time startTime))
+                   (check-for-gameover 
+                             newPlayer
+                             maxTimer 
+                             newBoard
+                             'make-play 
+                             (update-score board newBoard player score))))))))
+)
+
+(defun print-play-stats (casaJogada timeLapsed)
+  "Mostra resultados estatisticos da jogada do computador"
+  (write-results "~%   - na casa ~d" casaJogada)
+  (write-results "~%   - cortou ~d no(s) alfa" *number-cuts-alfa*)
+  (write-results "~%   - cortou ~d no(s) beta" *number-cuts-beta*)
+  (write-results "~%   - avaliou ~d no(s)" *node-parsed*)
+  (write-results "~%   - demorou ~d milisegundos(s)" timeLapsed)
 )
 
 (defun check-for-gameover (player maxTimer board nextPlay score)
   "Verifica se o jogo ja acabou. Se acabou passa para a funcao (game-over), senao passa a proxima jogada"
-  (cond ((board-emptyp board) (game-over board score))
+  (cond ((board-emptyp board) (game-over score))
         (t (funcall nextPlay player maxTimer board score)))
 )
 
-(defun game-over (board score)
+(defun game-over (score)
   "Mostra mensagem de final, o tabuleiro no seu estado final e estatisticas do jogo"
   (format t "~%yay, finitooooo ~%")
+  (format t "Score final ~a!~%" score)
   (format t "O vencedor é ~s!~% " (get-vencedor score))
-  (print-board board)
 )
 
 (defun get-vencedor (score)
@@ -280,14 +296,17 @@
 
             ((not (move-validp player (1- answer) board)) (jogada-invalida board player))
             
-            (t (1- answer))))
+            (t (progn 
+                 (write-results "~% > Humano jogou na casa ~d" answer)
+                 (1- answer)))))
   )
 )
 
 (defun pass-play (board)
   "Informa o utilizador que nao tem jogadas possiveis e espera que ele carregue no enter para passar a frente"
   (progn 
-    (format t "~% ~% > Não tem jogadas possiveis. Pressione qualquer tecla para passar a vez~%~%")
+    (write-to-file "~% > Humano nao tem jogadas possiveis")
+    (format t "~% ~% > Nao tem jogadas possiveis. Pressione qualquer tecla para passar a vez~%~%")
     (playing-board board)
     (read-char))
 )
@@ -299,47 +318,25 @@
     (get-play board player))
 )
 
-;;;;;;;;;; FINAL OUTPUT ;;;;;;;;;; 
+(defun calc-elapsed-time (startTime)
+  (float (/ (- (get-internal-real-time) startTime) internal-time-units-per-second))
+)
 
-(defun write-results-to-file (results algo depth board heuristica runtime path)
-  "Funcao que escreve os resultados num ficheiro \"resultados.dat\""
+;;;;;;;;;; OUTPUT ;;;;;;;;;; 
+(defun write-results (text &optional (arg nil))
+  "Escreve o texto recebido por parametro em ficheiro e no ecra"
+  (progn 
+    (write-to-file text arg)
+    (format t text arg)
+  )
+)
+
+(defun write-to-file (text &optional (arg nil))
+  "Escreve o texto recebido por parametro em ficheiro"
   (with-open-file (output-file 
-                   path
+                   (concatenate 'string (get-curr-dir) "/log.dat")
                    :direction :output
                    :if-exists :append
                    :if-does-not-exist :create)
-    (format-results results output-file algo depth board heuristica runtime))
-)
-
-(defun format-results (results output algo depth board heuristica runtime)
-  "Funcao que formata os resultados (results) do algoritmo para o {output} especificado (t > consola, filestream > ficheiro)"
-  (progn 
-    ;; por questoes de legibilidade humana, as linhas estao em formats diferentes
-    ;; caracteristicas
-    (format output "> Caracteristicas: ~% - Algoritmo: ~s ~% - Heuristica: ~a ~% - Profundidade: ~s ~% - Problema: ~s ~% ~%"
-             algo heuristica depth board)
-    ;; resultados
-    (format output "> Resultados: ~% - Nos gerados: ~d ~% - Nos expandidos: ~d ~% - Penetrancia: ~d ~% - Fator de ramificacao: ~d ~% - Tempo de execucao: ~d segundo(s) ~% - Profundidade da solucao: ~d ~%"
-            (first results) (second results) (third results) (fourth results) runtime (get-node-depth (fifth results)))
-    (get-solucao (fifth results) output)
-  )
-)
-
-(defun get-solucao (node output)
-  "Funcao que faz o output da solucao. Usa \"get-caminho-solucao\" para mostrar o caminho solucao"
-  (progn 
-    (format output " - Solucao: ")
-    (get-caminho-solucao node output)
-    (format output "~% ~% --------------------------------------------- ~% ~%")
-  )
-)
-
-(defun get-caminho-solucao (node output)
-  "Percorre o caminho solucao desde o no solucao ate ao no pai, fazendo output de cada no"
-  (let ((parent (get-node-parent node)))
-    (progn 
-      (format output "~%    > ~a" (get-node-state node))
-      (cond ((not (null parent)) (get-caminho-solucao parent output)))
-    )
-  )
+    (format output-file text arg))
 )
