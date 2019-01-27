@@ -20,3 +20,3797 @@ Tabuleiro de jogo: ((1 0 0 0 0 0) (0 0 0 0 0 1))
    - demorou 0.006 milisegundos(s)
 
 O jogo acabou em empate com pontuacao final de 1 pontos para ambos os jogadores
+ 
+----------------------------------------- 
+ 
+ »» Muito bem, vamos comecar o jogo! «« 
+
+Tabuleiro de jogo: ((8 8 8 8 8 8) (8 8 8 8 8 8)) 
+
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.071 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 39 no(s) alfa
+   - cortou 51 no(s) beta
+   - avaliou 243 no(s)
+   - demorou 0.158 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 22 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 124 no(s)
+   - demorou 0.093 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 17 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 103 no(s)
+   - demorou 0.074 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 30 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 167 no(s)
+   - demorou 0.114 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 31 no(s) alfa
+   - cortou 32 no(s) beta
+   - avaliou 190 no(s)
+   - demorou 0.117 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 28 no(s) alfa
+   - cortou 34 no(s) beta
+   - avaliou 174 no(s)
+   - demorou 0.11 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 49 no(s) alfa
+   - cortou 54 no(s) beta
+   - avaliou 283 no(s)
+   - demorou 0.174 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 24 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 153 no(s)
+   - demorou 0.108 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 37 no(s) alfa
+   - cortou 43 no(s) beta
+   - avaliou 211 no(s)
+   - demorou 0.142 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 33 no(s) alfa
+   - cortou 39 no(s) beta
+   - avaliou 182 no(s)
+   - demorou 0.121 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 36 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 222 no(s)
+   - demorou 0.132 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 85 no(s)
+   - demorou 0.059 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.033 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 5 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 32 no(s)
+   - demorou 0.034 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.089 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 16 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.069 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 28 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 168 no(s)
+   - demorou 0.1 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 27 no(s) alfa
+   - cortou 43 no(s) beta
+   - avaliou 183 no(s)
+   - demorou 0.116 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 20 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 105 no(s)
+   - demorou 0.071 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 10 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 44 no(s)
+   - demorou 0.033 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 13 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.052 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 9 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 73 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 36 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 8 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 44 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 15 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 80 no(s)
+   - demorou 0.062 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 24 no(s)
+   - demorou 0.022 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 11 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 70 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 101 no(s)
+   - demorou 0.067 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 89 no(s)
+   - demorou 0.052 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 18 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 119 no(s)
+   - demorou 0.079 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 15 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 20 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 119 no(s)
+   - demorou 0.072 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 22 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 132 no(s)
+   - demorou 0.089 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 14 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 82 no(s)
+   - demorou 0.06 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 10 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 57 no(s)
+   - demorou 0.046 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.034 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 29 no(s) alfa
+   - cortou 37 no(s) beta
+   - avaliou 156 no(s)
+   - demorou 0.1 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 16 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.059 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 36 no(s)
+   - demorou 0.026 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 20 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 10 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 73 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 8 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 34 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 28 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 149 no(s)
+   - demorou 0.1 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 32 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 25 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 145 no(s)
+   - demorou 0.092 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 15 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 7 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 53 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 14 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.058 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.025 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.065 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 74 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.022 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 19 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 23 no(s) alfa
+   - cortou 32 no(s) beta
+   - avaliou 136 no(s)
+   - demorou 0.09 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 14 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 88 no(s)
+   - demorou 0.052 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 17 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 106 no(s)
+   - demorou 0.06 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 17 no(s) alfa
+   - cortou 28 no(s) beta
+   - avaliou 104 no(s)
+   - demorou 0.081 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 11 no(s) beta
+   - avaliou 33 no(s)
+   - demorou 0.029 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.034 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 21 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 133 no(s)
+   - demorou 0.075 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 47 no(s) alfa
+   - cortou 54 no(s) beta
+   - avaliou 289 no(s)
+   - demorou 0.16 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 40 no(s) alfa
+   - cortou 45 no(s) beta
+   - avaliou 205 no(s)
+   - demorou 0.122 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 27 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 166 no(s)
+   - demorou 0.09 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 40 no(s)
+   - demorou 0.028 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 39 no(s) alfa
+   - cortou 52 no(s) beta
+   - avaliou 265 no(s)
+   - demorou 0.142 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 23 no(s) alfa
+   - cortou 33 no(s) beta
+   - avaliou 148 no(s)
+   - demorou 0.088 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 47 no(s) alfa
+   - cortou 54 no(s) beta
+   - avaliou 277 no(s)
+   - demorou 0.144 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 8 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 47 no(s)
+   - demorou 0.034 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 66 no(s) alfa
+   - cortou 79 no(s) beta
+   - avaliou 384 no(s)
+   - demorou 0.214 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 13 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 76 no(s)
+   - demorou 0.05 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 78 no(s) alfa
+   - cortou 80 no(s) beta
+   - avaliou 463 no(s)
+   - demorou 0.233 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 30 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 175 no(s)
+   - demorou 0.099 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 14 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 85 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 14 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 72 no(s)
+   - demorou 0.045 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 14 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 79 no(s)
+   - demorou 0.05 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 22 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 135 no(s)
+   - demorou 0.077 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 18 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 115 no(s)
+   - demorou 0.067 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 10 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 53 no(s)
+   - demorou 0.04 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.022 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 31 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 196 no(s)
+   - demorou 0.113 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 25 no(s) alfa
+   - cortou 30 no(s) beta
+   - avaliou 139 no(s)
+   - demorou 0.083 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 11 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 77 no(s)
+   - demorou 0.054 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 19 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 123 no(s)
+   - demorou 0.071 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 20 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 11 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 71 no(s)
+   - demorou 0.043 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 16 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 94 no(s)
+   - demorou 0.051 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 30 no(s)
+   - demorou 0.022 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 19 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 104 no(s)
+   - demorou 0.062 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 9 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 50 no(s)
+   - demorou 0.029 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.022 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 13 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.057 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 12 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 66 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 78 no(s)
+   - demorou 0.046 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 33 no(s) alfa
+   - cortou 38 no(s) beta
+   - avaliou 179 no(s)
+   - demorou 0.095 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 47 no(s) alfa
+   - cortou 62 no(s) beta
+   - avaliou 296 no(s)
+   - demorou 0.148 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 66 no(s)
+   - demorou 0.04 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 9 no(s) alfa
+   - cortou 12 no(s) beta
+   - avaliou 56 no(s)
+   - demorou 0.033 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 19 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 107 no(s)
+   - demorou 0.056 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 19 no(s) alfa
+   - cortou 24 no(s) beta
+   - avaliou 101 no(s)
+   - demorou 0.055 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 37 no(s)
+   - demorou 0.026 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 18 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 116 no(s)
+   - demorou 0.061 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 46 no(s) alfa
+   - cortou 49 no(s) beta
+   - avaliou 257 no(s)
+   - demorou 0.113 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 18 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 92 no(s)
+   - demorou 0.052 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 12 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 61 no(s)
+   - demorou 0.039 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 12 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 7 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.022 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 23 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 123 no(s)
+   - demorou 0.06 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 42 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 224 no(s)
+   - demorou 0.106 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 16 no(s) alfa
+   - cortou 19 no(s) beta
+   - avaliou 76 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 14 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.043 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 25 no(s) alfa
+   - cortou 28 no(s) beta
+   - avaliou 154 no(s)
+   - demorou 0.081 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 29 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 167 no(s)
+   - demorou 0.087 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 87 no(s)
+   - demorou 0.046 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 30 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 9 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.034 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 18 no(s) alfa
+   - cortou 27 no(s) beta
+   - avaliou 122 no(s)
+   - demorou 0.055 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 18 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 124 no(s)
+   - demorou 0.064 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 81 no(s)
+   - demorou 0.043 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 12 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 59 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 49 no(s) alfa
+   - cortou 72 no(s) beta
+   - avaliou 342 no(s)
+   - demorou 0.141 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 28 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 23 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 27 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 154 no(s)
+   - demorou 0.072 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 19 no(s) alfa
+   - cortou 27 no(s) beta
+   - avaliou 123 no(s)
+   - demorou 0.057 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 18 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.045 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 12 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 79 no(s)
+   - demorou 0.039 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 9 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 62 no(s)
+   - demorou 0.028 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 8 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 15 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 79 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 12 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 73 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 13 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 63 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.042 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 9 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 68 no(s)
+   - demorou 0.034 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 32 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 24 no(s) alfa
+   - cortou 45 no(s) beta
+   - avaliou 156 no(s)
+   - demorou 0.077 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 61 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 15 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.056 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 12 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 70 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 34 no(s) alfa
+   - cortou 50 no(s) beta
+   - avaliou 196 no(s)
+   - demorou 0.092 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 15 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 81 no(s)
+   - demorou 0.036 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 94 no(s)
+   - demorou 0.05 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 5 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 24 no(s) alfa
+   - cortou 41 no(s) beta
+   - avaliou 144 no(s)
+   - demorou 0.058 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 15 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 72 no(s)
+   - demorou 0.041 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 24 no(s) alfa
+   - cortou 27 no(s) beta
+   - avaliou 141 no(s)
+   - demorou 0.056 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 27 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 176 no(s)
+   - demorou 0.075 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 28 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 192 no(s)
+   - demorou 0.075 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 39 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 225 no(s)
+   - demorou 0.093 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 26 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 119 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 7 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 36 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 101 no(s)
+   - demorou 0.042 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 34 no(s) alfa
+   - cortou 34 no(s) beta
+   - avaliou 169 no(s)
+   - demorou 0.069 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 13 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 80 no(s)
+   - demorou 0.039 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 9 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 60 no(s)
+   - demorou 0.031 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 14 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 68 no(s)
+   - demorou 0.033 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 15 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 97 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 17 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 94 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 27 no(s) alfa
+   - cortou 37 no(s) beta
+   - avaliou 167 no(s)
+   - demorou 0.064 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 88 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 6 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 75 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 13 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 99 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 22 no(s) alfa
+   - cortou 30 no(s) beta
+   - avaliou 145 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 17 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.04 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 33 no(s) beta
+   - avaliou 111 no(s)
+   - demorou 0.045 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 24 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 138 no(s)
+   - demorou 0.06 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 38 no(s) alfa
+   - cortou 61 no(s) beta
+   - avaliou 247 no(s)
+   - demorou 0.085 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 10 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 62 no(s)
+   - demorou 0.028 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 4 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 25 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 12 no(s) beta
+   - avaliou 56 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 11 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 24 no(s) beta
+   - avaliou 64 no(s)
+   - demorou 0.028 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 17 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 103 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 36 no(s) alfa
+   - cortou 41 no(s) beta
+   - avaliou 223 no(s)
+   - demorou 0.074 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 24 no(s) alfa
+   - cortou 34 no(s) beta
+   - avaliou 134 no(s)
+   - demorou 0.041 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 8 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 50 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 63 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.01 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 13 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 62 no(s)
+   - demorou 0.025 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 21 no(s) alfa
+   - cortou 28 no(s) beta
+   - avaliou 133 no(s)
+   - demorou 0.043 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 15 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 80 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 36 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 233 no(s)
+   - demorou 0.069 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 24 no(s) alfa
+   - cortou 32 no(s) beta
+   - avaliou 155 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 29 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 181 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 15 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 87 no(s)
+   - demorou 0.031 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 5 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 29 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 11 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.029 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 22 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 150 no(s)
+   - demorou 0.042 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 12 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 84 no(s)
+   - demorou 0.031 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 13 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 96 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 14 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 74 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.01 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 9 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 42 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 10 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 6 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 51 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 9 no(s) alfa
+   - cortou 19 no(s) beta
+   - avaliou 97 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 9 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 51 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 11 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.025 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 5 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 29 no(s)
+   - demorou 0.01 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 8 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 51 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 8 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 34 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 7 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 38 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 19 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 82 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 12 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 6 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 8 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 71 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 11 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 64 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 8 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 5 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 28 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 2 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 2 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.01 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 1 no(s) alfa
+   - cortou 1 no(s) beta
+   - avaliou 11 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 0 no(s) alfa
+   - cortou 1 no(s) beta
+   - avaliou 14 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 7 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 0 no(s) alfa
+   - cortou 1 no(s) beta
+   - avaliou 9 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 9 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 4 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 1 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 1 no(s)
+   - demorou 0.007 milisegundos(s)
+
+O jogo termiou e jogador 1 vence com 51 pontossobre o seu adversario que obteve 45 pontos
+ 
+----------------------------------------- 
+ 
+ »» Muito bem, vamos comecar o jogo! «« 
+
+Tabuleiro de jogo: ((8 8 8 8 8 8) (8 8 8 8 8 8)) 
+
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.063 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 39 no(s) alfa
+   - cortou 51 no(s) beta
+   - avaliou 243 no(s)
+   - demorou 0.161 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 22 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 124 no(s)
+   - demorou 0.087 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 17 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 103 no(s)
+   - demorou 0.072 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 30 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 167 no(s)
+   - demorou 0.109 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 31 no(s) alfa
+   - cortou 32 no(s) beta
+   - avaliou 190 no(s)
+   - demorou 0.114 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 28 no(s) alfa
+   - cortou 34 no(s) beta
+   - avaliou 174 no(s)
+   - demorou 0.113 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 49 no(s) alfa
+   - cortou 54 no(s) beta
+   - avaliou 283 no(s)
+   - demorou 0.174 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 24 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 153 no(s)
+   - demorou 0.103 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 37 no(s) alfa
+   - cortou 43 no(s) beta
+   - avaliou 211 no(s)
+   - demorou 0.14 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 33 no(s) alfa
+   - cortou 39 no(s) beta
+   - avaliou 182 no(s)
+   - demorou 0.118 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 36 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 222 no(s)
+   - demorou 0.127 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 85 no(s)
+   - demorou 0.067 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 5 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 32 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.084 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 16 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.068 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 28 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 168 no(s)
+   - demorou 0.104 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 27 no(s) alfa
+   - cortou 43 no(s) beta
+   - avaliou 183 no(s)
+   - demorou 0.112 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 20 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 105 no(s)
+   - demorou 0.071 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 10 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 44 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 13 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 9 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 73 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 36 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 8 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 44 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 15 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 80 no(s)
+   - demorou 0.064 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 24 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 11 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 70 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 101 no(s)
+   - demorou 0.072 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 89 no(s)
+   - demorou 0.051 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 18 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 119 no(s)
+   - demorou 0.08 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 15 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 20 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 119 no(s)
+   - demorou 0.07 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 22 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 132 no(s)
+   - demorou 0.08 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 14 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 82 no(s)
+   - demorou 0.052 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 10 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 57 no(s)
+   - demorou 0.039 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.026 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 29 no(s) alfa
+   - cortou 37 no(s) beta
+   - avaliou 156 no(s)
+   - demorou 0.093 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 16 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.061 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 36 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 20 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 10 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 73 no(s)
+   - demorou 0.046 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 8 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 34 no(s)
+   - demorou 0.025 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 28 no(s) alfa
+   - cortou 31 no(s) beta
+   - avaliou 149 no(s)
+   - demorou 0.09 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 32 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 25 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 145 no(s)
+   - demorou 0.088 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 15 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 7 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 53 no(s)
+   - demorou 0.033 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 14 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.054 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.057 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 74 no(s)
+   - demorou 0.044 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 19 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 23 no(s) alfa
+   - cortou 32 no(s) beta
+   - avaliou 136 no(s)
+   - demorou 0.084 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 14 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 88 no(s)
+   - demorou 0.064 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 17 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 106 no(s)
+   - demorou 0.067 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 17 no(s) alfa
+   - cortou 28 no(s) beta
+   - avaliou 104 no(s)
+   - demorou 0.072 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 11 no(s) beta
+   - avaliou 33 no(s)
+   - demorou 0.025 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 21 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 133 no(s)
+   - demorou 0.076 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 47 no(s) alfa
+   - cortou 54 no(s) beta
+   - avaliou 289 no(s)
+   - demorou 0.148 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 40 no(s) alfa
+   - cortou 45 no(s) beta
+   - avaliou 205 no(s)
+   - demorou 0.12 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 27 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 166 no(s)
+   - demorou 0.092 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 40 no(s)
+   - demorou 0.028 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 39 no(s) alfa
+   - cortou 52 no(s) beta
+   - avaliou 265 no(s)
+   - demorou 0.136 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 23 no(s) alfa
+   - cortou 33 no(s) beta
+   - avaliou 148 no(s)
+   - demorou 0.089 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 47 no(s) alfa
+   - cortou 54 no(s) beta
+   - avaliou 277 no(s)
+   - demorou 0.144 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 8 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 47 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 66 no(s) alfa
+   - cortou 79 no(s) beta
+   - avaliou 384 no(s)
+   - demorou 0.208 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 13 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 76 no(s)
+   - demorou 0.05 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 78 no(s) alfa
+   - cortou 80 no(s) beta
+   - avaliou 463 no(s)
+   - demorou 0.232 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 30 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 175 no(s)
+   - demorou 0.098 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.05 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 14 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 85 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 14 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 72 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 14 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 79 no(s)
+   - demorou 0.051 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 22 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 135 no(s)
+   - demorou 0.077 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 18 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 115 no(s)
+   - demorou 0.065 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 10 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 53 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 31 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 196 no(s)
+   - demorou 0.109 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 25 no(s) alfa
+   - cortou 30 no(s) beta
+   - avaliou 139 no(s)
+   - demorou 0.09 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 11 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 77 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 19 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 123 no(s)
+   - demorou 0.073 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 20 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 11 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 71 no(s)
+   - demorou 0.046 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 16 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 94 no(s)
+   - demorou 0.053 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 30 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 19 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 104 no(s)
+   - demorou 0.063 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 9 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 50 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 13 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.055 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 12 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 66 no(s)
+   - demorou 0.045 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 78 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.026 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.051 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 33 no(s) alfa
+   - cortou 38 no(s) beta
+   - avaliou 179 no(s)
+   - demorou 0.109 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 47 no(s) alfa
+   - cortou 62 no(s) beta
+   - avaliou 296 no(s)
+   - demorou 0.163 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 66 no(s)
+   - demorou 0.044 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 9 no(s) alfa
+   - cortou 12 no(s) beta
+   - avaliou 56 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 19 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 107 no(s)
+   - demorou 0.088 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 19 no(s) alfa
+   - cortou 24 no(s) beta
+   - avaliou 101 no(s)
+   - demorou 0.062 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 37 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 18 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 116 no(s)
+   - demorou 0.064 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 46 no(s) alfa
+   - cortou 49 no(s) beta
+   - avaliou 257 no(s)
+   - demorou 0.119 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 18 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 92 no(s)
+   - demorou 0.055 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 12 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 61 no(s)
+   - demorou 0.04 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 12 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 7 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 23 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 123 no(s)
+   - demorou 0.063 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 42 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 224 no(s)
+   - demorou 0.113 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 16 no(s) alfa
+   - cortou 19 no(s) beta
+   - avaliou 76 no(s)
+   - demorou 0.045 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 14 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 25 no(s) alfa
+   - cortou 28 no(s) beta
+   - avaliou 154 no(s)
+   - demorou 0.078 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 29 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 167 no(s)
+   - demorou 0.082 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 87 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 7 no(s) beta
+   - avaliou 30 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 9 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 18 no(s) alfa
+   - cortou 27 no(s) beta
+   - avaliou 122 no(s)
+   - demorou 0.056 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 18 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 124 no(s)
+   - demorou 0.055 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 81 no(s)
+   - demorou 0.056 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 12 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 59 no(s)
+   - demorou 0.036 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 49 no(s) alfa
+   - cortou 72 no(s) beta
+   - avaliou 342 no(s)
+   - demorou 0.165 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 28 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 23 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.059 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 27 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 154 no(s)
+   - demorou 0.078 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 19 no(s) alfa
+   - cortou 27 no(s) beta
+   - avaliou 123 no(s)
+   - demorou 0.055 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 18 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 12 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 79 no(s)
+   - demorou 0.052 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 9 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 62 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 8 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.022 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.029 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 15 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 79 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 12 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 73 no(s)
+   - demorou 0.033 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 13 no(s) alfa
+   - cortou 17 no(s) beta
+   - avaliou 63 no(s)
+   - demorou 0.047 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.059 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 9 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 68 no(s)
+   - demorou 0.039 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 32 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 24 no(s) alfa
+   - cortou 45 no(s) beta
+   - avaliou 156 no(s)
+   - demorou 0.069 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 61 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 15 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.049 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 12 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 70 no(s)
+   - demorou 0.037 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 98 no(s)
+   - demorou 0.044 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 34 no(s) alfa
+   - cortou 50 no(s) beta
+   - avaliou 196 no(s)
+   - demorou 0.084 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 15 no(s) alfa
+   - cortou 20 no(s) beta
+   - avaliou 81 no(s)
+   - demorou 0.037 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 16 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 94 no(s)
+   - demorou 0.042 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 5 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.025 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 24 no(s) alfa
+   - cortou 41 no(s) beta
+   - avaliou 144 no(s)
+   - demorou 0.07 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 15 no(s) alfa
+   - cortou 21 no(s) beta
+   - avaliou 72 no(s)
+   - demorou 0.035 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 24 no(s) alfa
+   - cortou 27 no(s) beta
+   - avaliou 141 no(s)
+   - demorou 0.056 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 27 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 176 no(s)
+   - demorou 0.071 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 28 no(s) alfa
+   - cortou 36 no(s) beta
+   - avaliou 192 no(s)
+   - demorou 0.073 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 39 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 225 no(s)
+   - demorou 0.084 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 26 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 119 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 7 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 36 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 16 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 101 no(s)
+   - demorou 0.044 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 34 no(s) alfa
+   - cortou 34 no(s) beta
+   - avaliou 169 no(s)
+   - demorou 0.072 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 5 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 31 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 13 no(s) alfa
+   - cortou 26 no(s) beta
+   - avaliou 80 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 9 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 60 no(s)
+   - demorou 0.031 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 14 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 68 no(s)
+   - demorou 0.031 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 15 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 97 no(s)
+   - demorou 0.039 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 17 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 94 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 27 no(s) alfa
+   - cortou 37 no(s) beta
+   - avaliou 167 no(s)
+   - demorou 0.06 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 15 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 88 no(s)
+   - demorou 0.036 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 6 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 75 no(s)
+   - demorou 0.032 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 13 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 99 no(s)
+   - demorou 0.037 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 22 no(s) alfa
+   - cortou 30 no(s) beta
+   - avaliou 145 no(s)
+   - demorou 0.056 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 17 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 93 no(s)
+   - demorou 0.042 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 16 no(s) alfa
+   - cortou 33 no(s) beta
+   - avaliou 111 no(s)
+   - demorou 0.048 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 24 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 138 no(s)
+   - demorou 0.059 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 38 no(s) alfa
+   - cortou 61 no(s) beta
+   - avaliou 247 no(s)
+   - demorou 0.093 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 10 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 62 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 4 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 25 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 12 no(s) beta
+   - avaliou 56 no(s)
+   - demorou 0.026 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 7 no(s) alfa
+   - cortou 11 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.038 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 11 no(s) alfa
+   - cortou 24 no(s) beta
+   - avaliou 64 no(s)
+   - demorou 0.029 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 17 no(s) alfa
+   - cortou 29 no(s) beta
+   - avaliou 103 no(s)
+   - demorou 0.04 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 36 no(s) alfa
+   - cortou 41 no(s) beta
+   - avaliou 223 no(s)
+   - demorou 0.07 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 24 no(s) alfa
+   - cortou 34 no(s) beta
+   - avaliou 134 no(s)
+   - demorou 0.042 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 8 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 50 no(s)
+   - demorou 0.023 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 13 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 63 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.016 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 13 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 62 no(s)
+   - demorou 0.026 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.01 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 21 no(s) alfa
+   - cortou 28 no(s) beta
+   - avaliou 133 no(s)
+   - demorou 0.041 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 15 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 80 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 4 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 18 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 36 no(s) alfa
+   - cortou 42 no(s) beta
+   - avaliou 233 no(s)
+   - demorou 0.082 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 24 no(s) alfa
+   - cortou 32 no(s) beta
+   - avaliou 155 no(s)
+   - demorou 0.052 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 29 no(s) alfa
+   - cortou 35 no(s) beta
+   - avaliou 181 no(s)
+   - demorou 0.062 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.017 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 15 no(s) alfa
+   - cortou 18 no(s) beta
+   - avaliou 87 no(s)
+   - demorou 0.03 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 5 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 29 no(s)
+   - demorou 0.031 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 11 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 83 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 22 no(s) alfa
+   - cortou 25 no(s) beta
+   - avaliou 150 no(s)
+   - demorou 0.045 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 12 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 84 no(s)
+   - demorou 0.028 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 13 no(s) alfa
+   - cortou 22 no(s) beta
+   - avaliou 96 no(s)
+   - demorou 0.027 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 14 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 74 no(s)
+   - demorou 0.033 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 2 no(s) alfa
+   - cortou 4 no(s) beta
+   - avaliou 13 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.01 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 9 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 42 no(s)
+   - demorou 0.018 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 10 no(s) alfa
+   - cortou 16 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 6 no(s) alfa
+   - cortou 9 no(s) beta
+   - avaliou 35 no(s)
+   - demorou 0.014 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 6 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 51 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 9 no(s) alfa
+   - cortou 19 no(s) beta
+   - avaliou 97 no(s)
+   - demorou 0.024 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 9 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 51 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 11 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 90 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 5 no(s) alfa
+   - cortou 5 no(s) beta
+   - avaliou 29 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 8 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 51 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 8 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 34 no(s)
+   - demorou 0.012 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 7 no(s) alfa
+   - cortou 8 no(s) beta
+   - avaliou 38 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 3 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 12 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 6
+   - cortou 19 no(s) alfa
+   - cortou 23 no(s) beta
+   - avaliou 82 no(s)
+   - demorou 0.021 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 12 no(s) alfa
+   - cortou 14 no(s) beta
+   - avaliou 65 no(s)
+   - demorou 0.02 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 5
+   - cortou 6 no(s) alfa
+   - cortou 10 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 8 no(s) alfa
+   - cortou 13 no(s) beta
+   - avaliou 71 no(s)
+   - demorou 0.015 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 11 no(s) alfa
+   - cortou 15 no(s) beta
+   - avaliou 64 no(s)
+   - demorou 0.019 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 8 no(s) alfa
+   - cortou 6 no(s) beta
+   - avaliou 43 no(s)
+   - demorou 0.013 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 5 no(s) alfa
+   - cortou 3 no(s) beta
+   - avaliou 28 no(s)
+   - demorou 0.01 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 2 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 2 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 4
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 2 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 3
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 1 no(s) alfa
+   - cortou 1 no(s) beta
+   - avaliou 11 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 2
+   - cortou 0 no(s) alfa
+   - cortou 1 no(s) beta
+   - avaliou 14 no(s)
+   - demorou 0.008 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 1
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 7 no(s)
+   - demorou 0.011 milisegundos(s)
+ > Maquina 0 jogou 
+   - na casa 1
+   - cortou 0 no(s) alfa
+   - cortou 1 no(s) beta
+   - avaliou 9 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 1 jogou 
+   - na casa 2
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 9 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 3
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 8 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 4
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 6 no(s)
+   - demorou 0.009 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 1 no(s) alfa
+   - cortou 2 no(s) beta
+   - avaliou 4 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 5
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 1 no(s)
+   - demorou 0.007 milisegundos(s)
+ > Maquina 0 nao tem jogadas possiveis. A vez foi passada 
+ 
+ > Maquina 1 jogou 
+   - na casa 6
+   - cortou 0 no(s) alfa
+   - cortou 0 no(s) beta
+   - avaliou 1 no(s)
+   - demorou 0.008 milisegundos(s)
+
+O jogo termiou e jogador 1 vence com 51 pontossobre o seu adversario que obteve 45 pontos

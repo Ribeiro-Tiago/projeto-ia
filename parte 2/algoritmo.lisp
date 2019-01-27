@@ -148,8 +148,9 @@
 
 
 
+
 ;;;;;;;;;;;;;;; MEMOIZACAO ;;;;;;;;;;;;;;;
-(defun memoizacao (node jogador timeLimit &optional (mDepth 5) (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
+(defun memoizacao (node jogador timeLimit &optional (mDepth 10) (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
   "Funcao que verifica se ja existe um resultado alfabeta para o no passado na hash table, caso exista devolve-o, caso nao exista calcula o seu valor, retorna-o e insere-o na hash table"
   (let ((nodeTable (gethash (hash-node (first node)) *hash-table*)))
     (cond ((null nodeTable)   
