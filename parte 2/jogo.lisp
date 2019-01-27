@@ -15,6 +15,7 @@
 )
 
 (defun playing-board (board)
+  "Retorna o tabuleiro de jogo com numeros de 1 em 6 por cima de cada coluna para indicar ao utilizador a que casa corresponde cada numero da sua jogada"
   (format t " 1 2 3 4 5 6 ~%------------- ~%~A ~%~A ~%-------------~%~%" (first board) (second board))
 )
 

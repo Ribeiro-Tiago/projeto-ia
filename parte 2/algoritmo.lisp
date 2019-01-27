@@ -11,7 +11,6 @@
 (defvar *node-parsed* 0)
 
 ;;;;;;;;;;;;;;; Construtor ;;;;;;;;;;;;;;;
-;; custo = f | heuristica = g
 (defun create-node (board &optional (depth 0) (position -1) (parent nil))
   "Construtor do no das arvores para os algoritmos"
   (list board depth position parent)
@@ -19,7 +18,6 @@
 
 
 ;;;;;;;;;;;;;;; getters ;;;;;;;;;;;;;;;
-
 ;; Test: (get-node-state (teste))
 ;; Result: ((8 8 8 8 8 8) (8 8 8 8 8 8))
 (defun get-node-state (node)
@@ -48,6 +46,7 @@
 )
 
 (defun get-node-next-play (node &optional (currNode (get-node-state node)))
+  "Percorre o no ate ao primeiro sucessor de todos. Este e a nossa proxima jogada"
   (let ((parent (get-node-parent node)))
     (cond ((null parent) currNode)
           (t (get-node-next-play parent node))))
@@ -118,6 +117,7 @@
 )
 
 (defun columnsValid(row column)
+  "Verifica se a coluna é válida"
   (cond ((and (= row 0) (>= column 0) (<= column 5)) t )
         ((and (= row 1) (<= column 5) (>= column 0)) t )
         (t nil))
@@ -133,11 +133,13 @@
 
 
 (defun get-starter-position (player)
+  "Retorna a posicao do primeiro sucessor, dependendo se for jogador 1 ou 0"
   (cond ((= player 0) 5)
         (t 0))
 )
 
 (defun funcao-avaliacao (no)
+  "Valida quantas pecas foram \"comidas\" entre o tabuleiro atual e o ascendente direto. Esta e a funcao avaliacao do alfabeta"
   (let ((valorA (board-value (get-node-state no)))
         (valorB (board-value (get-node-state (get-node-parent no)))))
 
@@ -167,6 +169,7 @@
 )
 
 (defun to-string (item)
+  "Funcao que formata o que receber por parametro em string"
   (format nil "~S" item)
 )
 

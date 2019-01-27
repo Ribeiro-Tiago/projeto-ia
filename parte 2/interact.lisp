@@ -5,14 +5,17 @@
 
 ;;;; funcoes que criam starter nodes para testar os algos ;;;;
 (defun start-board () 
+  "Retorna um possivel tabuleiro de jogo"
   '((8 8 8 8 8 8) (8 8 8 8 8 8))
 )
  
 (defun start-board2 () 
+  "Retorna um possivel tabuleiro de jogo"
   '((1 0 0 0 0 0) (0 0 0 0 0 1))
 )
 
 (defun start-board3 () 
+  "Retorna um possivel tabuleiro de jogo"
   '((3 0 0 0 0 0) (0 0 0 0 0 3))
 )
 
@@ -151,7 +154,7 @@
 )
 
 
-(defun get-max-timer (&optional (firstPlayer 0) (gameMode 1) &aux (board (start-board3)))
+(defun get-max-timer (&optional (firstPlayer 0) (gameMode 1) &aux (board (start-board2)))
   "Funcao que permite o utilizador definir o tempo maximo de execucao de cada jogada da maquina"
   (progn
     (format t "~%> Tempo maximo (em segundos) de cada jogada da maquina (entre 1 e 5)~%")
@@ -270,12 +273,24 @@
 
 (defun game-over (score)
   "Mostra mensagem de final, o tabuleiro no seu estado final e estatisticas do jogo"
-  (format t "~%yay, finitooooo ~%")
-  (format t "Score final ~a!~%" score)
-  (format t "O vencedor é ~s!~% " (get-vencedor score))
+  (let ((vencedor (get-vencedor score)))
+    (format t "~% ~% ~% »» Chegamos ao fim do jogo ««")
+    
+    (cond ((equal vencedor 'empate) 
+                 (write-results "~%~%O jogo acabou em empate com pontuacao final de ~d pontos para ambos os jogadores" (first score)))
+
+          ((equal vencedor 'jogador1) 
+                 (progn 
+                   (write-results "~%~%O jogo termiou e jogador 1 vence com ~d pontos" (first score))
+                   (write-results "sobre o seu adversario que obteve ~d pontos" (second score))))
+
+          (t (progn
+               (write-results "~%~%O jogo termiou e jogador2 vence vencedor com ~d pontos" (second score))
+               (write-results "sobre o seu adversario que obteve ~d pontos" (first score))))))
 )
 
 (defun get-vencedor (score)
+  "Determina o vencedor com base na pontuacao final"
   (let ((player1 (first score))
         (player2 (second score)))
 

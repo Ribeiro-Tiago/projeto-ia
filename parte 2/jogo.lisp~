@@ -153,3 +153,10 @@
   "Verifica se a linha correspondente ao rowIndex está vazia ou não"
   (= (apply '+ (nth rowIndex board)) 0)
 )
+
+(defun board-value (board)
+  "Calcula o numero de pecas totais no tabuleiro"
+  (apply '+ (append 
+             (get-row 0 board) 
+             (get-row 1 board)))
+)
