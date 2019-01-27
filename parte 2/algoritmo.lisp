@@ -4,14 +4,14 @@
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
 ;;;;;;;;;;;;;;; variaveis globais ;;;;;;;;;;;;;;;
-(defvar *hashTable* (make-hash-table))
+(defvar *hash-table* (make-hash-table))
 (defvar *no-objetivo* nil)
 
 ;;;;;;;;;;;;;;; Construtor ;;;;;;;;;;;;;;;
 ;; custo = f | heuristica = g
-(defun create-node (board &optional (depth 0) (parent nil))
+(defun create-node (board &optional (depth 0) (position -1) (parent nil))
   "Construtor do no das arvores para os algoritmos"
-  (list board depth parent)
+  (list board depth position parent)
 )
 
 
@@ -32,11 +32,22 @@
   (second node)
 )
 
+(defun get-node-play-position (node)
+  "Retorna o número da casa de onde a jogada foi feita, de 1 a 6"
+  (1+ (third node))
+)
+
 ;; Teste: (get-node-parent (teste))
 ;; Result: NIL
 (defun get-node-parent (node)
   "Retorna o no pai de {node}"
-  (third node)
+  (fourth node)
+)
+
+(defun get-node-next-play (node &optional (currNode (get-node-state node)))
+  (let ((parent (get-node-parent node)))
+    (cond ((null parent) currNode)
+          (t (get-node-next-play parent node))))
 )
 
 ;; Test: (node-solutionp (teste))
@@ -48,7 +59,7 @@
 
 
 ;;;;;;;;;;;;;;; ALFABETA ;;;;;;;;;;;;;;;
-(defun alfabeta (no mDepth jogador alfa beta)
+(defun alfabeta (no mDepth jogador &optional (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM))
   (cond ((= mDepth 0) (funcao-avaliacao no))
         (t (alfabeta-aux (sucessores-min-max no jogador) mDepth jogador alfa beta))
   )
@@ -75,7 +86,7 @@
 
 
 (defun sucessores-min-max(no jogador)
-  (mapcar (lambda (board) (create-node board (1+ (get-node-depth no)) no))
+  (mapcar (lambda (sucessor) (create-node (second sucessor) (1+ (get-node-depth no)) (first sucessor) no))
     
              (sucessores-aux jogador (get-starter-position jogador) (get-node-state no)))
 )
@@ -87,15 +98,8 @@
 
         ((columnsValid rowIndex cellIndex) 
              (append (sucessores-aux rowIndex nextCell board) 
-                     (list (allocate-pieces rowIndex cellIndex board)))))
+                     (list (list cellIndex (allocate-pieces rowIndex cellIndex board))))))
 )
-
-
-(defun teste2 ()
-  "Funcao que cria no inicial dum tabuleiro aleatorio para testar"
-  (create-node '((2 0 0 0 0 0) (0 0 0 2 0 0)))
-)
-
 
 ;;;;;;;;;;;;;;; FUNCOES AUX ;;;;;;;;;;;;;;;
 
@@ -142,18 +146,12 @@
 ;;;;;;;;;;;;;;; MEMOIZACAO ;;;;;;;;;;;;;;;
 (defun memoizacao (node)
   "Funcao que verifica se ja existe um resultado alfabeta para o no passado na hash table, caso exista devolve-o, caso nao exista calcula o seu valor, retorna-o e insere-o na hash table"
-  (let ((nodeTable (get-hash-node node)))
+  (let ((nodeTable (gethash (hash-node node) *hash-table*)))
     (cond ((null nodeTable) ;; calcula  
-           (let ((newNode (alfabeta)))
-             (setf (get-hash-node node) newNode)
-             newNode
-             ))
+           (let ((newNode (alfabeta))) (progn
+                                         (setf (gethash (hash-node node) *hash-table*) newNode)
+                                         newNode)))
           (t nodeTable)))
-)
-
-(defun get-hash-node (node) 
-  "Funcao que vai buscar o no a hash table"
-  (gethash (hash-node node) *hashTable*)
 )
 
 (defun hash-node (no)

@@ -21,10 +21,16 @@
   (create-node '((8 8 8 8 8 8) (8 8 8 8 8 8)))
 )
 
-(defun teste2 ()
+(defun teste10 ()
   "Funcao que cria no inicial dum tabuleiro aleatorio para testar"
   (create-node '((5 0 0 0 0 0) (0 0 0 0 0 5)))
 )
+
+(defun teste2 ()
+  "Funcao que cria no inicial dum tabuleiro aleatorio para testar"
+  (create-node '((2 0 0 0 0 0) (0 0 0 2 0 0)))
+)
+
 
 (defun teste3 ()
   "Funcao que cria no inicial reference ao problema a para testar"
@@ -140,12 +146,12 @@
                (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
                (get-first-player))
 
-            (t (get-max-timer (1- answer) t)))) 
+            (t (get-max-timer (1- answer) 0)))) 
   )
 )
 
 
-(defun get-max-timer (&optional (firstPlayer 0) (hasHuman nil) (board (start-board)) )
+(defun get-max-timer (&optional (firstPlayer 0) (gameMode 1))
   "Funcao que permite o utilizador definir o tempo máximo de execução de cada jogada da máquina"
   (progn
     (format t "~%> Tempo máximo (em milisegundos) de cada jogada da máquina (entre 1000 e 5000)~%")
@@ -153,58 +159,68 @@
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1000) (> answer 5000)) 
                (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
-               (get-max-timer firstPlayer hasHuman board))
+               (get-max-timer firstPlayer gameMode))
 
-            (t (start firstPlayer answer hasHuman board))))
+            (t (cond ((= gameMode 0) (start-hvm firstPlayer answer (start-board3)))
+                     (t (start-mvm answer))))))
   )
 )
 
-(defun start (firstPlayer maxTimer hasHuman board)
-  "Comeca o jogo. Mosta mensagem de inicio e pede a primeira jogada"
-  (progn 
-    (format t "~% ~% »» Muito bem, vamos começar o jogo! «« ~% ~% > Tabuleiro Inicial: ~%~%")
-    (make-play firstPlayer maxTimer hasHuman board))
+(defun start-mvm (maxTimer) 
+  maxTimer
 )
 
-(defun make-play (player maxTimer hasHuman board)
-  "Se o jogador poder jogar (i.e.: o lado dele tiver peças, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
+(defun start-hvm (firstPlayer maxTimer board)
+  "Comeca o jogo. Mosta mensagem de inicio e pede a primeira jogada"
+
+  (progn 
+    (format t "~% ~% »» Muito bem, vamos começar o jogo! «« ~%~%")
+    (make-play firstPlayer maxTimer board))
+)
+
+(defun make-play (player maxTimer board)
+  "Se o jogador poder jogar, i.e.: o lado dele tiver peças, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
   (let ((newPlayer (switch-player player)))
     
     ;; não podemos fazer jogada, passamos a vez
     (cond ((row-emptyp player board)
-                   (progn 
-                     (pass-play board)
-                     (make-play newPlayer maxTimer hasHuman board)))
+              (progn 
+                (cond ((= player 0) (pass-play board))
+                      (t (pass-play-ai)))
+                (make-play newPlayer maxTimer board)))
 
-          ;; podes fazer jogada, é isso que fazemos
-          (t (let* ((getPlayFunc (cond ((AND hasHuman (= player 0)) 'get-play)
-                                       (t 'get-ai-play)))
+          ;; podemos fazer jogada, vemos se é jogada do user 
+          ((= player 0) 
+              (check-for-gameover 
+                    newPlayer 
+                    maxTimer 
+                    (allocate-pieces player (get-play board player) board)))
 
-                    (newBoard (allocate-pieces player (funcall getPlayFunc board player) board)))
+          ;; podemos fazer jogada e é do pc 
+          (t (progn 
+               (format t "~% > Máquina a fazer a sua jogada... ~%")
+               (alfabeta (create-node board) 10 player)
 
-
-                 (cond ((board-emptyp newBoard) (game-over))
-
-                       (t (make-play newPlayer maxTimer hasHuman newBoard)))))))
+               (let ((jogada (get-node-next-play *no-objetivo*)))
+                 (format t "~% > Máquina jogou na casa ~d." (get-node-play-position jogada))
+                 (check-for-gameover newPlayer maxTimer (get-node-state jogada)))))))
 )
 
-(defun game-over ()
-  (format t "yay, finitooooo") 
+(defun check-for-gameover (player maxTimer board)
+  (cond ((board-emptyp board) (game-over board))
+        (t (make-play player maxTimer board)))
 )
 
-(defun switch-player (currPlayer)
-  "Altera o jogador atual"
-  (- 1 currPlayer)
+(defun game-over (board)
+  (format t "~%yay, finitooooo ~%")
+  (print-board board)
 )
 
-(defun get-ai-play (board player)
-  (alfabeta board player)
-)
 
 (defun get-play (board player)
   "Mostra o tabuleiro atual ao jogador e pede uma jogada. Se valida (entre 1 e 6 com valor da casa > 0) devolve a posicao dessa jogada. Senao pede uma jogada valida"
   (progn 
-    (format t "~% ~% > Escolha a sua jogada, jogador ~d (1 - 6) ~%~%" player)
+    (format t "~% ~% > Escolha a sua jogada (1 - 6) ~%~%")
     (playing-board board)
 
     (let ((answer (read)))
@@ -214,6 +230,10 @@
             
             (t (1- answer))))
   )
+)
+
+(defun pass-play-ai () 
+  (format t "~% ~% > A máquina não tem jogadas possiveis. A vez foi passada")
 )
 
 (defun pass-play (board)

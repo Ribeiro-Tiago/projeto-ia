@@ -9,9 +9,9 @@
   (make-list linhas :initial-element (make-list colunas :initial-element '0))
 )
 
-(defun print-board (index board) 
+(defun print-board (board) 
   "Retorna uma versao bonificada do tabuleiro com index atras"
-  (format t "~% ~% ~d - ~A ~%     ~A" index (first board) (second board))
+  (format t " ~A ~% ~A" (first board) (second board))
 )
 
 (defun playing-board (board)
