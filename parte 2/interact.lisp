@@ -197,7 +197,8 @@
                     (allocate-pieces player (get-play board player) board)))
 
           ;; podemos fazer jogada e � do pc 
-          (t (progn 
+          (t (progn
+              (Statistic) 
                (format t "~% > M�quina a fazer a sua jogada... ~%")
                (memoizacao (create-node board) 10 player maxTimer)
 
@@ -205,7 +206,11 @@
                  (format t "~% > M�quina jogou na casa ~d." (get-node-play-position jogada))
                  (check-for-gameover newPlayer maxTimer (get-node-state jogada)))))))
 )
-
+(defun Statistic()
+  (print  *wasted-time*)
+  (print *number-cuts* )
+  (print *node-parsed*)
+)
 (defun check-for-gameover (player maxTimer board)
   (cond ((board-emptyp board) (game-over board))
         (t (make-play player maxTimer board)))

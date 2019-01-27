@@ -6,6 +6,9 @@
 ;;;;;;;;;;;;;;; variaveis globais ;;;;;;;;;;;;;;;
 (defvar *hash-table* (make-hash-table))
 (defvar *no-objetivo* nil)
+(defvar *number-cuts* 0)
+(defvar *wasted-time* nil)
+(defvar *node-parsed* 0)
 
 ;;;;;;;;;;;;;;; Construtor ;;;;;;;;;;;;;;;
 ;; custo = f | heuristica = g
@@ -68,21 +71,22 @@
 
 (defun alfabeta-aux (sucessores mDepth jogador timeLimit alfa beta startTime &optional (trueValue -1)  )
   (cond ((null sucessores) trueValue)
-        (t (let* ((currNode (first sucessores))
+        (t 
+          (progn (plusNodesParsed)
+          (let* ((currNode (first sucessores))
                   (valor (alfabeta currNode (- mDepth 1)  (switch-player jogador) timeLimit alfa beta startTime)))
-
               (cond ((= jogador 0)
                       (let ((novoB (min beta valor)))
-                         (cond ((<= novoB alfa) beta)
+                         (cond ((<= novoB alfa)  (progn (plusNumberCuts) beta))
                                (t (progn
                                     (setf *no-objetivo* currNode)
                                     (alfabeta-aux (rest sucessores) mDepth 1 timeLimit alfa novoB startTime valor))))))
 
                     (t (let ((novoA (max alfa valor)))
-                         (cond ((<= beta novoA) alfa)
+                         (cond ((<= beta novoA) (progn (plusNumberCuts) alfa))
                                (t (progn 
                                     (setf *no-objetivo* currNode)
-                                    (alfabeta-aux (rest sucessores) mDepth 0 timeLimit novoA beta startTime valor))))))))))
+                                    (alfabeta-aux (rest sucessores) mDepth 0 timeLimit novoA beta startTime valor)))))))))))
 )
 
 
@@ -164,4 +168,14 @@
 
 (defun to-string (item)
   (format nil "~S" item)
+)
+(defun plusNumberCuts()
+  (setf *number-cuts* (+ 1 *number-cuts*))
+)
+(defun plusNodesParsed()
+  (setf *node-parsed* (+ 1 *node-parsed*))
+)
+(defun resetGlobal()
+  (setf *number-cuts* 0)
+  (setf *node-parsed* 0)
 )
