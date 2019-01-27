@@ -59,29 +59,29 @@
 
 
 ;;;;;;;;;;;;;;; ALFABETA ;;;;;;;;;;;;;;;
-(defun alfabeta (no mDepth jogador &optional (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM))
+(defun alfabeta (no jogador timeLimit &optional (mDepth 5) (alfa MOST-NEGATIVE-FIXNUM) (beta MOST-POSITIVE-FIXNUM) (startTime (get-universal-time)))
   (cond ((= mDepth 0) (funcao-avaliacao no))
-        (t (alfabeta-aux (sucessores-min-max no jogador) mDepth jogador alfa beta))
+        (t (alfabeta-aux (sucessores-min-max no jogador) mDepth jogador timeLimit alfa beta startTime)) 
   )
 )
 
-(defun alfabeta-aux (sucessores mDepth jogador alfa beta &optional (trueValue -1))
+(defun alfabeta-aux (sucessores mDepth jogador timeLimit alfa beta startTime &optional (trueValue -1))
   (cond ((null sucessores) trueValue)
         (t (let* ((currNode (first sucessores))
-                  (valor (alfabeta currNode (- mDepth 1) (switch-player jogador) alfa beta)))
+                  (valor (alfabeta currNode (switch-player jogador) timeLimit (- mDepth 1) alfa beta startTime)))
 
               (cond ((= jogador 0)
                       (let ((novoB (min beta valor)))
                          (cond ((<= novoB alfa) beta)
                                (t (progn
                                     (setf *no-objetivo* currNode)
-                                    (alfabeta-aux (rest sucessores) mDepth 1 alfa novoB valor))))))
+                                    (alfabeta-aux (rest sucessores) mDepth 1 timeLimit alfa novoB startTime valor))))))
 
                     (t (let ((novoA (max alfa valor)))
                          (cond ((<= beta novoA) alfa)
                                (t (progn 
                                     (setf *no-objetivo* currNode)
-                                    (alfabeta-aux (rest sucessores) mDepth 0 novoA beta valor))))))))))
+                                    (alfabeta-aux (rest sucessores) mDepth 0 timeLimit novoA beta startTime valor))))))))))
 )
 
 
@@ -128,15 +128,9 @@
         (t 0))
 )
 
-(defun board-value (node)
-  (apply '+ (append 
-             (get-row 0 (get-node-state node)) 
-             (get-row 1 (get-node-state node))))
-)
-
 (defun funcao-avaliacao (no)
-  (let ((valorA (board-value no))
-        (valorB (board-value (get-node-parent no))))
+  (let ((valorA (board-value (get-node-state no)))
+        (valorB (board-value (get-node-state (get-node-parent no)))))
 
     (- valorB valorA))
 )
