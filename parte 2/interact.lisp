@@ -1,5 +1,5 @@
 ;;;; interact.lisp
-;;;; Carrega os outros ficheiros de código, escreve e lê de ficheiros e trata da interação com o utilizador
+;;;; Carrega os outros ficheiros de cï¿½digo, escreve e lï¿½ de ficheiros e trata da interaï¿½ï¿½o com o utilizador
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
 
@@ -84,7 +84,7 @@
 (defun get-curr-dir ()
   "Funcao que obter um caminho que e usado para carregar os .lisp e .dat"
   ; (string "/Users/tiago/Documents/projetoIA/projeto-ia/parte 2"); - Alves mac
-  (string "C:/Users/Tiago/Documents/ips/IA/projeto/parte 2"); - Ribeiro windows
+  (string "/Users/Tiago/Documents/school/projeto-ia/parte 2"); - Ribeiro windows
 )
 
 (defun load-depedencies ()
@@ -123,7 +123,7 @@
 (defun select-game-mode ()
   "Funcao que constroi o menu de escolha de modo de jogo"
   (progn
-    (format t "~%> Escolha modo do jogo ~%1 - Humano VS Máquina ~%2 - Máquina VS Máquina ~%")
+    (format t "~%> Escolha modo do jogo ~%1 - Humano VS Mï¿½quina ~%2 - Mï¿½quina VS Mï¿½quina ~%")
 
     (let ((answer (read)))
 
@@ -137,9 +137,9 @@
 
 
 (defun get-first-player ()
-  "Funcao que permite o utilizador definir quem é o primeiro jogador"
+  "Funcao que permite o utilizador definir quem ï¿½ o primeiro jogador"
   (progn
-    (format t "~%> Quem começa o jogo? ~%1 - Humano ~%2 - Máquina ~%")
+    (format t "~%> Quem comeï¿½a o jogo? ~%1 - Humano ~%2 - Mï¿½quina ~%")
     
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2)) 
@@ -152,9 +152,9 @@
 
 
 (defun get-max-timer (&optional (firstPlayer 0) (gameMode 1))
-  "Funcao que permite o utilizador definir o tempo máximo de execução de cada jogada da máquina"
+  "Funcao que permite o utilizador definir o tempo mï¿½ximo de execuï¿½ï¿½o de cada jogada da mï¿½quina"
   (progn
-    (format t "~%> Tempo máximo (em milisegundos) de cada jogada da máquina (entre 1000 e 5000)~%")
+    (format t "~%> Tempo mï¿½ximo (em milisegundos) de cada jogada da mï¿½quina (entre 1000 e 5000)~%")
     
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1000) (> answer 5000)) 
@@ -174,35 +174,35 @@
   "Comeca o jogo. Mosta mensagem de inicio e pede a primeira jogada"
 
   (progn 
-    (format t "~% ~% »» Muito bem, vamos começar o jogo! «« ~%~%")
+    (format t "~% ~% ï¿½ï¿½ Muito bem, vamos comeï¿½ar o jogo! ï¿½ï¿½ ~%~%")
     (make-play firstPlayer maxTimer board))
 )
 
 (defun make-play (player maxTimer board)
-  "Se o jogador poder jogar, i.e.: o lado dele tiver peças, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
+  "Se o jogador poder jogar, i.e.: o lado dele tiver peï¿½as, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
   (let ((newPlayer (switch-player player)))
     
-    ;; não podemos fazer jogada, passamos a vez
+    ;; nï¿½o podemos fazer jogada, passamos a vez
     (cond ((row-emptyp player board)
               (progn 
                 (cond ((= player 0) (pass-play board))
                       (t (pass-play-ai)))
                 (make-play newPlayer maxTimer board)))
 
-          ;; podemos fazer jogada, vemos se é jogada do user 
+          ;; podemos fazer jogada, vemos se ï¿½ jogada do user 
           ((= player 0) 
               (check-for-gameover 
                     newPlayer 
                     maxTimer 
                     (allocate-pieces player (get-play board player) board)))
 
-          ;; podemos fazer jogada e é do pc 
+          ;; podemos fazer jogada e ï¿½ do pc 
           (t (progn 
-               (format t "~% > Máquina a fazer a sua jogada... ~%")
-               (alfabeta (create-node board) 10 player)
+               (format t "~% > Mï¿½quina a fazer a sua jogada... ~%")
+               (memoizacao (create-node board) 10 player maxTimer)
 
                (let ((jogada (get-node-next-play *no-objetivo*)))
-                 (format t "~% > Máquina jogou na casa ~d." (get-node-play-position jogada))
+                 (format t "~% > Mï¿½quina jogou na casa ~d." (get-node-play-position jogada))
                  (check-for-gameover newPlayer maxTimer (get-node-state jogada)))))))
 )
 
@@ -233,13 +233,13 @@
 )
 
 (defun pass-play-ai () 
-  (format t "~% ~% > A máquina não tem jogadas possiveis. A vez foi passada")
+  (format t "~% ~% > A mï¿½quina nï¿½o tem jogadas possiveis. A vez foi passada")
 )
 
 (defun pass-play (board)
   "Informa o utilizador que nao tem jogadas possiveis e espera que ele carregue no enter para passar a frente"
   (progn 
-    (format t "~% ~% > Não tem jogadas possiveis. Pressione qualquer tecla para passar a vez~%~%")
+    (format t "~% ~% > Nï¿½o tem jogadas possiveis. Pressione qualquer tecla para passar a vez~%~%")
     (playing-board board)
     (read-char))
 )
