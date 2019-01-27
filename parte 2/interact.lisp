@@ -161,21 +161,41 @@
                (format t "~% ~% >> Respota invalida, vamos tentar outra vez  << ~% ~%")
                (get-max-timer firstPlayer gameMode))
 
-            (t (cond ((= gameMode 0) (start-hvm firstPlayer answer (start-board3)))
-                     (t (start-mvm answer))))))
+            (t (progn 
+                  (format t "~% ~% »» Muito bem, vamos começar o jogo! «« ~%~%")
+                   (cond ((= gameMode 0) (start-hvm firstPlayer answer))
+                         (t (start-mvm answer)))))))
   )
 )
 
 (defun start-mvm (maxTimer) 
-  maxTimer
+  "Comeca o jogo em modo maquina vs maquin"
+  (make-play-ai 0 maxTimer (start-board3))
 )
 
-(defun start-hvm (firstPlayer maxTimer board)
-  "Comeca o jogo. Mosta mensagem de inicio e pede a primeira jogada"
+(defun make-play-ai (player maxTimer board)
+  (let ((newPlayer (switch-player player)))
 
-  (progn 
-    (format t "~% ~% »» Muito bem, vamos começar o jogo! «« ~%~%")
-    (make-play firstPlayer maxTimer board))
+    (cond ((row-emptyp player board) 
+             (progn 
+                 (format t "~% > Máquina ~d não tem jogadas possiveis. A vez foi passada ~% " player)
+               (make-play-ai newPlayer maxTimer board)))
+
+          (t (progn 
+               (format t "~% > Máquina ~d a fazer a sua jogada... ~%" player)
+               (alfabeta (create-node board) 10 player)
+
+               (let* ((jogada (get-node-next-play *no-objetivo*))
+                      (newBoard (get-node-state jogada)))
+
+                 (format t "~% > Máquina ~d jogou na casa ~d." player (get-node-play-position jogada))
+                 (print-board newBoard)
+                 (check-for-gameover newPlayer maxTimer newBoard 'make-play-ai))))))
+)
+
+(defun start-hvm (firstPlayer maxTimer)
+  "Comeca o jogo em modo humano vs maquina"
+  (make-play firstPlayer maxTimer (start-board3))
 )
 
 (defun make-play (player maxTimer board)
@@ -186,7 +206,7 @@
     (cond ((row-emptyp player board)
               (progn 
                 (cond ((= player 0) (pass-play board))
-                      (t (pass-play-ai)))
+                      (t (format t "~% ~% > A máquina não tem jogadas possiveis. A vez foi passada")))
                 (make-play newPlayer maxTimer board)))
 
           ;; podemos fazer jogada, vemos se é jogada do user 
@@ -194,7 +214,8 @@
               (check-for-gameover 
                     newPlayer 
                     maxTimer 
-                    (allocate-pieces player (get-play board player) board)))
+                    (allocate-pieces player (get-play board player) board)
+                    'make-play))
 
           ;; podemos fazer jogada e é do pc 
           (t (progn 
@@ -203,15 +224,17 @@
 
                (let ((jogada (get-node-next-play *no-objetivo*)))
                  (format t "~% > Máquina jogou na casa ~d." (get-node-play-position jogada))
-                 (check-for-gameover newPlayer maxTimer (get-node-state jogada)))))))
+                 (check-for-gameover newPlayer maxTimer (get-node-state jogada) 'make-play))))))
 )
 
-(defun check-for-gameover (player maxTimer board)
+(defun check-for-gameover (player maxTimer board nextPlay)
+  "Verifica se o jogo ja acabou. Se acabou passa para a funcao (game-over), senao passa a proxima jogada"
   (cond ((board-emptyp board) (game-over board))
-        (t (make-play player maxTimer board)))
+        (t (funcall nextPlay player maxTimer board)))
 )
 
 (defun game-over (board)
+  "Mostra mensagem de final, o tabuleiro no seu estado final e estatisticas do jogo"
   (format t "~%yay, finitooooo ~%")
   (print-board board)
 )
@@ -230,10 +253,6 @@
             
             (t (1- answer))))
   )
-)
-
-(defun pass-play-ai () 
-  (format t "~% ~% > A máquina não tem jogadas possiveis. A vez foi passada")
 )
 
 (defun pass-play (board)

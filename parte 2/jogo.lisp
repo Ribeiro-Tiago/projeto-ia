@@ -11,7 +11,7 @@
 
 (defun print-board (board) 
   "Retorna uma versao bonificada do tabuleiro com index atras"
-  (format t " ~A ~% ~A" (first board) (second board))
+  (format t "~%~% ~A ~% ~A ~%~%" (first board) (second board))
 )
 
 (defun playing-board (board)
