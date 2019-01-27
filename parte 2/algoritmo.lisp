@@ -6,7 +6,8 @@
 ;;;;;;;;;;;;;;; variaveis globais ;;;;;;;;;;;;;;;
 (defvar *hash-table* (make-hash-table))
 (defvar *no-objetivo* nil)
-(defvar *number-cuts* 0)
+(defvar *number-cuts-alfa* 0)
+(defvar *number-cuts-beta* 0)
 (defvar *wasted-time* nil)
 (defvar *node-parsed* 0)
 
@@ -77,13 +78,13 @@
                   (valor (alfabeta currNode (- mDepth 1)  (switch-player jogador) timeLimit alfa beta startTime)))
               (cond ((= jogador 0)
                       (let ((novoB (min beta valor)))
-                         (cond ((<= novoB alfa)  (progn (plusNumberCuts) beta))
+                         (cond ((<= novoB alfa)  (progn (plusNumberCutsBeta) beta))
                                (t (progn
                                     (setf *no-objetivo* currNode)
                                     (alfabeta-aux (rest sucessores) mDepth 1 timeLimit alfa novoB startTime valor))))))
 
                     (t (let ((novoA (max alfa valor)))
-                         (cond ((<= beta novoA) (progn (plusNumberCuts) alfa))
+                         (cond ((<= beta novoA) (progn (plusNumberCutsAlfa) alfa))
                                (t (progn 
                                     (setf *no-objetivo* currNode)
                                     (alfabeta-aux (rest sucessores) mDepth 0 timeLimit novoA beta startTime valor)))))))))))
@@ -163,19 +164,23 @@
 )
 (defun hash-node (no)
   "Funcao que converte o estado e as pecas dos jogadores de um no numa string para que possa ser usada como key na hash table de memoizacao"
-  (concatenate 'string (to-string (get-node-state no)) (to-string (get-node-depth no)))
+  (concatenate 'string (to-string (get-node-state no)))
 )
 
 (defun to-string (item)
   (format nil "~S" item)
 )
-(defun plusNumberCuts()
-  (setf *number-cuts* (+ 1 *number-cuts*))
+(defun plusNumberCutsAlfa()
+  (setf *number-cuts-alfa* (+ 1 *number-cuts-alfa*))
+)
+(defun plusNumberCutsBeta()
+  (setf *number-cuts-beta* (+ 1 *number-cuts-beta*))
 )
 (defun plusNodesParsed()
   (setf *node-parsed* (+ 1 *node-parsed*))
 )
 (defun resetGlobal()
-  (setf *number-cuts* 0)
+  (setf *number-cuts-alfa* 0)
+  (setf *number-cuts-beta* 0)
   (setf *node-parsed* 0)
 )
