@@ -123,7 +123,7 @@
 (defun select-game-mode ()
   "Funcao que constroi o menu de escolha de modo de jogo"
   (progn
-    (format t "~%> Escolha modo do jogo ~%1 - Humano VS M�quina ~%2 - M�quina VS M�quina ~%")
+    (format t "~%> Escolha modo do jogo ~%1 - Humano VS Maquina ~%2 - Maquina VS Maquina ~%")
 
     (let ((answer (read)))
 
@@ -137,9 +137,9 @@
 
 
 (defun get-first-player ()
-  "Funcao que permite o utilizador definir quem � o primeiro jogador"
+  "Funcao que permite o utilizador definir quem é o primeiro jogador"
   (progn
-    (format t "~%> Quem come�a o jogo? ~%1 - Humano ~%2 - M�quina ~%")
+    (format t "~%> Quem comeca o jogo? ~%1 - Humano ~%2 - Maquina ~%")
     
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1) (> answer 2)) 
@@ -154,7 +154,7 @@
 (defun get-max-timer (&optional (firstPlayer 0) (gameMode 1))
   "Funcao que permite o utilizador definir o tempo m�ximo de execu��o de cada jogada da m�quina"
   (progn
-    (format t "~%> Tempo m�ximo (em milisegundos) de cada jogada da m�quina (entre 1000 e 5000)~%")
+    (format t "~%> Tempo maximo (em milisegundos) de cada jogada da maquina (entre 1000 e 5000)~%")
     
     (let ((answer (read)))
       (cond ((OR (not (numberp answer)) (< answer 1000) (> answer 5000)) 
@@ -174,12 +174,12 @@
   "Comeca o jogo. Mosta mensagem de inicio e pede a primeira jogada"
 
   (progn 
-    (format t "~% ~% �� Muito bem, vamos come�ar o jogo! �� ~%~%")
+    (format t "~% ~%  Muito bem, vamos começar o jogo!  ~%~%")
     (make-play firstPlayer maxTimer board))
 )
 
 (defun make-play (player maxTimer board)
-  "Se o jogador poder jogar, i.e.: o lado dele tiver pe�as, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
+  "Se o jogador poder jogar, i.e.: o lado dele tiver peças, pede uma jogada, executa-a e volta a chamar a funcao. Senao chama a funcao que permite o utilizador passar a vez"
   (let ((newPlayer (switch-player player)))
     
     ;; n�o podemos fazer jogada, passamos a vez
@@ -208,7 +208,7 @@
                 (print (- (get-universal-time) startTime ))
                 
                (let ((jogada (get-node-next-play *no-objetivo*)))
-                 (format t "~% > M�quina jogou na casa ~d." (get-node-play-position jogada))
+                 (format t "~% > Maquina jogou na casa ~d." (get-node-play-position jogada))
                  (check-for-gameover newPlayer maxTimer (get-node-state jogada)))
                 )
               )
@@ -253,7 +253,7 @@
 (defun pass-play (board)
   "Informa o utilizador que nao tem jogadas possiveis e espera que ele carregue no enter para passar a frente"
   (progn 
-    (format t "~% ~% > N�o tem jogadas possiveis. Pressione qualquer tecla para passar a vez~%~%")
+    (format t "~% ~% > Não tem jogadas possiveis. Pressione qualquer tecla para passar a vez~%~%")
     (playing-board board)
     (read-char))
 )
