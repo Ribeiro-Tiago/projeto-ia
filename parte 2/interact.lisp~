@@ -235,11 +235,11 @@
 
           ((equal vencedor 'jogador1) 
                  (progn 
-                   (write-results "~%~%O jogo termiou e jogador 1 vence com ~d pontos " (first score))
+                   (write-results "~%~%O jogo termiou e jogador 1 vence com ~d pontos" (first score))
                    (write-results "sobre o seu adversario que obteve ~d pontos" (second score))))
 
           (t (progn
-               (write-results "~%~%O jogo termiou e jogador2 vence vencedor com ~d pontos " (second score))
+               (write-results "~%~%O jogo termiou e jogador2 vence vencedor com ~d pontos" (second score))
                (write-results "sobre o seu adversario que obteve ~d pontos" (first score))))))
 )
 
