@@ -2,11 +2,11 @@ Manual Técnico
 =====
 
 ![](./imgs_manual/logo.png)
-![](./imgs_manual/game.png)
 
 *TIAGO ANDRÉ MENDES DE ALMEIDA RIBEIRO*
-*TIAGO ALEXANDRE QUARESMA ALVES*
 
+*TIAGO ALEXANDRE QUARESMA ALVES*
+ 
 
 Índice
 =====
