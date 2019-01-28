@@ -1,4 +1,4 @@
-;;;; board-handler.lisp
+;;;; jogo.lisp
 ;;;; Funcoes de manipulacao do tabuleiro
 ;;;; Disciplina de IA - 2018 / 2019
 ;;;; Autor: Tiago Alves & Tiago Ribeiro
@@ -9,36 +9,26 @@
   (make-list linhas :initial-element (make-list colunas :initial-element '0))
 )
 
-(defun print-board (index board) 
+(defun print-board (board) 
   "Retorna uma versao bonificada do tabuleiro com index atras"
-  (format t "~% ~% ~d - ~A ~%     ~A" index (first board) (second board))
+  (format t "~%~% ~A ~% ~A ~%~%" (first board) (second board))
 )
 
+(defun playing-board (board)
+  "Retorna o tabuleiro de jogo com numeros de 1 em 6 por cima de cada coluna para indicar ao utilizador a que casa corresponde cada numero da sua jogada"
+  (format t " 1 2 3 4 5 6 ~%------------- ~%~A ~%~A ~%-------------~%~%" (first board) (second board))
+)
 
 ;;; Board handler functions
-(defun valid-cell (index) 
-  "Funcao auxiliar que valida se o index da celula esta valido (entre 0 e 5). Retorna T se sim, nil caso contrario"
-  (AND (>= index 0) (<= index 5))
-)
-
-(defun valid-row (index) 
-  "Funcao auxiliar que valida se o index da linha esta valido (0 ou 1). Retorna T se sim, nil caso contrario"
-  (OR (= index 0) (= index 1))
-)
-
 (defun get-row (index board)
   "Valida o {index} e devolvee a linha do {board} correspondente ao {index} ou nil se o {index} for invalido"
-  (cond 
-        ((not (valid-row index)) nil)
-        ((= index 0) (first board))
+  (cond ((= index 0) (first board))
         (t (second board)))
 )
 
 (defun get-cell (rowIndex cellIndex board)
   "Valida o {rowIndex} e {cellIndex} e devolvee a celula do {board} correspondente ao [rowIndex][cellIndex] ou nil se algum dos indexes for invalido"
-  (cond 
-     ((not (and (valid-cell cellIndex) (valid-row rowIndex))) nil)
-     (t (nth cellIndex (get-row rowIndex board))))
+  (nth cellIndex (get-row rowIndex board))
 )
 
 
@@ -49,37 +39,25 @@
 
 (defun replace-position (cellIndex row &optional (value 0))
   "Valida se {row} e {cellIndex} sao validos. Se sim, substitui o valor na [row][cellIndex] com {value} e retorna uma nova linha. Caso contrario deaolve nil"
-  (cond
-    ((null row) ())
-    ((not (valid-cell cellIndex)) nil)
-    ((= cellIndex 0) (cons value (rest row)))
-    (t (cons(first row) (replace-position (- cellIndex 1) (rest row) value))))
+  (cond ((= cellIndex 0) (cons value (rest row)))
+        (t (cons (first row) (replace-position (- cellIndex 1) (rest row) value))))
 )
 
 (defun update-board (rowIndex cellIndex board &optional (value 0))
   "Valida se {rowIndex}, {cellIndex} e {board} sao validos. Se sim, atualiza a posicao [rowIndex][cellIndex] do {board} com o {value} recebido e retorna o novo tabuleiro. Caso contrario retorna nil"
-  (cond 
-     ((null board) nil)
-     ((not (and (valid-cell cellIndex) (valid-row rowIndex))) nil)
-     ((= rowIndex 0) 
-        (cons 
-           (replace-position cellIndex (get-row rowIndex board) value) 
-           (list (second board))
-        ))
+  (cond ((= rowIndex 0) 
+              (cons 
+                (replace-position cellIndex (get-row rowIndex board) value) 
+                (list (second board))))
 
-     (t (cons 
-           (first board) 
-           (list (replace-position cellIndex (get-row rowIndex board) value))
-        )))
+        (t (cons 
+             (first board) 
+             (list (replace-position cellIndex (get-row rowIndex board) value)))))
 )
 
 (defun add-position (rowIndex cellIndex board)
   "Valida se {rowIndex}, {cellIndex} e {board} sao validos. Se sim, incrementa o valor na posicao [rowIndex[cellIndex]] do {board} por 1. Caso contrario, retorna nil"
-  (cond
-     ((null board) ())
-     ((not (and (valid-cell cellIndex) (valid-row rowIndex))) nil)    
-     (t (+ 1 (get-cell rowIndex cellIndex board)))
-  )
+  (+ 1 (get-cell rowIndex cellIndex board))
 )
 
 
@@ -106,8 +84,6 @@
   (let ((numPieces (get-cell rowIndex cellIndex board)))
     
     (cond
-      ((null board) nil)
-      ((not (and (valid-cell cellIndex) (valid-row rowIndex))) nil)
       ((= numPieces 0) board)
       (t (validate-final-position 
                    rowIndex 
@@ -118,14 +94,12 @@
 
 (defun allocate-pieces-aux (numPieces rowIndex cellIndex board initPos &optional (isFirstCall nil))
   "Enquanto houver {numPieces} para distribuir, percorre o {board} incrementando uma peca a cada posicao. Se passar pela posicao inicial, passa a proxima"
-  (let* (
-          (nextCell (cond (isFirstCall cellIndex) ; so avanca o cellIndex se nao for a primeira chamada
-                          (t (get-next-cell rowIndex cellIndex))))
-          (nextRow (cond (isFirstCall rowIndex)
-                         (t (get-next-row rowIndex cellIndex)))) ; o mesmo para o rowIndex
-          (value (cond (isFirstCall 0)
-                       (t (add-position nextRow nextCell board))))
-        )
+  (let* ((nextCell (cond (isFirstCall cellIndex) ; so avanca o cellIndex se nao for a primeira chamada
+                         (t (get-next-cell rowIndex cellIndex))))
+         (nextRow (cond (isFirstCall rowIndex)
+                        (t (get-next-row rowIndex cellIndex)))) ; o mesmo para o rowIndex
+         (value (cond (isFirstCall 0)
+                      (t (add-position nextRow nextCell board)))))
 
     (cond
       ((>= numPieces 0)
@@ -167,10 +141,20 @@
           (t board)))
 )
 
-(defun is-move-validp (rowIndex cellIndex board)
+(defun move-validp (rowIndex cellIndex board)
   "Verifica se o valor da [rowIndex[cellIndex]] e 0. Se for 0 nao ha jogada a fazer entao e considerada invalida"
-  (cond ((null board) nil)
-        ((not (and (valid-cell cellIndex) (valid-row rowIndex))) t)
-        ((= (get-cell rowIndex cellIndex board) 0) nil)
+  (cond ((= (get-cell rowIndex cellIndex board) 0) nil)
         (t t))
+)
+
+(defun row-emptyp (rowIndex board)
+  "Verifica se a linha correspondente ao rowIndex está vazia ou não"
+  (= (apply '+ (nth rowIndex board)) 0)
+)
+
+(defun board-value (board)
+  "Calcula o numero de pecas totais no tabuleiro"
+  (apply '+ (append 
+             (get-row 0 board) 
+             (get-row 1 board)))
 )

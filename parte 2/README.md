@@ -1,14 +1,13 @@
-# Parte 1
+# Parte 2
 
-A primeria parte foca-se na procura em espaço de estados. 
+A segunda parte foca-se numa componente "multiplayer", onde é possível fazer computador vs computador ou humano vs computador. 
 
-Utilizando vários possíveis algortimos, tenta encontrar a solução ótima desde o estado inicial até ao estado solução de um determinado problema.
+Para a jogada do computador, é utilizado o algoritmo AlfaBeta para encontrar a próxima jogada ótima, dentro do tempo limite.
 
-
-Para correr: 
+Para correr é basicamente a mesma coisa que a parte 1: 
 - Descarregar ou clonar este repositório numa pasta local 
-- Abrir a pasta "parte 1" existente nessa diretoria
-- Abrir o ficheiro projeto.lisp no LispWorks 
+- Abrir a pasta "parte 2" existente nessa diretoria
+- Abrir o ficheiro interact.lisp no LispWorks 
 - Compilar o ficheiro (compile buffer)
 - Correr a função "(start-game)" no listener
 - Seguir os passos que aparecem
