@@ -1,4 +1,4 @@
-Manual Técnico
+Manual de Utilizador
 =====
 
 ![](./imgs_manual/logo.png)
